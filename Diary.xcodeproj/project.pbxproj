@@ -19,6 +19,7 @@
 		3C2AFD742AD0703400C47519 /* EmotionalityRecognizer.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 3C2AFD732AD0703400C47519 /* EmotionalityRecognizer.mlpackage */; };
 		3C2CF1A42AC472DD0050DB45 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2CF1A32AC472DD0050DB45 /* SettingsViewModel.swift */; };
 		3C2CF1A62AC489CA0050DB45 /* AuthenticationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2CF1A52AC489CA0050DB45 /* AuthenticationHelper.swift */; };
+		3C7A5CB12ADBF73800B0B8A4 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 3C7A5CB02ADBF73800B0B8A4 /* .gitignore */; };
 		3C846CF92AB9F85C0086A487 /* DeviceSpecifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C846CF82AB9F85C0086A487 /* DeviceSpecifications.swift */; };
 		3C846CFB2ABB3FC80086A487 /* EncryptedDiaryEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C846CFA2ABB3FC80086A487 /* EncryptedDiaryEntry.swift */; };
 		3C846CFD2ABB41CA0086A487 /* DiaryEntryCrypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C846CFC2ABB41CA0086A487 /* DiaryEntryCrypto.swift */; };
@@ -74,6 +75,7 @@
 		3C2AFD732AD0703400C47519 /* EmotionalityRecognizer.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = EmotionalityRecognizer.mlpackage; sourceTree = "<group>"; };
 		3C2CF1A32AC472DD0050DB45 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		3C2CF1A52AC489CA0050DB45 /* AuthenticationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationHelper.swift; sourceTree = "<group>"; };
+		3C7A5CB02ADBF73800B0B8A4 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		3C846CF82AB9F85C0086A487 /* DeviceSpecifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceSpecifications.swift; sourceTree = "<group>"; };
 		3C846CFA2ABB3FC80086A487 /* EncryptedDiaryEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncryptedDiaryEntry.swift; sourceTree = "<group>"; };
 		3C846CFC2ABB41CA0086A487 /* DiaryEntryCrypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryEntryCrypto.swift; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				3CB77C1A2AADAC37004CE4D8 /* Localizable.xcstrings */,
+				3C7A5CB02ADBF73800B0B8A4 /* .gitignore */,
 				3CE0975E2AAB16D200BE933B /* Diary */,
 				3CA718872AC03356008A303A /* Frameworks */,
 				3CE0975D2AAB16D200BE933B /* Products */,
@@ -350,6 +353,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C7A5CB12ADBF73800B0B8A4 /* .gitignore in Resources */,
 				3CE0976A2AAB16D400BE933B /* Preview Assets.xcassets in Resources */,
 				3CE097662AAB16D400BE933B /* Assets.xcassets in Resources */,
 				3CB77C1B2AADAC37004CE4D8 /* Localizable.xcstrings in Resources */,

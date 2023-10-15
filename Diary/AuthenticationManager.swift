@@ -9,11 +9,6 @@ import Foundation
 import LocalAuthentication
 import os
 
-fileprivate enum AuthenticationType {
-    case biometricDataOnly
-    case biometricDataOrDevicePasscode
-}
-
 class AuthenticationManager {
     private let logger: Logger = Logger(subsystem: ".com.diaryApp", category: "AuthenticationHelper")
     

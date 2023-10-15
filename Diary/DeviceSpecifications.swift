@@ -38,45 +38,15 @@ final class DeviceSpecifications {
         #endif
     }
     
-//    static var isIPad: Bool {
-//        UIDevice.current.userInterfaceIdiom == .pad
-//    }
-//    
-//    static var isIPhone: Bool {
-//        UIDevice.current.userInterfaceIdiom == .phone
-//    }
-//    
-//    static var isMac: Bool {
-//        UIDevice.current.userInterfaceIdiom == .mac
-//    }
-//    
-//    static var isTV: Bool {
-//        UIDevice.current.userInterfaceIdiom == .tv
-//    }
-//    
-//    static var isVision: Bool {
-//        UIDevice.current.userInterfaceIdiom == .vision
-//    }
+    static var isIPad: Bool { DeviceSpecifications.deviceType == .pad }
     
-    static var isIPad: Bool {
-        DeviceSpecifications.deviceType == .iPad
-    }
+    static var isIPhone: Bool { DeviceSpecifications.deviceType == .iPhone }
     
-    static var isIPhone: Bool {
-        DeviceSpecifications.deviceType == .iPhone
-    }
+    static var isMac: Bool { DeviceSpecifications.deviceType == .mac }
     
-    static var isMac: Bool {
-        DeviceSpecifications.deviceType == .mac
-    }
+    static var isTV: Bool { DeviceSpecifications.deviceType == .tv }
     
-    static var isTV: Bool {
-        DeviceSpecifications.deviceType == .tv
-    }
-    
-    static var isVision: Bool {
-        DeviceSpecifications.deviceType == .vision
-    }
+    static var isVision: Bool { DeviceSpecifications.deviceType == .vision }
     
     static var supportsFaceID: Bool {
         let context = LAContext()

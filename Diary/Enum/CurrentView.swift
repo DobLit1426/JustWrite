@@ -7,9 +7,15 @@
 
 import Foundation
 
-/// The enum is used on to specify the current view. The rawValue is used for debug purposes.
+/// Used on to specify the current view.
+/// - Warning: The rawValue can be used ONLY for debug purposes.
 enum CurrentView: String {
+    /// Current view is app setup view
     case appSetup = "appSetup"
+    
+    /// Current view shows the diary
     case diary = "diary"
+    
+    /// There's no current view
     case none = "none"
 }

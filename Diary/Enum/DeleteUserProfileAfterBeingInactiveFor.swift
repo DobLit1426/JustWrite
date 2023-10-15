@@ -7,15 +7,29 @@
 
 import Foundation
 
-/// Enum describing after which time should all information the user created be deleted from the app if the app was inactive for this period of time. The rawValue is the localized textual representation of the time period.
+/// Describes after which time should all information the user created be deleted from the app if the app was inactive for this period of time. 
+/// - Important: The rawValue is the localized textual representation of the time period. The rawValue is NOT native Swift rawValue.
 enum DeleteUserProfileAfterBeingInactiveFor: Codable, CaseIterable, Hashable {
+    /// The setting is turned off
     case turnedOff
+    
+    /// Delete after being inactive for a week
     case week
+    
+    /// Delete after being inactive for a month
     case month
+    
+    /// Delete after being inactive for three months
     case threeMonths
+    
+    /// Delete after being inactive for six months
     case sixMonths
+    
+    /// Delete after being inactive for a year
     case year
     
+    /// Localized String based on the enum's value.
+    /// - Important: This is NOT native Swift rawValue.
     var rawValue: String {
         let comment: String = "This string is used as the rawValue for an instance of DeleteUserProfileAfterBeingInactiveFor"
         

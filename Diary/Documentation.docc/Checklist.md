@@ -81,3 +81,4 @@ struct DiaryEntry {
 <!--### 3.1 Class/struct-->
 * Every class/struct/func/extension/enum has a description that contains the  purpose of the following code piece
 * Every documentation is completed and actualized
+* Instead of using 'This (class/struct/func/extension/enum) is used to/describes/shows ...' use 'Used to/Describes/Shows ...'
