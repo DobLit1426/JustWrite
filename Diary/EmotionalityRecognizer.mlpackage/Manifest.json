@@ -1,0 +1,24 @@
+{
+    "fileFormatVersion": "1.0.0",
+    "itemInfoEntries": {
+        "74F3DD31-2CA0-4558-8D72-D3C84E7C84BA": {
+            "author": "com.apple.CoreML",
+            "description": "External Metadata Overlay",
+            "name": "Metadata.json",
+            "path": "com.apple.CoreML/Metadata.json"
+        },
+        "C5307943-B19B-42E4-988A-34D60C01CED8": {
+            "author": "com.apple.CoreML",
+            "description": "External FeatureDescription Overlay",
+            "name": "FeatureDescriptions.json",
+            "path": "com.apple.CoreML/FeatureDescriptions.json"
+        },
+        "D37011B6-F24C-47D0-9156-E24D6C9F2AA1": {
+            "author": "com.apple.CoreML",
+            "description": "CoreML Model Specification",
+            "name": "EmotionalityRecognizer.mlmodel",
+            "path": "com.apple.CoreML/EmotionalityRecognizer.mlmodel"
+        }
+    },
+    "rootModelIdentifier": "D37011B6-F24C-47D0-9156-E24D6C9F2AA1"
+}

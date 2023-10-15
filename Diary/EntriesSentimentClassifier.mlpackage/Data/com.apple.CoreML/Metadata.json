@@ -1,0 +1,9 @@
+{
+  "MLModelCreatorDefinedKey" : {
+    "com.apple.createml.app.tag" : "121.1",
+    "com.apple.createml.version" : "13.6.0",
+    "com.apple.createml.app.version" : "5.0",
+    "com.apple.coreml.model.preview.type" : "textClassifier"
+  },
+  "MLModelAuthorKey" : "Dobromir Litvinov"
+}
