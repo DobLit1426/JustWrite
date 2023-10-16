@@ -9,26 +9,45 @@ import SwiftUI
 import SwiftData
 import os
 
+
+/// Used to control which app part is shown
 struct FirstView: View {
+    /// Logger instance
     private let logger: Logger = Logger(subsystem: ".com.diaryApp", category: "FirstView")
     
+    // MARK: - @Environment variables
+    /// Describes the current app phase
     @Environment(\.scenePhase) var scenePhase
+    /// Swift Data context
     @Environment(\.modelContext) private var swiftDataContext
     
+    // MARK: - @Query variables
+    /// Settings objects that are automatically fetched and updated by Swift Data
     @Query private var settings: [Settings]
     
+    /// View model
     private var viewModel: FirstViewModel
     
+    // MARK: - State Variables
+    /// Stores the enum value of the current view
     @State var currentView: CurrentView = .none
+    
+    /// Determines whether the app is unlocked or not
     @State var isUnlocked: Bool = false
+    
+    /// If true, the function on the first appear will be called. If false, not.
+    /// - Important: When the function on first appear is done, this value is set to true.
     @State var determiniedInitialView: Bool = false
     
+    // MARK: - Init
+    /// Init function. Creates *viewModel*.
     init() {
         logger.info("Initialising FirstView...")
         viewModel = FirstViewModel()
         logger.info("Successfully intitalised FirstView")
     }
     
+    // MARK: - Body
     var body: some View {
         ZStack {
             switch currentView {
@@ -37,8 +56,10 @@ struct FirstView: View {
             case .diary:
                 NavigationManager()
             default:
-//                Text("The specified currentView '\(currentView.rawValue)' isn't included in Switch in FirstView")
                 EmptyView()
+                    .onAppear {
+                        logger.critical("The specified currentView '\(currentView.rawValue)' isn't included in Switch in FirstView")
+                    }
             }
             
             if !isUnlocked {
@@ -60,18 +81,22 @@ struct FirstView: View {
         }
     }
     
+    // MARK: - Private functions
+    /// Locks the app
     private func lockTheApp() {
         logger.info("Starting function to lock the app...")
         isUnlocked = false
         logger.info("Successfully locked the app")
     }
     
+    /// Function called on the View appear
     private func onAppear() {
         if !determiniedInitialView {
             onFirstAppear()
         }
     }
     
+    /// Function called on the first View appear
     private func onFirstAppear() {
         logger.info("Starting onFirstAppear function...")
         
@@ -81,6 +106,7 @@ struct FirstView: View {
         
         let determinedInitialView = viewModel.determineInitialView()
         logger.info("Determined initial view is \(determinedInitialView.rawValue)")
+        
         if determinedInitialView == .appSetup {
             isUnlocked = true
             currentView = .appSetup
@@ -101,6 +127,7 @@ struct FirstView: View {
         logger.info("Successfully finished onFirstAppear function")
     }
     
+    /// Checks settings objects. If finds multiple, deletes all except the last.
     private func checkSettings() {
         logger.info("Starting function to check settings...")
         if settings.count > 1 {
@@ -110,7 +137,7 @@ struct FirstView: View {
             }
             logger.critical("Deleted all settings instances except the last one. The last settings instance will be the saved.")
         } else {
-            logger.info("Successfully checked settings")
+            logger.info("Successfully checked settings. Number of settings: \(settings.count)")
         }
     }
 }

@@ -22,10 +22,9 @@ enum DeviceType {
 }
 
 final class DeviceSpecifications {
-    
     static var deviceType: DeviceType {
         #if canImport(UIKit)
-            switch UIKit.current.userInterfaceIdiom {
+            switch UIDevice.current.userInterfaceIdiom {
             case .pad: return .iPad
             case .phone: return .iPhone
             case .mac: return .mac

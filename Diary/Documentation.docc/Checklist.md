@@ -12,10 +12,11 @@ Every piece of code must accord to one format to be clean, easily readable and u
 # 1. Mixed
 ### 1.1 Class/struct
 * There's a documentation that contains the purpose of the class/struct
-* At the begin there's a private logger constant with subsystem and category parameters filled in
+* At the begin there's a private logger constant with subsystem and category parameters filled in and documentation 'Logger instance'
 ```
 /// Used for CRUD operation with diary entries
 struct DiaryEntry {
+    /// Loger instance
     private let logger: Logger = Logger(subsystem: "...", category: "...")
     ...
 }
@@ -51,6 +52,7 @@ struct DiaryEntry {
 ### 2.2 Class/struct
 * At the begin there's a private logger constant with subsystem and category parameters filled in
     ```
+    /// Loger intance
     private let logger: Logger = Logger(subsystem: "...", category: "...")
     ```
 
@@ -82,3 +84,4 @@ struct DiaryEntry {
 * Every class/struct/func/extension/enum has a description that contains the  purpose of the following code piece
 * Every documentation is completed and actualized
 * Instead of using 'This (class/struct/func/extension/enum) is used to/describes/shows ...' use 'Used to/Describes/Shows ...'
+* Every logger instance has documentation *'Logger instance'*
