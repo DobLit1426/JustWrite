@@ -9,21 +9,37 @@ import Foundation
 import CryptoKit
 import os
 
+/// Responsible for any cryptographic manipulations with DiaryEntry
 struct DiaryEntryCrypto {
+    /// Logger instance
     private let logger: Logger = Logger(subsystem: ".com.diaryApp", category: "DiaryEntryCrypto")
-        
+    
+    // MARK: - Properties
+    /// The symmetric key to encrypt and decrypt DiaryEntry with
     let key: SymmetricKey
+    
+    // MARK: - Init
+    /// Initialises DiaryEntryCrypto by setting the key property
+    /// - Parameter key: The symmetric key to encrypt and decrypt DiaryEntry with. If nil, then the key will be set using KeychainHelper.getSymmetricKey()
     init(key: SymmetricKey? = nil) {
+        logger.info("Starting to initialise DiaryEntryCrypto")
+        
         if let key {
+            logger.warning("The symmetric key was provided, using it")
             self.key = key
         } else {
+            logger.warning("The symmetric key wasn't provided, using KeychainHelper.getSymmetricKey()")
             self.key = KeychainHelper.getSymmetricKey()
         }
         
-        logger.info("Initialised DiaryEntryCrypto object")
+        logger.info("Successfully initialised DiaryEntryCrypto")
     }
     
-    func encryptEntry(_ entry: DiaryEntry) -> EncryptedDiaryEntry? {
+    //MARK: - Public functions
+    /// Encrypts a single DiaryEntry
+    /// - Parameter entry: The diary entry to encrypt
+    /// - Returns: If succeeds, the encrypted diary entry, otherwise nil
+    public func encryptEntry(_ entry: DiaryEntry) -> EncryptedDiaryEntry? {
         logger.info("Starting encryption of the diary entry with id '\(entry.id, privacy: .private)'")
         
         guard let entryJSON = entry.generate_json() else {
@@ -54,7 +70,11 @@ struct DiaryEntryCrypto {
         return encryptedEntryObject
     }
     
-    func decryptEntry(_ encryptedEntry: EncryptedDiaryEntry) -> DiaryEntry? {
+    
+    /// Decrypts a single DiaryEntry
+    /// - Parameter entry: The encrypted diary entry to decrypt
+    /// - Returns: If succeeds, the decrypted diary entry, otherwise nil
+    public func decryptEntry(_ encryptedEntry: EncryptedDiaryEntry) -> DiaryEntry? {
         logger.info("Starting decryption of the diary entry with id '\(encryptedEntry.id, privacy: .private)'")
         
         let encryptedEntryData = encryptedEntry.encrypted_data
@@ -63,6 +83,7 @@ struct DiaryEntryCrypto {
             logger.error("Couldn't create SealedBox for the diary entry with id '\(encryptedEntry.id, privacy: .private)'")
             return nil
         }
+        
         guard let decryptedData = try? AES.GCM.open(sealedBox, using: key) else {
             logger.error("Couldn't open SealedBox of the diary entry with id '\(encryptedEntry.id, privacy: .private)'")
             return nil
@@ -82,11 +103,14 @@ struct DiaryEntryCrypto {
         return entry
     }
     
-    func encryptEntries(_ entries: [DiaryEntry]) -> [EncryptedDiaryEntry] {
+    
+    /// Encrypts array of DiaryEntry
+    /// - Parameter entries: The array of DiaryEntry to encrypt
+    /// - Returns: If succeeds, the array of EncryptedDiaryEntry, otherwise empty array
+    public func encryptEntries(_ entries: [DiaryEntry]) -> [EncryptedDiaryEntry] {
         logger.info("Starting function to encrypt the diary entries")
         
         var encryptedEntries: [EncryptedDiaryEntry] = []
-        
         
         for entry in entries {
             if let encryptedEntry = encryptEntry(entry) {
@@ -108,11 +132,14 @@ struct DiaryEntryCrypto {
         return encryptedEntries
     }
     
-    func decryptEntries(_ encrypted_entries: [EncryptedDiaryEntry]) -> [DiaryEntry] {
+    
+    /// Decrypts array of EncryptedDiaryEntry
+    /// - Parameter encrypted_entries: The array of EncryptedDiaryEntry to decrypt
+    /// - Returns: If succeeds, the array of DiaryEntry, otherwise empty array
+    public func decryptEntries(_ encrypted_entries: [EncryptedDiaryEntry]) -> [DiaryEntry] {
         logger.info("Starting function to decrypt the diary entries")
         
         var decryptedEntries: [DiaryEntry] = []
-        
         
         for entry in encrypted_entries {
             if let decryptedEntry = decryptEntry(entry) {

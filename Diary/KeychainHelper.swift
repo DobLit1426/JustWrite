@@ -11,10 +11,10 @@ import CryptoKit
 import os
 
 
-/// Used to do save, retrieve and delete the symmetric key in System Keychain
+/// Used to do save, retrieve and delete the symmetric key in Keychain
 class KeychainHelper {
     /// Service name for the keychain item
-    private static let serviceName = "JustWriteApp"
+    private static let keychainServiceName = "JustWriteApp"
     /// Logger instance
     private static let logger: Logger = Logger(subsystem: ".com.diaryApp", category: "KeychainHelper")
 
@@ -24,6 +24,9 @@ class KeychainHelper {
     static func saveSymmetricKey(_ key: SymmetricKey) {
         logger.info("Starting function to save a symmetric key...")
         
+        // Delete all items in Keychain before so that the symmetric key won't be doubled
+        deleteAllItemsInKeychain()
+        
         do {
             logger.info("Converting key to keyData...")
             let keyData = key.withUnsafeBytes { Data($0) }
@@ -31,7 +34,7 @@ class KeychainHelper {
             
             var query: [String: Any] = [
                 kSecClass as String: kSecClassGenericPassword,
-                kSecAttrService as String: serviceName,
+                kSecAttrService as String: keychainServiceName,
                 kSecValueData as String: keyData
             ]
             
@@ -60,12 +63,15 @@ class KeychainHelper {
         }
     }
 
+    
+    /// Retrieves the saved symmetric key from Keychain
+    /// - Returns: If successfull, the saved symmetric key, otherwise nil
     private static func retrieveSymmetricKey() -> SymmetricKey? {
-        let logger: Logger = Logger(subsystem: ".com.diaryApp", category: "KeychainHelper")
+        logger.info("Starting function to retrieve the symmetric key from Keychain...")
         do {
             let query: [String: Any] = [
                 kSecClass as String: kSecClassGenericPassword,
-                kSecAttrService as String: serviceName,
+                kSecAttrService as String: keychainServiceName,
                 kSecReturnData as String: true
             ]
             
@@ -79,30 +85,29 @@ class KeychainHelper {
                     let symmetricKey = SymmetricKey(data: keyData)
                     return symmetricKey
                 } else {
+                    logger.critical("Couldn't convert the saved item into the SymmetricKey")
                     throw KeychainError.unexpectedPasswordData
                 }
             } else if status == errSecItemNotFound {
                 // Item not found in the Keychain
+                logger.warning("The saved symmetric key wasn't found in Keychain, returning nil")
                 return nil
             } else {
                 throw KeychainError.unhandledError(status: status)
             }
         } catch {
-            logger.critical("Got error while trying to retrieve the symmetric key")
+            logger.critical("Got error while trying to retrieve the symmetric key, returning nil")
             return nil
         }
-        
     }
 
-    // Delete the symmetric key from the Keychain
-    private static func deleteSymmetricKey() {
-        let logger: Logger = Logger(subsystem: ".com.diaryApp", category: "KeychainHelper")
+    /// Deletes all items from Keychain
+    private static func deleteAllItemsInKeychain() {
         logger.info("Starting function to delete saved symmetric key")
-        
         do {
             let query: [String: Any] = [
                 kSecClass as String: kSecClassGenericPassword,
-                kSecAttrService as String: serviceName
+                kSecAttrService as String: keychainServiceName
             ]
             
             // Delete the item from the Keychain
@@ -117,6 +122,8 @@ class KeychainHelper {
         }
     }
     
+    /// If finds a saved symmetric key in Keychain, returns it, otherwise creates a new one and saves it.
+    /// - Returns: The symmetric key
     public static func getSymmetricKey() -> SymmetricKey {
         let logger: Logger = Logger(subsystem: ".com.diaryApp", category: "KeychainHelper")
         
@@ -124,20 +131,25 @@ class KeychainHelper {
         
         if let savedKey = KeychainHelper.retrieveSymmetricKey() {
             logger.info("Successfully retrieved the saved symmetric key")
+            logger.info("Successfully ended function to get the symmetric key")
             return savedKey
         }
         
         logger.warning("No saved symmetric key was found, generating a new one...")
         
-        let randomKey = KeychainHelper.generateSymmetricKey()
+        let randomKey = generateSymmetricKey()
         
         logger.info("Successfully generated new symmetric key")
         
         saveSymmetricKey(randomKey)
         
+        logger.info("Successfully ended function to get the symmetric key")
+        
         return randomKey
     }
     
+    /// Generates a random symmetric key
+    /// - Returns: The generated symmetric key
     private static func generateSymmetricKey() -> SymmetricKey {
         let logger: Logger = Logger(subsystem: ".com.diaryApp", category: "KeychainHelper")
         

@@ -12,7 +12,7 @@
 		3C1452F32AD713CF00C8BC80 /* AnalyticProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1452F22AD713CF00C8BC80 /* AnalyticProperty.swift */; };
 		3C1452F52AD97F4D00C8BC80 /* InitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1452F42AD97F4D00C8BC80 /* InitialView.swift */; };
 		3C1452FA2AD9A11100C8BC80 /* Documentation.docc in Sources */ = {isa = PBXBuildFile; fileRef = 3C1452F92AD9A11100C8BC80 /* Documentation.docc */; };
-		3C1452FC2ADA926100C8BC80 /* KeychaineError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1452FB2ADA926100C8BC80 /* KeychaineError.swift */; };
+		3C1452FC2ADA926100C8BC80 /* KeychainError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1452FB2ADA926100C8BC80 /* KeychainError.swift */; };
 		3C2AFD5F2AD00FFB00C47519 /* AddNewEntryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2AFD5E2AD00FFB00C47519 /* AddNewEntryViewModel.swift */; };
 		3C2AFD612AD0413A00C47519 /* EntryAnalyticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2AFD602AD0413A00C47519 /* EntryAnalyticsView.swift */; };
 		3C2AFD682AD041F900C47519 /* EntryAnalyticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2AFD672AD041F900C47519 /* EntryAnalyticsViewModel.swift */; };
@@ -20,6 +20,7 @@
 		3C2CF1A42AC472DD0050DB45 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2CF1A32AC472DD0050DB45 /* SettingsViewModel.swift */; };
 		3C2CF1A62AC489CA0050DB45 /* AuthenticationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2CF1A52AC489CA0050DB45 /* AuthenticationHelper.swift */; };
 		3C7A5CB12ADBF73800B0B8A4 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 3C7A5CB02ADBF73800B0B8A4 /* .gitignore */; };
+		3C7A5CB52AE0472500B0B8A4 /* CurrentTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7A5CB42AE0472500B0B8A4 /* CurrentTab.swift */; };
 		3C846CF92AB9F85C0086A487 /* DeviceSpecifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C846CF82AB9F85C0086A487 /* DeviceSpecifications.swift */; };
 		3C846CFB2ABB3FC80086A487 /* EncryptedDiaryEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C846CFA2ABB3FC80086A487 /* EncryptedDiaryEntry.swift */; };
 		3C846CFD2ABB41CA0086A487 /* DiaryEntryCrypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C846CFC2ABB41CA0086A487 /* DiaryEntryCrypto.swift */; };
@@ -67,7 +68,7 @@
 		3C1452F22AD713CF00C8BC80 /* AnalyticProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticProperty.swift; sourceTree = "<group>"; };
 		3C1452F42AD97F4D00C8BC80 /* InitialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialView.swift; sourceTree = "<group>"; };
 		3C1452F92AD9A11100C8BC80 /* Documentation.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Documentation.docc; sourceTree = "<group>"; };
-		3C1452FB2ADA926100C8BC80 /* KeychaineError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychaineError.swift; sourceTree = "<group>"; };
+		3C1452FB2ADA926100C8BC80 /* KeychainError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainError.swift; sourceTree = "<group>"; };
 		3C2AFD5E2AD00FFB00C47519 /* AddNewEntryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewEntryViewModel.swift; sourceTree = "<group>"; };
 		3C2AFD602AD0413A00C47519 /* EntryAnalyticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryAnalyticsView.swift; sourceTree = "<group>"; };
 		3C2AFD672AD041F900C47519 /* EntryAnalyticsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryAnalyticsViewModel.swift; sourceTree = "<group>"; };
@@ -75,6 +76,7 @@
 		3C2CF1A32AC472DD0050DB45 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		3C2CF1A52AC489CA0050DB45 /* AuthenticationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationHelper.swift; sourceTree = "<group>"; };
 		3C7A5CB02ADBF73800B0B8A4 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		3C7A5CB42AE0472500B0B8A4 /* CurrentTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTab.swift; sourceTree = "<group>"; };
 		3C846CF82AB9F85C0086A487 /* DeviceSpecifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceSpecifications.swift; sourceTree = "<group>"; };
 		3C846CFA2ABB3FC80086A487 /* EncryptedDiaryEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncryptedDiaryEntry.swift; sourceTree = "<group>"; };
 		3C846CFC2ABB41CA0086A487 /* DiaryEntryCrypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryEntryCrypto.swift; sourceTree = "<group>"; };
@@ -266,7 +268,8 @@
 				3CB77C342AAF6E9A004CE4D8 /* DeleteUserProfileAfterBeingInactiveFor.swift */,
 				3CCB2FF82AB1E21D00FD8F25 /* CurrentView.swift */,
 				3C1452F42AD97F4D00C8BC80 /* InitialView.swift */,
-				3C1452FB2ADA926100C8BC80 /* KeychaineError.swift */,
+				3C1452FB2ADA926100C8BC80 /* KeychainError.swift */,
+				3C7A5CB42AE0472500B0B8A4 /* CurrentTab.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -377,6 +380,7 @@
 				3C846CFD2ABB41CA0086A487 /* DiaryEntryCrypto.swift in Sources */,
 				3CB77C252AAE3591004CE4D8 /* SettingsView.swift in Sources */,
 				3C1452F32AD713CF00C8BC80 /* AnalyticProperty.swift in Sources */,
+				3C7A5CB52AE0472500B0B8A4 /* CurrentTab.swift in Sources */,
 				3C2CF1A62AC489CA0050DB45 /* AuthenticationHelper.swift in Sources */,
 				3CE097602AAB16D200BE933B /* DiaryApp.swift in Sources */,
 				3CE29E312AC3139200E20490 /* AuthenticationViewModel.swift in Sources */,
@@ -389,7 +393,7 @@
 				3C2AFD5F2AD00FFB00C47519 /* AddNewEntryViewModel.swift in Sources */,
 				3CB77C202AADD860004CE4D8 /* AuthenticationView.swift in Sources */,
 				3C2AFD682AD041F900C47519 /* EntryAnalyticsViewModel.swift in Sources */,
-				3C1452FC2ADA926100C8BC80 /* KeychaineError.swift in Sources */,
+				3C1452FC2ADA926100C8BC80 /* KeychainError.swift in Sources */,
 				3C2AFD612AD0413A00C47519 /* EntryAnalyticsView.swift in Sources */,
 				3CCB2FF92AB1E21D00FD8F25 /* CurrentView.swift in Sources */,
 				3CB77C292AAE3683004CE4D8 /* Settings.swift in Sources */,
