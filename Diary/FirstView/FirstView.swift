@@ -62,20 +62,13 @@ struct FirstView: View {
                     }
             }
             
-            if !isUnlocked {
-                Rectangle().foregroundStyle(.white)
-                AuthenticationView(isUnlocked: $isUnlocked)
-            }
+            if !isUnlocked { AuthenticationView(isUnlocked: $isUnlocked) }
         }
-        .onAppear {
-            logger.info("FirstView appeared")
-            logger.info("Starting doing functions on the appear of FirstView...")
-            onAppear()
-            logger.info("Successfully finished doing functions on the appear of FirstView appear")
-        }
+        .onAppear { onAppear() }
         .animation(.easeInOut, value: currentView)
+        .animation(.easeInOut, value: isUnlocked)
         .onChange(of: scenePhase) { oldValue, newValue in
-            if newValue == ScenePhase.background {
+            if newValue == .background {
                 lockTheApp()
             }
         }
@@ -89,14 +82,19 @@ struct FirstView: View {
         logger.info("Successfully locked the app")
     }
     
-    /// Function called on the View appear
+    /// Called on View appear. Checks whether the View appears for the first time and if yes, then calls onFirstAppear
     private func onAppear() {
+        logger.info("FirstView appeared")
+        logger.info("Starting doing functions on the appear of FirstView...")
+        
         if !determiniedInitialView {
             onFirstAppear()
         }
+        
+        logger.info("Successfully finished doing functions on the appear of FirstView appear")
     }
     
-    /// Function called on the first View appear
+    /// Function called on the first View appear. Checks setting, updates viewModel, determines and sets the initial View.
     private func onFirstAppear() {
         logger.info("Starting onFirstAppear function...")
         

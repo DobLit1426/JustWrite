@@ -42,4 +42,6 @@ struct AuthenticationViewModel {
             return String(localized: "Reason for device password usage", comment: "This string will be shown in the system alert, which will promt the user to unlock the device with device passcode")
         }
     }
+    
+    let lockedText: String = String(localized: "Locked text", defaultValue: "The app is locked", comment: "This text will be presented if the app is locked.")
 }
