@@ -46,7 +46,6 @@
 		3CF8AE492AB4A09400D29A89 /* FirstViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF8AE482AB4A09400D29A89 /* FirstViewModel.swift */; };
 		3CF8AE4B2AB4A1C600D29A89 /* FirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF8AE4A2AB4A1C600D29A89 /* FirstView.swift */; };
 		3CF8AE4D2AB5A5EC00D29A89 /* AppSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF8AE4C2AB5A5EC00D29A89 /* AppSetupView.swift */; };
-		3CF8AE4F2AB619A600D29A89 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF8AE4E2AB619A600D29A89 /* AuthenticationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -107,7 +106,6 @@
 		3CF8AE482AB4A09400D29A89 /* FirstViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewModel.swift; sourceTree = "<group>"; };
 		3CF8AE4A2AB4A1C600D29A89 /* FirstView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstView.swift; sourceTree = "<group>"; };
 		3CF8AE4C2AB5A5EC00D29A89 /* AppSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSetupView.swift; sourceTree = "<group>"; };
-		3CF8AE4E2AB619A600D29A89 /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +161,7 @@
 			children = (
 				3CB77C242AAE3591004CE4D8 /* SettingsView.swift */,
 				3C2CF1A32AC472DD0050DB45 /* SettingsViewModel.swift */,
+				3C2CF1A52AC489CA0050DB45 /* AuthenticationHelper.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -223,8 +222,6 @@
 				3CE29E342AC3158D00E20490 /* Enum */,
 				3C846CFE2ABC71BF0086A487 /* KeychainHelper.swift */,
 				3C1452F92AD9A11100C8BC80 /* Documentation.docc */,
-				3CF8AE4E2AB619A600D29A89 /* AuthenticationManager.swift */,
-				3C2CF1A52AC489CA0050DB45 /* AuthenticationHelper.swift */,
 				3C846CF82AB9F85C0086A487 /* DeviceSpecifications.swift */,
 				3CE097702AAB18CB00BE933B /* DiaryEntry.swift */,
 				3C846CFC2ABB41CA0086A487 /* DiaryEntryCrypto.swift */,
@@ -375,7 +372,6 @@
 				3CDDF42C2AAB8CF4006E1C99 /* HomeView.swift in Sources */,
 				3CE29E362AC3166800E20490 /* HomeViewModel.swift in Sources */,
 				3C846CFF2ABC71BF0086A487 /* KeychainHelper.swift in Sources */,
-				3CF8AE4F2AB619A600D29A89 /* AuthenticationManager.swift in Sources */,
 				3CF8AE4B2AB4A1C600D29A89 /* FirstView.swift in Sources */,
 				3C2CF1A42AC472DD0050DB45 /* SettingsViewModel.swift in Sources */,
 				3C846CFD2ABB41CA0086A487 /* DiaryEntryCrypto.swift in Sources */,

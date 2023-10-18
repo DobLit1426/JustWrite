@@ -6,22 +6,29 @@
 //
 
 import Foundation
-import CryptoKit
 import os
 
+/// ViewModel of FirstView
 class FirstViewModel: ObservableObject {
+    /// Logger instance
     private var logger: Logger = Logger(subsystem: ".diaryApp", category: "FirstViewModel")
 
+    // MARK: - @Published variables
+    /// Settings objects
     @Published var settings: [Settings]
     
-    init(settings: [Settings] = []) {
+    // MARK: - Init
+    /// Initialises the viewModel by setting the settings to an empty array
+    init() {
         logger.info("Starting intialising FirstViewModel object...")
         
-        self.settings = settings
+        settings = []
         
         logger.info("Successfully intialised FirstViewModel object")
     }
     
+    // MARK: - Public functions
+    /// Determines the initial View based on the settings
     func determineInitialView() -> InitialView {
         logger.info("Starting function to detemine the initial View...")
         
@@ -44,6 +51,7 @@ class FirstViewModel: ObservableObject {
         return viewToReturn
     }
     
+    /// Updates the viewModel with settings array
     func update(with settings: [Settings]) {
         logger.info("Starting function to update self.settings...")
         self.settings = settings

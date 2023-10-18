@@ -9,14 +9,13 @@ import SwiftUI
 import SwiftData
 import os
 
-
 /// Used to control which app part is shown
 struct FirstView: View {
     /// Logger instance
     private let logger: Logger = Logger(subsystem: ".com.diaryApp", category: "FirstView")
     
     // MARK: - @Environment variables
-    /// Describes the current app phase
+    /// Describes the current scene phase
     @Environment(\.scenePhase) var scenePhase
     /// Swift Data context
     @Environment(\.modelContext) private var swiftDataContext
@@ -40,7 +39,7 @@ struct FirstView: View {
     @State var determiniedInitialView: Bool = false
     
     // MARK: - Init
-    /// Init function. Creates *viewModel*.
+    /// Initialises the struct by creating viewModel
     init() {
         logger.info("Initialising FirstView...")
         viewModel = FirstViewModel()

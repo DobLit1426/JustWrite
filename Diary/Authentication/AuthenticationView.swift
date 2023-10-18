@@ -28,13 +28,14 @@ struct AuthenticationView: View {
     
     // MARK: - ViewModel
     /// View model of this View
-    var viewModel: AuthenticationViewModel
+    @ObservedObject var viewModel: AuthenticationViewModel
     
     // MARK: - Computed properties
     /// Background color of this View
     var backgroundStyle: Color { colorScheme == .light ? .white : .black }
     
-    let localAuthenticationContext: LAContext = LAContext()
+    // MARK: - LAContext
+    private let localAuthenticationContext: LAContext = LAContext()
     
     // MARK: - Init
     /// Init
@@ -46,6 +47,7 @@ struct AuthenticationView: View {
         self.viewModel = AuthenticationViewModel(localAuthenticationContext: localAuthenticationContext)
         logger.info("Successfully initialised AuthenticationView")
     }
+    
     // MARK: - Body
     var body: some View {
         ZStack {
