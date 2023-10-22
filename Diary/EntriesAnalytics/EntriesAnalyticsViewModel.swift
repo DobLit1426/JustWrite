@@ -55,6 +55,9 @@ final class EntriesAnalyticsViewModel: ObservableObject {
         averageNumberOfWordsPerSentence = roundToFourDecimalPlaces(number: Double(totalNumberOfWords)/Double(totalNumberOfSentences))
         averageNumberOfSentences = roundToFourDecimalPlaces(number: Double(totalNumberOfSentences)/Double(totalNumberOfEntries))
         averageNumberOfDaysBetweenDiaryEntries = averageDateDifferenceInDays(basedOn: decryptedEntries)
+        
+        if averageNumberOfWordsPerSentence.isNaN { averageNumberOfWordsPerSentence = 0 }
+        if averageNumberOfSentences.isNaN { averageNumberOfSentences = 0 }
     }
     
     private func extractSentencesFromText(_ text: String) -> [String] {

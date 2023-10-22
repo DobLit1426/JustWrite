@@ -28,8 +28,8 @@ enum DeleteUserProfileAfterBeingInactiveFor: Codable, CaseIterable, Hashable {
     /// Delete after being inactive for a year
     case year
     
-    /// Localized String based on the enum's value.
-    /// - Important: This is NOT native Swift rawValue.
+    /// Localized String based on the enum's value
+    /// - Important: This is NOT native Swift rawValue
     var rawValue: String {
         let comment: String = "This string is used as the rawValue for an instance of DeleteUserProfileAfterBeingInactiveFor"
         
@@ -44,5 +44,24 @@ enum DeleteUserProfileAfterBeingInactiveFor: Codable, CaseIterable, Hashable {
         }
         
         return NSLocalizedString(rawValue, comment: comment)
+    }
+    
+    
+    /// Used to different values, e.g. in a Picker
+    var id: Int {
+        switch self {
+        case .turnedOff:
+            return 0
+        case .week:
+            return 1
+        case .month:
+            return 2
+        case .threeMonths:
+            return 3
+        case .sixMonths:
+            return 4
+        case .year:
+            return 5
+        }
     }
 }

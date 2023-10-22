@@ -23,9 +23,6 @@
         }
       }
     },
-    "Activate 'Destroy everything' button" : {
-
-    },
     "After which time should we delete your profile if you don't use the app?" : {
 
     },
@@ -43,6 +40,9 @@
           }
         }
       }
+    },
+    "App locked" : {
+
     },
     "Average" : {
 
@@ -152,10 +152,10 @@
         }
       }
     },
-    "Delete all entries if inactive for" : {
+    "Delete all diary entries" : {
 
     },
-    "DESTROY EVERYTHING" : {
+    "Delete all entries if inactive for" : {
 
     },
     "Diary Entry" : {
@@ -251,6 +251,12 @@
         }
       }
     },
+    "If you proceed, all your diary entries and your settings will be deleted. All your data will be lost. This action is irreversable.\nProceed?" : {
+
+    },
+    "If you proceed, all your diary entries will be deleted. This action is irreversable.\nProceed?" : {
+
+    },
     "Key features of JustWrite" : {
       "comment" : "The title after which the key features of the app will be presented"
     },
@@ -345,6 +351,9 @@
           }
         }
       }
+    },
+    "No" : {
+
     },
     "No Data Collection, No Ads" : {
       "localizations" : {
@@ -531,9 +540,6 @@
         }
       }
     },
-    "This will delete all your diary entries and settings like they never existed. There's no way to reverse that action! Proceed on own fear!" : {
-
-    },
     "To continue you will need to setup your diary" : {
 
     },
@@ -559,6 +565,9 @@
       }
     },
     "Total" : {
+
+    },
+    "Unlock app with %@" : {
 
     },
     "Unlock with %@" : {
@@ -690,6 +699,15 @@
           }
         }
       }
+    },
+    "Yes" : {
+
+    },
+    "Yes, delete all my data" : {
+
+    },
+    "Yes, delete all my diary entries" : {
+
     },
     "You will just need to answer a few questions." : {
 

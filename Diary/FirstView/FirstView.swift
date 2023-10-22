@@ -22,7 +22,11 @@ struct FirstView: View {
     
     // MARK: - @Query variables
     /// Settings objects that are automatically fetched and updated by Swift Data
-    @Query private var settings: [Settings]
+    @Query private var settings: [Settings] {
+        didSet {
+            viewModel.update(with: settings)
+        }
+    }
     
     /// View model
     private var viewModel: FirstViewModel
@@ -49,26 +53,30 @@ struct FirstView: View {
     // MARK: - Body
     var body: some View {
         ZStack {
-            switch currentView {
-            case .appSetup:
-                AppSetupView(currentView: $currentView)
-            case .diary:
-                NavigationManager()
-            default:
-                EmptyView()
-                    .onAppear {
-                        logger.critical("The specified currentView '\(currentView.rawValue)' isn't included in Switch in FirstView")
-                    }
+            if determiniedInitialView {
+                switch currentView {
+                case .appSetup:
+                    AppSetupView(currentView: $currentView)
+                case .diary:
+                    NavigationManager()
+                default:
+                    EmptyView()
+                        .onAppear {
+                            logger.critical("The specified currentView '\(currentView.rawValue)' isn't included in Switch in FirstView")
+                        }
+                }
+                
+                if !isUnlocked { AuthenticationView(isUnlocked: $isUnlocked) }
             }
-            
-            if !isUnlocked { AuthenticationView(isUnlocked: $isUnlocked) }
         }
         .onAppear { onAppear() }
         .animation(.easeInOut, value: currentView)
         .animation(.easeInOut, value: isUnlocked)
         .onChange(of: scenePhase) { oldValue, newValue in
             if newValue == .background {
-                lockTheApp()
+                if viewModel.shouldLockTheApp(settings) {
+                    lockTheApp()
+                }
             }
         }
     }

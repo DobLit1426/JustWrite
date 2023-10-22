@@ -86,8 +86,7 @@ class HomeViewModel {
             return encryptedEntry
         } else {
             logger.critical("Couldn't encrypt the diary entry with id '\(entry.id, privacy: .private)', returning a EncryptedDiaryEntry with empty Data")
-            return EncryptedDiaryEntry(encrypted_data: Data())
+            return EncryptedDiaryEntry(encrypted_data: Data(), id: entry.id)
         }
     }
-    
 }

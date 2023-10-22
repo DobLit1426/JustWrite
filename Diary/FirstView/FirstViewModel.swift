@@ -47,7 +47,7 @@ class FirstViewModel: ObservableObject {
             viewToReturn = .appSetup
         }
         
-        logger.info("Successfully determined initial View")
+        logger.info("Successfully determined initial View: \(viewToReturn.rawValue)")
         return viewToReturn
     }
     
@@ -56,5 +56,15 @@ class FirstViewModel: ObservableObject {
         logger.info("Starting function to update self.settings...")
         self.settings = settings
         logger.info("Successfully updated self.settings")
+    }
+    
+    func shouldLockTheApp(_ settings: [Settings]) -> Bool {
+        update(with: settings)
+        
+        if settings.count == 1 {
+            if settings[0].authenticateWithBiometricData == true { return true }
+        }
+        
+        return false
     }
 }

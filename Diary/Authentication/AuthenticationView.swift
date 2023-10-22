@@ -30,10 +30,6 @@ struct AuthenticationView: View {
     /// View model of this View
     @ObservedObject var viewModel: AuthenticationViewModel
     
-    // MARK: - Computed properties
-    /// Background color of this View
-    var backgroundStyle: Color { colorScheme == .light ? .white : .black }
-    
     // MARK: - LAContext
     private let localAuthenticationContext: LAContext = LAContext()
     
@@ -43,8 +39,10 @@ struct AuthenticationView: View {
     /// - Important: isUnlocked must be set to false, otherwise it will be hard to tell when the authentication is done and was successfull
     init(isUnlocked: Binding<Bool>) {
         logger.info("Initialising AuthenticationView...")
+        
         self._isUnlocked = isUnlocked
         self.viewModel = AuthenticationViewModel(localAuthenticationContext: localAuthenticationContext)
+        
         logger.info("Successfully initialised AuthenticationView")
     }
     
@@ -52,27 +50,35 @@ struct AuthenticationView: View {
     var body: some View {
         ZStack {
             Rectangle()
-                .foregroundStyle(backgroundStyle)
-            
-            VStack {
-                Image(systemName: isUnlocked ? "lock.open" : "lock")
-                    .contentTransition(.symbolEffect(.replace.downUp.wholeSymbol, options: .nonRepeating))
-                    .padding(.bottom, 5)
-                Text(viewModel.lockedText)
-                    .padding()
-                Spacer()
-                
-                Button {
-                    unlockButtonPressed()
-                } label: {
-                    Text(AuthenticationHelper(localAuthenticationContext: localAuthenticationContext).unlockWithBiometryButtonText)
+                .ignoresSafeArea(edges: .all)
+                .foregroundStyle(colorScheme == .dark ? Color.black : Color.white)
+            GeometryReader { geometry in
+                VStack(alignment: .center) {
+                    VStack {
+                        HStack {
+                            Spacer()
+                            LockSymbol()
+                            Spacer()
+                        }
+                        Text("App locked")
+                            .font(.title)
+                            .padding()
+                        Text("Unlock app with \(viewModel.biometricAuthenticationTypeString)")
+                            .font(.title2)
+                    }
+                    .frame(height: geometry.size.height * 1/3)
+                    Spacer()
+                    
+                    Button {
+                        unlockButtonPressed()
+                    } label: {
+                        Text(AuthenticationHelper(localAuthenticationContext: localAuthenticationContext).unlockWithBiometryButtonText)
+                    }
+                    .buttonStyle(PrimaryButtonStyle())
                 }
-                .buttonStyle(PrimaryButtonStyle())
+                .onAppear { onAppear() }
+                .padding()
             }
-            .onAppear {
-                onAppear()
-            }
-            .padding()
         }
     }
     
@@ -94,7 +100,7 @@ struct AuthenticationView: View {
                 logger.info("Successfully authenticated")
                 authenticationSuccess()
             } else {
-                logger.warning("Authentication failed. Authentication error: \(authenticationError)")
+                logger.warning("Authentication failed. Authentication error: '\(authenticationError)'")
                 authenticationFailed()
             }
         }

@@ -40,6 +40,18 @@ class AuthenticationViewModel: ObservableObject {
         }
     }
     
+    var biometricAuthenticationTypeString: String {
+        if deviceSupportsFaceId {
+            return "FaceID"
+        } else if deviceSupportsOpticId {
+            return "OpticID"
+        } else if deviceSupportsTouchId {
+            return "TouchID"
+        } else {
+            return "None"
+        }
+    }
+    
     /// This text will be presented if the app is locked
     let lockedText: String = String(localized: "Locked text", defaultValue: "The app is locked", comment: "This text will be presented if the app is locked.")
     
