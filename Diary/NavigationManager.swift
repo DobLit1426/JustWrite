@@ -42,7 +42,7 @@ struct NavigationManager: View {
                 }
                 .tag(CurrentTab.analytics)
             
-            SettingsView()
+            SettingsView(currentTab: $currentTab)
                 .tabItem {
                     Label(settingsViewTabItemLabelText, systemImage: "gear")
                 }

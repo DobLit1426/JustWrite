@@ -445,12 +445,12 @@
     "Selected" : {
 
     },
-    "Sentence %lld has mood %lld" : {
+    "Sentece %lld is %@" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Sentence %1$lld has mood %2$lld"
+            "value" : "Sentece %1$lld is %2$@"
           }
         }
       }

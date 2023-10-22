@@ -81,7 +81,6 @@ struct EntryAnalyticsView: View {
                     .font(.title)
             }
             GeometryReader { geometry in
-//                let section = ...
                 if DeviceSpecifications.isIPad {
                     VStack {
                         HStack(alignment: .center) {
@@ -116,7 +115,7 @@ struct EntryAnalyticsView: View {
                                         .offset(yStart: -10)
                                         .annotation(position: .top, spacing: 0, overflowResolution: .init(x: .fit(to: .chart), y: .disabled)) {
                                             let sentenceMood = sentencesToMood.first(where: { $0.sentenceNumber == graphSelectedSentence }) ?? SentenceMood(sentenceNumber: graphSelectedSentence, mood: 0)
-                                            Text("Sentence \(graphSelectedSentence) has mood \(sentenceMood.mood)")
+                                            Text("Sentece \(graphSelectedSentence) is \(moodTextualRepresantation(sentenceMood.mood))")
                                                 .background(.gray.opacity(0.4))
                                         }
                                 }
@@ -165,7 +164,7 @@ struct EntryAnalyticsView: View {
                                             .offset(yStart: -10)
                                             .annotation(position: .top, spacing: 0, overflowResolution: .init(x: .fit(to: .chart), y: .disabled)) {
                                                 let sentenceMood = sentencesToMood.first(where: { $0.sentenceNumber == graphSelectedSentence }) ?? SentenceMood(sentenceNumber: graphSelectedSentence, mood: 0)
-                                                Text("Sentence \(graphSelectedSentence) has mood \(sentenceMood.mood)")
+                                                Text("Sentece \(graphSelectedSentence) is \(moodTextualRepresantation(sentenceMood.mood))")
                                                     .background(.gray.opacity(0.4))
                                             }
                                     }
@@ -318,6 +317,16 @@ struct EntryAnalyticsView: View {
             fatalError()
         }
         self.emotionalityRecognizer = emotionalityRecognizerNLModel
+    }
+    
+    func moodTextualRepresantation(_ mood: Int) -> String {
+        if mood > 0 {
+            return "positive"
+        } else if mood == 0 {
+            return "neutral"
+        } else {
+            return "negative"
+        }
     }
 }
 

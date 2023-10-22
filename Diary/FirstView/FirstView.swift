@@ -22,14 +22,10 @@ struct FirstView: View {
     
     // MARK: - @Query variables
     /// Settings objects that are automatically fetched and updated by Swift Data
-    @Query private var settings: [Settings] {
-        didSet {
-            viewModel.update(with: settings)
-        }
-    }
+    @Query private var settings: [Settings]
     
     /// View model
-    private var viewModel: FirstViewModel
+    @ObservedObject private var viewModel: FirstViewModel
     
     // MARK: - State Variables
     /// Stores the enum value of the current view

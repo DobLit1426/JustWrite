@@ -122,8 +122,10 @@ struct AppSetupView: View {
                         VStack {
                             Text(feature.heading)
                                 .font(.headline)
-                            Text(feature.description)
-                                .font(.body)
+                            if appSetupProgress == feature.showStartingFromIndex {
+                                Text(feature.description)
+                                    .font(.body)
+                            }
                         }
                         Spacer()
                         Image(systemName: feature.iconSystemName)

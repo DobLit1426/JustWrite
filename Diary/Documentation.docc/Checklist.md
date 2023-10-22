@@ -48,7 +48,7 @@ struct DiaryEntry {
 ### 1.3 Enum/extension
 * There's a documentation that contains the purpose of the enum/extension
 
-# 2. Logging
+## 2. Logging
 ### 2.2 Class/struct
 * At the begin there's a private logger constant with subsystem and category parameters filled in
     ```
@@ -81,7 +81,7 @@ struct DiaryEntry {
 
 # 3. In code documentation
 <!--### 3.1 Class/struct-->
-* Every class/struct/func/extension/enum has a description that contains the  purpose of the following code piece
+* Every class/struct/func/extension/enum has a description that contains the purpose of the following code piece
 * Every documentation is completed and actualized
 * Instead of using 'This (class/struct/func/extension/enum) is used to/describes/shows ...' use 'Used to/Describes/Shows ...'
 * Every logger instance has documentation *'Logger instance'*
