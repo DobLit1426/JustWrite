@@ -10,9 +10,6 @@ import os
 
 final class EntriesAnalyticsViewModel: ObservableObject {
     private let logger: Logger = Logger(subsystem: ".com.diaryApp", category: "EntriesAnalyticsViewModel")
-    private let diaryEntryCrypto: DiaryEntryCrypto = DiaryEntryCrypto()
-    
-    private var decryptedEntries: [DiaryEntry] = []
     
     @Published var totalNumberOfSentences: Int = 0
     @Published var averageNumberOfSentences: Double = 0
@@ -25,16 +22,15 @@ final class EntriesAnalyticsViewModel: ObservableObject {
         logger.info("EntriesAnalyticsViewModel was initialised")
     }
     
-    func update(with encryptedDiaryEntries: [EncryptedDiaryEntry]) {
+    func update(with diaryEntries: [DiaryEntry]) {
         logger.info("Starting function to update the properties based on encryptedDiaryEntries")
         
-        self.decryptedEntries = diaryEntryCrypto.decryptEntries(encryptedDiaryEntries)
-        updateProperties()
+        updateProperties(basedOn: diaryEntries)
         
         logger.info("Succesfully updated the properties based on encryptedDiaryEntries")
     }
     
-    private func updateProperties() {
+    private func updateProperties(basedOn entries: [DiaryEntry]) {
         totalNumberOfSentences = 0
         averageNumberOfSentences = 0
         totalNumberOfWords = 0
@@ -43,7 +39,7 @@ final class EntriesAnalyticsViewModel: ObservableObject {
         averageNumberOfDaysBetweenDiaryEntries = 0
         
         
-        for entry in decryptedEntries {
+        for entry in entries {
             let sentencesCount: Int = extractSentencesFromText(entry.content).count
             let numberOfWords: Int = countWords(in: entry.content)
             
@@ -54,7 +50,7 @@ final class EntriesAnalyticsViewModel: ObservableObject {
         
         averageNumberOfWordsPerSentence = roundToFourDecimalPlaces(number: Double(totalNumberOfWords)/Double(totalNumberOfSentences))
         averageNumberOfSentences = roundToFourDecimalPlaces(number: Double(totalNumberOfSentences)/Double(totalNumberOfEntries))
-        averageNumberOfDaysBetweenDiaryEntries = averageDateDifferenceInDays(basedOn: decryptedEntries)
+        averageNumberOfDaysBetweenDiaryEntries = averageDateDifferenceInDays(basedOn: entries)
         
         if averageNumberOfWordsPerSentence.isNaN { averageNumberOfWordsPerSentence = 0 }
         if averageNumberOfSentences.isNaN { averageNumberOfSentences = 0 }

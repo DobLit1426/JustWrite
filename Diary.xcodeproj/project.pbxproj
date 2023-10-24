@@ -24,9 +24,6 @@
 		3C7A5CB72AE2CCE900B0B8A4 /* DestructiveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7A5CB62AE2CCE900B0B8A4 /* DestructiveButton.swift */; };
 		3C7A5CB92AE3A73300B0B8A4 /* LockSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7A5CB82AE3A73300B0B8A4 /* LockSymbol.swift */; };
 		3C846CF92AB9F85C0086A487 /* DeviceSpecifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C846CF82AB9F85C0086A487 /* DeviceSpecifications.swift */; };
-		3C846CFB2ABB3FC80086A487 /* EncryptedDiaryEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C846CFA2ABB3FC80086A487 /* EncryptedDiaryEntry.swift */; };
-		3C846CFD2ABB41CA0086A487 /* DiaryEntryCrypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C846CFC2ABB41CA0086A487 /* DiaryEntryCrypto.swift */; };
-		3C846CFF2ABC71BF0086A487 /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C846CFE2ABC71BF0086A487 /* KeychainHelper.swift */; };
 		3C9792602AAB3F1400612572 /* AddNewEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C97925F2AAB3F1400612572 /* AddNewEntryView.swift */; };
 		3C9792622AAB401B00612572 /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9792612AAB401B00612572 /* NavigationManager.swift */; };
 		3CA8AAEB2AD4314A00352AAE /* EntriesSentimentClassifier.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 3CA8AAEA2AD4314A00352AAE /* EntriesSentimentClassifier.mlpackage */; };
@@ -82,9 +79,6 @@
 		3C7A5CB62AE2CCE900B0B8A4 /* DestructiveButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestructiveButton.swift; sourceTree = "<group>"; };
 		3C7A5CB82AE3A73300B0B8A4 /* LockSymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockSymbol.swift; sourceTree = "<group>"; };
 		3C846CF82AB9F85C0086A487 /* DeviceSpecifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceSpecifications.swift; sourceTree = "<group>"; };
-		3C846CFA2ABB3FC80086A487 /* EncryptedDiaryEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncryptedDiaryEntry.swift; sourceTree = "<group>"; };
-		3C846CFC2ABB41CA0086A487 /* DiaryEntryCrypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryEntryCrypto.swift; sourceTree = "<group>"; };
-		3C846CFE2ABC71BF0086A487 /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
 		3C97925F2AAB3F1400612572 /* AddNewEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewEntryView.swift; sourceTree = "<group>"; };
 		3C9792612AAB401B00612572 /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
 		3CA718882AC03356008A303A /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = /System/Library/Frameworks/WidgetKit.framework; sourceTree = "<absolute>"; };
@@ -184,7 +178,7 @@
 		3CB77C1E2AADD4D5004CE4D8 /* SwiftData Models */ = {
 			isa = PBXGroup;
 			children = (
-				3C846CFA2ABB3FC80086A487 /* EncryptedDiaryEntry.swift */,
+				3CE097702AAB18CB00BE933B /* DiaryEntry.swift */,
 				3CB77C282AAE3683004CE4D8 /* Settings.swift */,
 			);
 			path = "SwiftData Models";
@@ -226,12 +220,9 @@
 				3CE0975F2AAB16D200BE933B /* DiaryApp.swift */,
 				3C2AFD5C2AD00F4200C47519 /* FirstView */,
 				3CE29E342AC3158D00E20490 /* Enum */,
-				3C846CFE2ABC71BF0086A487 /* KeychainHelper.swift */,
 				3C7A5CB62AE2CCE900B0B8A4 /* DestructiveButton.swift */,
 				3C1452F92AD9A11100C8BC80 /* Documentation.docc */,
 				3C846CF82AB9F85C0086A487 /* DeviceSpecifications.swift */,
-				3CE097702AAB18CB00BE933B /* DiaryEntry.swift */,
-				3C846CFC2ABB41CA0086A487 /* DiaryEntryCrypto.swift */,
 				3C9792612AAB401B00612572 /* NavigationManager.swift */,
 				3C1452ED2AD6E89A00C8BC80 /* EntriesAnalytics */,
 				3C2AFD5D2AD00FE400C47519 /* AddNewEntry */,
@@ -378,15 +369,12 @@
 			files = (
 				3CE29E392AC316C100E20490 /* AppSetupViewModel.swift in Sources */,
 				3C9792602AAB3F1400612572 /* AddNewEntryView.swift in Sources */,
-				3C846CFB2ABB3FC80086A487 /* EncryptedDiaryEntry.swift in Sources */,
 				3CE097712AAB18CB00BE933B /* DiaryEntry.swift in Sources */,
 				3CB77C1D2AADBF3D004CE4D8 /* EditExistingDiaryEntryView.swift in Sources */,
 				3CDDF42C2AAB8CF4006E1C99 /* HomeView.swift in Sources */,
 				3CE29E362AC3166800E20490 /* HomeViewModel.swift in Sources */,
-				3C846CFF2ABC71BF0086A487 /* KeychainHelper.swift in Sources */,
 				3CF8AE4B2AB4A1C600D29A89 /* FirstView.swift in Sources */,
 				3C2CF1A42AC472DD0050DB45 /* SettingsViewModel.swift in Sources */,
-				3C846CFD2ABB41CA0086A487 /* DiaryEntryCrypto.swift in Sources */,
 				3CB77C252AAE3591004CE4D8 /* SettingsView.swift in Sources */,
 				3C1452F32AD713CF00C8BC80 /* AnalyticProperty.swift in Sources */,
 				3C7A5CB52AE0472500B0B8A4 /* CurrentTab.swift in Sources */,

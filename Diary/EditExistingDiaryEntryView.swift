@@ -18,7 +18,11 @@ fileprivate class EditExistingDiaryEntryViewLocalizedStrings {
 struct EditExistingDiaryEntryView: View {
     @Environment(\.modelContext) private var context
     
-    @Binding var diaryEntry: DiaryEntry
+    @State var diaryEntry: DiaryEntry
+    
+    init(diaryEntry: DiaryEntry) {
+        self.diaryEntry = diaryEntry
+    }
     
     var datePickerStartingDate: Date {
         let currentDate = Date()
@@ -63,8 +67,6 @@ struct EditExistingDiaryEntryView: View {
             .navigationTitle("Entry")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                //                ShareLink("Share", item: "'\(diaryEntry.heading)' from \(diaryEntry.formattedDate)\n\(diaryEntry.content)\n")
-                
                 ToolbarItemGroup(placement: .navigation) {
                     Spacer()
                     VStack {
@@ -94,11 +96,6 @@ Diary entry from \(diaryEntry.formattedDate)
 
 #Preview {
     @State var diaryEntry: DiaryEntry = DiaryEntry(heading: "heading", content: "Sample content")
-    let dummyEntryBinding: Binding<DiaryEntry> = Binding {
-        return diaryEntry
-    } set: { newValue in
-        diaryEntry = diaryEntry
-    }
     
-    return EditExistingDiaryEntryView(diaryEntry: dummyEntryBinding)
+    return EditExistingDiaryEntryView(diaryEntry: diaryEntry)
 }

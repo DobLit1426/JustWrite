@@ -19,6 +19,6 @@ struct DiaryApp: App {
         WindowGroup {
             FirstView()
         }
-        .modelContainer(for: [EncryptedDiaryEntry.self, Settings.self])
+        .modelContainer(for: [DiaryEntry.self, Settings.self])
     }
 }

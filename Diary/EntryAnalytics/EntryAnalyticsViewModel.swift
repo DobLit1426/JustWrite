@@ -34,7 +34,9 @@ final class EntryAnalyticsViewModel: ObservableObject {
     @Published var numberOfNegativeSentences: Int = 0
     
     init() {
-        logger.info("Successfully initialised")
+        logger.info("Initialising EntryAnalyticsViewModel...")
+        
+        logger.info("Successfully initialised EntryAnalyticsViewModel")
     }
     
     func update(entry: DiaryEntry, sentimentPredictor: NLModel, emotionalityRecognizer: NLModel) {

@@ -19,7 +19,7 @@ struct SettingsView: View {
     
     //MARK: - @Query variables
     @Query var settings: [Settings]
-    @Query var entries: [EncryptedDiaryEntry]
+    @Query var entries: [DiaryEntry]
     
     //MARK: - @State variables
     @State var showBiometricAuthenticationUnavailableExplanationAlert: Bool = false
