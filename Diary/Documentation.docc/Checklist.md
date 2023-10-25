@@ -9,7 +9,7 @@ Every piece of code must accord to one format to be clean, easily readable and u
 2. __Logging__
 3. __In code documentation__
 
-# 1. Mixed
+## 1. Mixed
 ### 1.1 Class/struct
 * There's a documentation that contains the purpose of the class/struct
 * At the begin there's a private logger constant with subsystem and category parameters filled in and documentation 'Logger instance'
@@ -79,7 +79,7 @@ struct DiaryEntry {
     }
     ```
 
-# 3. In code documentation
+## 3. In code documentation
 <!--### 3.1 Class/struct-->
 * Every class/struct/func/extension/enum has a description that contains the purpose of the following code piece
 * Every documentation is completed and actualized

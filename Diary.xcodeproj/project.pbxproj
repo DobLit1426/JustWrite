@@ -32,8 +32,9 @@
 		3CB77C202AADD860004CE4D8 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB77C1F2AADD860004CE4D8 /* AuthenticationView.swift */; };
 		3CB77C252AAE3591004CE4D8 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB77C242AAE3591004CE4D8 /* SettingsView.swift */; };
 		3CB77C292AAE3683004CE4D8 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB77C282AAE3683004CE4D8 /* Settings.swift */; };
-		3CB77C2F2AAEF57C004CE4D8 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB77C2E2AAEF57C004CE4D8 /* Buttons.swift */; };
+		3CB77C2F2AAEF57C004CE4D8 /* SecondaryButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB77C2E2AAEF57C004CE4D8 /* SecondaryButtonStyle.swift */; };
 		3CB77C352AAF6E9A004CE4D8 /* DeleteUserProfileAfterBeingInactiveFor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB77C342AAF6E9A004CE4D8 /* DeleteUserProfileAfterBeingInactiveFor.swift */; };
+		3CCB1FDD2AE94AAA00184020 /* PrimaryButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCB1FDC2AE94AAA00184020 /* PrimaryButtonStyle.swift */; };
 		3CCB2FF92AB1E21D00FD8F25 /* CurrentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCB2FF82AB1E21D00FD8F25 /* CurrentView.swift */; };
 		3CDDF42C2AAB8CF4006E1C99 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDDF42B2AAB8CF4006E1C99 /* HomeView.swift */; };
 		3CE097602AAB16D200BE933B /* DiaryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE0975F2AAB16D200BE933B /* DiaryApp.swift */; };
@@ -90,8 +91,9 @@
 		3CB77C212AADDB4E004CE4D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		3CB77C242AAE3591004CE4D8 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		3CB77C282AAE3683004CE4D8 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
-		3CB77C2E2AAEF57C004CE4D8 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
+		3CB77C2E2AAEF57C004CE4D8 /* SecondaryButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryButtonStyle.swift; sourceTree = "<group>"; };
 		3CB77C342AAF6E9A004CE4D8 /* DeleteUserProfileAfterBeingInactiveFor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteUserProfileAfterBeingInactiveFor.swift; sourceTree = "<group>"; };
+		3CCB1FDC2AE94AAA00184020 /* PrimaryButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButtonStyle.swift; sourceTree = "<group>"; };
 		3CCB2FF82AB1E21D00FD8F25 /* CurrentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentView.swift; sourceTree = "<group>"; };
 		3CDDF42B2AAB8CF4006E1C99 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		3CE0975C2AAB16D200BE933B /* Diary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Diary.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -162,6 +164,7 @@
 				3CB77C242AAE3591004CE4D8 /* SettingsView.swift */,
 				3C2CF1A32AC472DD0050DB45 /* SettingsViewModel.swift */,
 				3C2CF1A52AC489CA0050DB45 /* AuthenticationHelper.swift */,
+				3C7A5CB62AE2CCE900B0B8A4 /* DestructiveButton.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -187,9 +190,35 @@
 		3CB77C2D2AAEF4F7004CE4D8 /* Components Styles */ = {
 			isa = PBXGroup;
 			children = (
-				3CB77C2E2AAEF57C004CE4D8 /* Buttons.swift */,
+				3CCB1FDE2AE94ABF00184020 /* Buttons */,
 			);
 			path = "Components Styles";
+			sourceTree = "<group>";
+		};
+		3CCB1FDB2AE94A3F00184020 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3C2AFD5C2AD00F4200C47519 /* FirstView */,
+				3C9792612AAB401B00612572 /* NavigationManager.swift */,
+				3C1452ED2AD6E89A00C8BC80 /* EntriesAnalytics */,
+				3C2AFD5D2AD00FE400C47519 /* AddNewEntry */,
+				3CB77C1C2AADBF3D004CE4D8 /* EditExistingDiaryEntryView.swift */,
+				3C2AFD662AD041DE00C47519 /* EntryAnalytics */,
+				3C2CF1A22AC472D20050DB45 /* Settings */,
+				3CE29E3A2AC332DD00E20490 /* AppSetup */,
+				3CE29E372AC3169B00E20490 /* HomeView */,
+				3CE29E2F2AC3135D00E20490 /* Authentication */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3CCB1FDE2AE94ABF00184020 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				3CB77C2E2AAEF57C004CE4D8 /* SecondaryButtonStyle.swift */,
+				3CCB1FDC2AE94AAA00184020 /* PrimaryButtonStyle.swift */,
+			);
+			path = Buttons;
 			sourceTree = "<group>";
 		};
 		3CE097532AAB16D200BE933B = {
@@ -218,20 +247,10 @@
 				3CA8AAEA2AD4314A00352AAE /* EntriesSentimentClassifier.mlpackage */,
 				3CB77C212AADDB4E004CE4D8 /* Info.plist */,
 				3CE0975F2AAB16D200BE933B /* DiaryApp.swift */,
-				3C2AFD5C2AD00F4200C47519 /* FirstView */,
 				3CE29E342AC3158D00E20490 /* Enum */,
-				3C7A5CB62AE2CCE900B0B8A4 /* DestructiveButton.swift */,
 				3C1452F92AD9A11100C8BC80 /* Documentation.docc */,
 				3C846CF82AB9F85C0086A487 /* DeviceSpecifications.swift */,
-				3C9792612AAB401B00612572 /* NavigationManager.swift */,
-				3C1452ED2AD6E89A00C8BC80 /* EntriesAnalytics */,
-				3C2AFD5D2AD00FE400C47519 /* AddNewEntry */,
-				3CB77C1C2AADBF3D004CE4D8 /* EditExistingDiaryEntryView.swift */,
-				3C2AFD662AD041DE00C47519 /* EntryAnalytics */,
-				3C2CF1A22AC472D20050DB45 /* Settings */,
-				3CE29E3A2AC332DD00E20490 /* AppSetup */,
-				3CE29E372AC3169B00E20490 /* HomeView */,
-				3CE29E2F2AC3135D00E20490 /* Authentication */,
+				3CCB1FDB2AE94A3F00184020 /* Views */,
 				3CB77C2D2AAEF4F7004CE4D8 /* Components Styles */,
 				3CB77C1E2AADD4D5004CE4D8 /* SwiftData Models */,
 				3CE097672AAB16D400BE933B /* Diary.entitlements */,
@@ -367,6 +386,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CCB1FDD2AE94AAA00184020 /* PrimaryButtonStyle.swift in Sources */,
 				3CE29E392AC316C100E20490 /* AppSetupViewModel.swift in Sources */,
 				3C9792602AAB3F1400612572 /* AddNewEntryView.swift in Sources */,
 				3CE097712AAB18CB00BE933B /* DiaryEntry.swift in Sources */,
@@ -397,7 +417,7 @@
 				3CB77C292AAE3683004CE4D8 /* Settings.swift in Sources */,
 				3CB77C352AAF6E9A004CE4D8 /* DeleteUserProfileAfterBeingInactiveFor.swift in Sources */,
 				3C7A5CB92AE3A73300B0B8A4 /* LockSymbol.swift in Sources */,
-				3CB77C2F2AAEF57C004CE4D8 /* Buttons.swift in Sources */,
+				3CB77C2F2AAEF57C004CE4D8 /* SecondaryButtonStyle.swift in Sources */,
 				3C1452FA2AD9A11100C8BC80 /* Documentation.docc in Sources */,
 				3C1452EF2AD6E93A00C8BC80 /* EntriesAnalyticsViewModel.swift in Sources */,
 				3C1452F52AD97F4D00C8BC80 /* InitialView.swift in Sources */,
