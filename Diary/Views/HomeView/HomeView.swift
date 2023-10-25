@@ -21,6 +21,9 @@ struct HomeView: View {
     //MARK: - ViewModel
     var homeViewModel: HomeViewModel
     
+    //MARK: - @State variables
+    @State var showAddNewEntryPopover: Bool = false
+    
     //MARK: - Computed properties
     private var showEntriesList: Bool { !entries.isEmpty }
     
@@ -43,7 +46,22 @@ struct HomeView: View {
             .navigationBarTitleDisplayMode(.large)
             #endif
             .navigationTitle(HomeViewLocalizedStrings.navigationBarTitle)
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        showAddNewEntryPopover = true
+                    } label: {
+                        Image(systemName: "plus.circle")
+                    }
+                }
+            }
+            .popover(isPresented: $showAddNewEntryPopover) {
+                NewEntryPopover { entryToSave in
+                    swiftDataContext.insert(entryToSave)
+                }
+            }
         }
+        
     }
     
     var entriesList: some View {

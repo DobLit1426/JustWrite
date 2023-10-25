@@ -9,7 +9,6 @@ import Foundation
 
 enum CurrentTab: Hashable {
     case homeView
-    case addNewEntryView
     case settings
     case analytics
 }

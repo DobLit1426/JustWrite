@@ -39,6 +39,11 @@ final class DiaryEntry: Encodable, Decodable, Identifiable {
         return formattedString ?? String(date.formatted())
     }
     
+    /// Textual representation for debugging purposes
+    var description: String {
+        return "DiaryEntry(heading: \(heading), content: \(content), date: \(date), id: \(id))"
+    }
+    
     // MARK: - Inits
     /// Initialises the diary entry object by setting the properties to the provided parameters
     /// - Parameters:

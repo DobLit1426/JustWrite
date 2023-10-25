@@ -79,6 +79,9 @@
         }
       }
     },
+    "Cancel" : {
+
+    },
     "Chart: Number of sentence -> mood" : {
 
     },
@@ -94,6 +97,9 @@
           }
         }
       }
+    },
+    "Content of your diary entry" : {
+
     },
     "Continue button text" : {
       "comment" : "This is text is presented on button used to continue the app tour/functions guide",
@@ -112,6 +118,9 @@
           }
         }
       }
+    },
+    "Continue writing the entry" : {
+
     },
     "Create profile button text" : {
       "comment" : "This is text is presented on button used to finish the app tour/functions guide",
@@ -156,6 +165,9 @@
 
     },
     "Delete all entries if inactive for" : {
+
+    },
+    "Delete the entry I wrote" : {
 
     },
     "Diary Entry" : {
@@ -234,6 +246,9 @@
         }
       }
     },
+    "Heading" : {
+
+    },
     "Heading of the diary entry" : {
       "comment" : "This text is used as a TextField placeholder where the diary entry should be written",
       "localizations" : {
@@ -257,6 +272,9 @@
     "If you proceed, all your diary entries will be deleted. This action is irreversable.\nProceed?" : {
 
     },
+    "JustWrite" : {
+
+    },
     "Key features of JustWrite" : {
       "comment" : "The title after which the key features of the app will be presented"
     },
@@ -276,6 +294,9 @@
       }
     },
     "Median" : {
+
+    },
+    "Mode" : {
 
     },
     "Mood" : {
@@ -318,6 +339,9 @@
     "Name" : {
 
     },
+    "New diary entry" : {
+
+    },
     "New Diary Entry" : {
       "comment" : "This text is used as the navigation bar title in the AddNewEntryView",
       "localizations" : {
@@ -337,6 +361,7 @@
     },
     "New Entry" : {
       "comment" : "This is tab item label text for AddNewEntryView",
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {

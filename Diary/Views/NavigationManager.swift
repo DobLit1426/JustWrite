@@ -17,7 +17,6 @@ struct NavigationManager: View {
     
     //MARK: - Localized text
     let homeviewTabItemLabelText: String = String(localized: "My Entries", defaultValue: "My Entries", comment: "This is tab item label text for HomeView")
-    let addNewEntryViewTabItemLabelText: String = String(localized: "New Entry", defaultValue: "New Entry", comment: "This is tab item label text for AddNewEntryView")
     let settingsViewTabItemLabelText: String = String(localized: "Settings Tab Name", defaultValue: "Settings", comment: "This is tab item label text for SettingsView")
     let analyticsViewTabItemLabelText: String = String(localized: "Analytics Tab Name", defaultValue: "Analytics", comment: "This is tab item label text for EntriesAnalyticsView")
     
@@ -29,12 +28,6 @@ struct NavigationManager: View {
                     Label(homeviewTabItemLabelText, systemImage: "list.dash")
                 }
                 .tag(CurrentTab.homeView)
-            
-            AddNewEntryView(currentTab: $currentTab)
-                .tabItem {
-                    Label(addNewEntryViewTabItemLabelText, systemImage: "plus")
-                }
-                .tag(CurrentTab.addNewEntryView)
             
             EntriesAnalyticsView()
                 .tabItem {
