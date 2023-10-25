@@ -6,13 +6,15 @@
 //
 
 import Foundation
+import SwiftData
 import os
 
 
 /// Represents a single diary entry
+@Model
 final class DiaryEntry: Encodable, Decodable, Identifiable {
     /// Logger instance
-    private var logger: Logger = Logger(subsystem: ".com.diaryApp", category: "DiaryEntry")
+    @Transient private var logger: Logger = Logger(subsystem: ".com.diaryApp", category: "DiaryEntry")
     
     // MARK: - Properties
     /// The heading of the diary entry

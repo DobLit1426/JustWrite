@@ -50,39 +50,4 @@ class AddNewEntryViewModel: ObservableObject {
             return date.description
         }
     }
-    
-    func convertRawDataToEncryptedDiaryEntry(heading: String, content: String, date: Date) -> EncryptedDiaryEntry {
-        logger.info("Starting function to convert the raw entry data to an EncryptedDiaryEntry object")
-        let trimmedHeading = heading.trimmingCharacters(in: .whitespacesAndNewlines)
-        let trimmedContent = content.trimmingCharacters(in: .whitespacesAndNewlines)
-        
-        let entry = DiaryEntry(heading: trimmedHeading, content: trimmedContent, date: date)
-        let encryptedEntry = encryptEntry(entry)
-        
-        logger.info("Successfully converted the raw entry data to an EncryptedDiaryEntry object")
-        return encryptedEntry
-    }
-    
-    private func encryptEntry(_ entry: DiaryEntry) -> EncryptedDiaryEntry {
-        logger.info("Starting function to encrypt the diary entry with id '\(entry.id, privacy: .private)'")
-        let key = getSymmetricKey()
-        
-        let entryCrypto = DiaryEntryCrypto(key: key)
-        if let encryptedDiaryEntry = entryCrypto.encryptEntry(entry) {
-            logger.info("Successfully encrypted the diary entry with id '\(entry.id, privacy: .private)'")
-            return encryptedDiaryEntry
-        } else {
-            logger.critical("Couldn't encrypt the diary entry with id '\(entry.id, privacy: .private)', throwing fatalError...")
-            fatalError()
-        }
-    }
-    
-    private func getSymmetricKey() -> SymmetricKey {
-        logger.info("Starting function to get the symmetric key")
-        
-        let symmetricKey = KeychainHelper.getSymmetricKey()
-            
-        logger.info("Successfully retrieved the saved symmetric key")
-        return symmetricKey
-    }
 }

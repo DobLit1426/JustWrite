@@ -81,7 +81,7 @@ struct EntryAnalyticsView: View {
                     .font(.title)
             }
             GeometryReader { geometry in
-                if DeviceSpecifications.isIPad {
+                ScrollView {
                     VStack {
                         HStack(alignment: .center) {
                             Spacer()
@@ -122,67 +122,17 @@ struct EntryAnalyticsView: View {
                             }
                             .chartXSelection(value: $graphSelectedSentence)
                             .padding()
-                            .frame(width: geometry.size.width * (DeviceSpecifications.isIPad ? 0.6 : 0.9), height: geometry.size.height < 100 ? 400 : geometry.size.height * 0.9)
+                            .frame(width: geometry.size.width * (DeviceSpecifications.isIPad ? 0.6 : 0.9), height: geometry.size.height < 100 ? 400 : geometry.size.height * 0.99)
                             
                             Spacer()
                         }
                         
+                        
                         if !DeviceSpecifications.isIPad { statsInSection1 }
                     }
-                } else {
-                    ScrollView {
-                        VStack {
-                            HStack(alignment: .center) {
-                                Spacer()
-                                if DeviceSpecifications.isIPad {
-                                    statsInSection1
-                                    Spacer()
-                                }
-                                Chart {
-                                    RuleMark(y: .value("Median", medianMood))
-                                        .foregroundStyle(foregroundStyleForMood(medianMood))
-                                    
-                                    ForEach(sentencesToMood, id: \.sentenceNumber) { sentenceMood in
-                                        LineMark(
-                                            x: .value("Number of sentence", sentenceMood.sentenceNumber),
-                                            y: .value("Mood", sentenceMood.mood)
-                                        )
-                                        .interpolationMethod(.monotone)
-                                        
-                                        PointMark(
-                                            x: .value("Number of sentence", sentenceMood.sentenceNumber),
-                                            y: .value("Mood", sentenceMood.mood)
-                                        )
-                                        .foregroundStyle(foregroundStyleForMood(Double(sentenceMood.mood)))
-                                        .symbol(.cross)
-                                    }
-                                    
-                                    if let graphSelectedSentence, graphSelectedSentence <= sentencesToMood.count && graphSelectedSentence >= sentencesToMood.startIndex + 1 {
-                                        RuleMark(x: .value("Selected", graphSelectedSentence))
-                                            .foregroundStyle(.gray.opacity(0.4))
-                                            .zIndex(-1)
-                                            .offset(yStart: -10)
-                                            .annotation(position: .top, spacing: 0, overflowResolution: .init(x: .fit(to: .chart), y: .disabled)) {
-                                                let sentenceMood = sentencesToMood.first(where: { $0.sentenceNumber == graphSelectedSentence }) ?? SentenceMood(sentenceNumber: graphSelectedSentence, mood: 0)
-                                                Text("Sentece \(graphSelectedSentence) is \(moodTextualRepresantation(sentenceMood.mood))")
-                                                    .background(.gray.opacity(0.4))
-                                            }
-                                    }
-                                }
-                                .chartXSelection(value: $graphSelectedSentence)
-                                .padding()
-                                .frame(width: geometry.size.width * (DeviceSpecifications.isIPad ? 0.6 : 0.9), height: geometry.size.height < 100 ? 400 : geometry.size.height * 0.99)
-                                
-                                Spacer()
-                            }
-                            
-                            
-                            if !DeviceSpecifications.isIPad { statsInSection1 }
-                        }
-                        .padding(.top, 20)
-                    }
-                    .scrollIndicators(.visible)
+                    .padding(.top, 20)
                 }
+                .scrollIndicators(.visible)
             }
         }
         .padding()

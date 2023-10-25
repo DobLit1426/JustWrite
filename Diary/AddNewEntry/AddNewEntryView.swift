@@ -71,11 +71,11 @@ struct AddNewEntryView: View {
     private func saveEntry() {
         logger.info("Starting function to save the diary entry")
         
-        let encryptedEntry = viewModel.convertRawDataToEncryptedDiaryEntry(heading: heading, content: content, date: date)
+        let entryToSave = DiaryEntry(heading: heading, content: content, date: date)
         
         // Save it using SwiftData
         logger.info("Saving the diary entry with SwiftData...")
-        context.insert(encryptedEntry)
+        context.insert(entryToSave)
         logger.info("Successfully saved the diary entry with SwiftData")
         
         // Clear the fields for next use

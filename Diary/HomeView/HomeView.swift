@@ -16,21 +16,27 @@ fileprivate class HomeViewLocalizedStrings {
 struct HomeView: View {
     //MARK: - SwiftData properties
     @Environment(\.modelContext) private var swiftDataContext
-    @Query var encryptedDiaryEntries: [EncryptedDiaryEntry]
+    @Query var entries: [DiaryEntry]
     
     //MARK: - ViewModel
-    var homeViewModel: HomeViewModel {
-        HomeViewModel(encryptedDiaryEntries: encryptedDiaryEntries, swiftDataContext: swiftDataContext)
+    var homeViewModel: HomeViewModel
+    
+    //MARK: - Computed properties
+    private var showEntriesList: Bool { !entries.isEmpty }
+    
+    //MARK: - Init
+    init() {
+        homeViewModel = HomeViewModel()
     }
     
     //MARK: - body
     var body: some View {
         NavigationStack {
             VStack {
-                if encryptedDiaryEntries.isEmpty {
-                    Text(HomeViewLocalizedStrings.noEntriesText)
-                } else {
+                if showEntriesList {
                     entriesList
+                } else {
+                    Text(HomeViewLocalizedStrings.noEntriesText)
                 }
             }
             #if os(macOS)
@@ -42,8 +48,10 @@ struct HomeView: View {
     
     var entriesList: some View {
         List {
-            ForEach(homeViewModel.decryptedDiaryEntries) { entry in
-                NavigationLink(destination: EditExistingDiaryEntryView(diaryEntry: homeViewModel.dictionaryWithEntryBindings[entry.id]!)) {
+            ForEach(entries, id: \.id) { entry in
+                NavigationLink {
+                    EditExistingDiaryEntryView(diaryEntry: entry)
+                } label: {
                     VStack {
                         HStack {
                             Text(entry.heading)
@@ -58,11 +66,15 @@ struct HomeView: View {
                         }
                     }
                 }
+
             }
+            
             .onDelete(perform: { indexSet in
                 var ids = [UUID]()
                 for index in indexSet {
-                    ids.append(homeViewModel.decryptedDiaryEntries[index].id)
+                    if let entry = entries.first(where: { $0.id == entries[index].id }) {
+                        ids.append(entry.id)
+                    }
                 }
                 deleteEntries(ids: ids)
             })
@@ -76,7 +88,7 @@ struct HomeView: View {
     }
     
     private func deleteEntry(id: UUID) {
-        let predicate = #Predicate<EncryptedDiaryEntry> { $0.id == id }
+        let predicate = #Predicate<DiaryEntry> { $0.id == id }
         let fetchDescriptor = FetchDescriptor(predicate: predicate)
         if let entriesToDelete = try? swiftDataContext.fetch(fetchDescriptor), let entryToDelete = entriesToDelete.first {
             swiftDataContext.delete(entryToDelete)
