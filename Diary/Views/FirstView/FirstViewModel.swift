@@ -10,6 +10,7 @@ import os
 
 /// ViewModel of FirstView
 class FirstViewModel: ObservableObject {
+    // MARK: - Logger
     /// Logger instance
     private var logger: Logger = Logger(subsystem: ".diaryApp", category: "FirstViewModel")
 

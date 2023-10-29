@@ -34,7 +34,7 @@ final class DiaryEntry: Encodable, Decodable, Identifiable {
     var formattedDate: String {
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
-        formatter.timeStyle = .medium
+        formatter.timeStyle = .short
         let formattedString = formatter.string(for: date)
         return formattedString ?? String(date.formatted())
     }

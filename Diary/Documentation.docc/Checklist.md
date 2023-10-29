@@ -85,3 +85,4 @@ struct DiaryEntry {
 * Every documentation is completed and actualized
 * Instead of using 'This (class/struct/func/extension/enum) is used to/describes/shows ...' use 'Used to/Describes/Shows ...'
 * Every logger instance has documentation *'Logger instance'*
+* 'S&D' means 'Shows and Determines' and must be used for documentating functions that can set value and whose value is changed automatically as well 

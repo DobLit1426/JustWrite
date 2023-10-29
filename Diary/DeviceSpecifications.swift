@@ -12,28 +12,6 @@ import LocalAuthentication
 import UIKit
 #endif
 
-/// Describes all possible types of devices the app can be run on
-enum DeviceType {
-    /// iPad
-    case iPad
-    
-    /// iPhone
-    case iPhone
-    
-    /// VisionPro
-    case vision
-    
-    /// Device that runs on MacOS
-    case mac
-    
-    /// Apple TV
-    case tv
-    
-    /// Device couldn't be identified
-    case unknownDevice
-}
-
-
 /// Describes the specifications of the device the app is running on
 final class DeviceSpecifications {
     /// The type of the device the app is running on

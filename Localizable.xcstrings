@@ -44,6 +44,9 @@
     "App locked" : {
 
     },
+    "Are you sure?" : {
+
+    },
     "Average" : {
 
     },
@@ -359,6 +362,18 @@
         }
       }
     },
+    "New Diary Entry - datePicker placeholder" : {
+      "comment" : "This text is used as a DatePicker placeholder where the diary date should be chosen",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Date"
+          }
+        }
+      }
+    },
     "New Entry" : {
       "comment" : "This is tab item label text for AddNewEntryView",
       "extractionState" : "stale",
@@ -377,6 +392,9 @@
         }
       }
     },
+    "Newest at top" : {
+
+    },
     "No" : {
 
     },
@@ -389,6 +407,9 @@
           }
         }
       }
+    },
+    "No search results for %@" : {
+
     },
     "Number of negative sentences: %lld" : {
 
@@ -409,6 +430,9 @@
 
     },
     "OK" : {
+
+    },
+    "Oldest at top" : {
 
     },
     "Pie Chart" : {
@@ -495,7 +519,7 @@
         }
       }
     },
-    "Share entry" : {
+    "Share plain text" : {
 
     },
     "Skip" : {
@@ -738,6 +762,9 @@
 
     },
     "You will just need to answer a few questions." : {
+
+    },
+    "You will loose the diary entry you wrote" : {
 
     },
     "Your diary entries will be only accessible from your profile." : {

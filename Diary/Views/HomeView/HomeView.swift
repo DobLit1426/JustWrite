@@ -8,44 +8,89 @@
 import SwiftUI
 import SwiftData
 
-fileprivate class HomeViewLocalizedStrings {
+fileprivate class LocalizedStrings {
     static let navigationBarTitle: String = String(localized: "My entries", defaultValue: "My entries", comment: "This is navigation bar title in HomeView")
     static let noEntriesText: String = String(localized: "There are currently no entries", defaultValue: "There are currently no entries", comment: "This text will be shown in HomeView when there are no diary entries")
+}
+
+enum DiaryEntriesSortingTechnique {
+    case newestAtTop
+    case oldestAtTop
 }
 
 struct HomeView: View {
     //MARK: - SwiftData properties
     @Environment(\.modelContext) private var swiftDataContext
-    @Query var entries: [DiaryEntry]
+    @Query(animation: .easeInOut) var entries: [DiaryEntry]
     
     //MARK: - ViewModel
     var homeViewModel: HomeViewModel
     
     //MARK: - @State variables
     @State var showAddNewEntryPopover: Bool = false
+    @State var sortingTechnique: DiaryEntriesSortingTechnique = .newestAtTop
+    @State var searchPromt: String = ""
+    @State var searchActive: Bool = false
     
     //MARK: - Computed properties
-    private var showEntriesList: Bool { !entries.isEmpty }
+    private var showEntriesList: Bool { !entries.isEmpty && searchPromt.isEmpty }
+    private var showSearchResults: Bool { !searchPromt.isEmpty && searchActive }
     
     //MARK: - Init
     init() {
         homeViewModel = HomeViewModel()
     }
     
-    //MARK: - body
+    //MARK: - Body
     var body: some View {
         NavigationStack {
             VStack {
                 if showEntriesList {
-                    entriesList
+                    EntriesList(entries: entries, sortingTechnique: sortingTechnique) { entryIdToDelete in
+                        deleteEntry(id: entryIdToDelete)
+                    }
+                    .animation(.easeInOut, value: sortingTechnique)
+                } else if showSearchResults {
+                    EntriesSearchResults(promt: searchPromt)
+                    
+                    Group {
+                        let filteredEntries = entries.filter({ entry in
+                            let promtTextInHeading: Bool = entry.heading.contains(searchPromt)
+                            let promtTextInContent: Bool = entry.content.contains(searchPromt)
+                            
+                            let includeEntryInSearchResults: Bool = promtTextInHeading || promtTextInContent
+                            return includeEntryInSearchResults
+                        })
+                        
+                        let sortedEntries = filteredEntries.sorted { entryA, entryB in
+                            if entryA.heading.contains(searchPromt) && entryB.heading.contains(searchPromt) {
+                                return entryA.content.contains(searchPromt)
+                            } else {
+                                return entryA.heading.contains(searchPromt) && !entryB.heading.contains(searchPromt)
+                            }
+                        }
+                        
+                        if sortedEntries.isEmpty {
+                            Text("No search results for \(searchPromt)")
+                        } else {
+                            List(sortedEntries) { entry in
+                                NavigationLink {
+                                    EditExistingDiaryEntryView(diaryEntry: entry)
+                                } label: {
+                                    EntriesListRow(entry: entry)
+                                }
+                            }
+                        }
+                    }
+                    .animation(.easeInOut, value: searchPromt)
                 } else {
-                    Text(HomeViewLocalizedStrings.noEntriesText)
+                    Text(LocalizedStrings.noEntriesText)
                 }
             }
-            #if os(macOS)
+#if os(macOS)
             .navigationBarTitleDisplayMode(.large)
-            #endif
-            .navigationTitle(HomeViewLocalizedStrings.navigationBarTitle)
+#endif
+            .navigationTitle(LocalizedStrings.navigationBarTitle)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
@@ -54,57 +99,32 @@ struct HomeView: View {
                         Image(systemName: "plus.circle")
                     }
                 }
+                
+                ToolbarItem(placement: .topBarLeading) {
+                    Picker(selection: $sortingTechnique) {
+                        Text("Newest at top").tag(DiaryEntriesSortingTechnique.newestAtTop)
+                        Text("Oldest at top").tag(DiaryEntriesSortingTechnique.oldestAtTop)
+                    } label: {
+                        Image(systemName: "arrow.up.arrow.down")
+                    }
+                }
             }
             .popover(isPresented: $showAddNewEntryPopover) {
                 NewEntryPopover { entryToSave in
                     swiftDataContext.insert(entryToSave)
                 }
             }
-        }
-        
-    }
-    
-    var entriesList: some View {
-        List {
-            ForEach(entries, id: \.id) { entry in
-                NavigationLink {
-                    EditExistingDiaryEntryView(diaryEntry: entry)
-                } label: {
-                    VStack {
-                        HStack {
-                            Text(entry.heading)
-                                .font(.headline)
-                            Spacer()
-                        }
-                        
-                        HStack {
-                            Text(entry.formattedDate)
-                                .font(.subheadline)
-                            Spacer()
-                        }
-                    }
+            .background {
+                List {
+                    EmptyView()
                 }
-
             }
-            
-            .onDelete(perform: { indexSet in
-                var ids = [UUID]()
-                for index in indexSet {
-                    if let entry = entries.first(where: { $0.id == entries[index].id }) {
-                        ids.append(entry.id)
-                    }
-                }
-                deleteEntries(ids: ids)
-            })
+            .animation(.easeInOut, value: searchActive)
         }
+        .searchable(text: $searchPromt, isPresented: $searchActive)
     }
     
-    private func deleteEntries(ids: [UUID]) {
-        for id in ids {
-            deleteEntry(id: id)
-        }
-    }
-    
+    // MARK: - Private functions
     private func deleteEntry(id: UUID) {
         let predicate = #Predicate<DiaryEntry> { $0.id == id }
         let fetchDescriptor = FetchDescriptor(predicate: predicate)

@@ -37,8 +37,8 @@ struct EntriesAnalyticsView: View {
                         .padding()
                 }
             }
+            .navigationTitle("Analytics")
         }
-        .navigationTitle("Analytics")
         .onAppear {
             viewModel.update(with: entries)
         }

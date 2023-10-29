@@ -11,12 +11,14 @@ import os
 
 /// Used to control which app part is shown
 struct FirstView: View {
+    // MARK: - Logger
     /// Logger instance
     private let logger: Logger = Logger(subsystem: ".com.diaryApp", category: "FirstView")
     
     // MARK: - @Environment variables
     /// Describes the current scene phase
     @Environment(\.scenePhase) var scenePhase
+    
     /// Swift Data context
     @Environment(\.modelContext) private var swiftDataContext
     
@@ -24,6 +26,7 @@ struct FirstView: View {
     /// Settings objects that are automatically fetched and updated by Swift Data
     @Query private var settings: [Settings]
     
+    // MARK: - ViewModel
     /// View model
     @ObservedObject private var viewModel: FirstViewModel
     
@@ -64,7 +67,7 @@ struct FirstView: View {
                 
                 if !isUnlocked { AuthenticationView(isUnlocked: $isUnlocked) }
                 
-                if #available(iOS 17.0, *), !deviceHasNotch {
+                if deviceHasNotch {
                     GeometryReader { geometry in
                         HStack {
                             Spacer()
