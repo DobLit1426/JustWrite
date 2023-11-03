@@ -13,11 +13,6 @@ fileprivate class LocalizedStrings {
     static let noEntriesText: String = String(localized: "There are currently no entries", defaultValue: "There are currently no entries", comment: "This text will be shown in HomeView when there are no diary entries")
 }
 
-enum DiaryEntriesSortingTechnique {
-    case newestAtTop
-    case oldestAtTop
-}
-
 struct HomeView: View {
     //MARK: - SwiftData properties
     @Environment(\.modelContext) private var swiftDataContext
@@ -71,7 +66,7 @@ struct HomeView: View {
                         }
                         
                         if sortedEntries.isEmpty {
-                            Text("No search results for \(searchPromt)")
+                            Text("No search results for **\(searchPromt)**", comment: "This text is shown when no search results are found when searching for information in entries")
                         } else {
                             List(sortedEntries) { entry in
                                 NavigationLink {
@@ -102,8 +97,8 @@ struct HomeView: View {
                 
                 ToolbarItem(placement: .topBarLeading) {
                     Picker(selection: $sortingTechnique) {
-                        Text("Newest at top").tag(DiaryEntriesSortingTechnique.newestAtTop)
-                        Text("Oldest at top").tag(DiaryEntriesSortingTechnique.oldestAtTop)
+                        Text(sortingTechnique.localized).tag(DiaryEntriesSortingTechnique.newestAtTop)
+                        Text(sortingTechnique.localized).tag(DiaryEntriesSortingTechnique.oldestAtTop)
                     } label: {
                         Image(systemName: "arrow.up.arrow.down")
                     }

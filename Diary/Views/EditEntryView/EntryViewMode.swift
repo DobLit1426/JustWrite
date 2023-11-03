@@ -6,13 +6,12 @@
 //
 
 import SwiftUI
-import os
 
 /// Shows the diary entry in View Mode
 struct EntryViewMode: View {
     // MARK: - Logger
     /// Logger instance
-    let logger: Logger = Logger(subsystem: ".com.diaryApp", category: "EntryViewMode")
+    let logger: AppLogger = AppLogger(category: "EntryViewMode")
     
     // MARK: - Constants
     /// The diary entry to view

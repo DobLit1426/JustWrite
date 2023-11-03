@@ -4,6 +4,129 @@
     "" : {
 
     },
+    " " : {
+
+    },
+    "'Danger Zone' section label" : {
+      "comment" : "Used as label for the 'Danger Zone' section in Settings",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Danger Zone"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Опасная зона"
+          }
+        }
+      }
+    },
+    "'Delete all data' button text" : {
+      "comment" : "Used as label for the button in Settings that deletes all user data",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle Daten löschen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Delete all data"
+          }
+        }
+      }
+    },
+    "'Delete all diary entries' button text" : {
+      "comment" : "Used as label for the button in Settings that deletes all diary entries",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle Tagebucheinträge löschen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Delete all diary entries"
+          }
+        }
+      }
+    },
+    "'Delete entries after being inactive for' enum localized value" : {
+      "comment" : "This string is used as the rawValue for an instance of DeleteEntriesAfterBeingInactiveFor",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Turned off"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выключено"
+          }
+        }
+      }
+    },
+    "'Newest in the beginning' sorting technique" : {
+      "comment" : "Textual representation of the DiaryEntriesSortingTechnique 'Newest in the beginning' sorting technique",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Newest in the beginning"
+          }
+        }
+      }
+    },
+    "'Oldest in the beginning' sorting technique" : {
+      "comment" : "Textual representation of the DiaryEntriesSortingTechnique 'Oldest in the beginning' sorting technique",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Oldest in the beginning"
+          }
+        }
+      }
+    },
+    "'Privacy And Security' section label" : {
+      "comment" : "Used as label for the 'Privacy And Security' section in Settings",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sicherheit"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Privacy And Security"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Конфиденциальность и безопасность"
+          }
+        }
+      }
+    },
     "* -1 is a negative sentence" : {
 
     },
@@ -23,16 +146,61 @@
         }
       }
     },
-    "After which time should we delete your profile if you don't use the app?" : {
+    "%lld" : {
 
     },
-    "Analytics" : {
+    "After 1 month" : {
 
+    },
+    "After 1 week" : {
+
+    },
+    "After 1 year" : {
+
+    },
+    "After 3 months" : {
+
+    },
+    "After 6 months" : {
+
+    },
+    "After which time should we delete your entries if you don't use the app?" : {
+      "comment" : "Title text asking user after which time his entries if he's inactive",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nach welcher Zeit sollen wir Ihre Einträge löschen, wenn Sie die App nicht nutzen?"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Через какое время мы должны удалить ваши записи, если вы не пользуетесь приложением?"
+          }
+        }
+      }
+    },
+    "Analytics" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Analyse"
+          }
+        }
+      }
     },
     "Analytics Tab Name" : {
       "comment" : "This is tab item label text for EntriesAnalyticsView",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Analyse"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -41,14 +209,42 @@
         }
       }
     },
-    "App locked" : {
+    "Anonymous Reports" : {
 
+    },
+    "Anonymous Reports are automatically generated messages containing anonymous data that are sent to a remote server in the event of a crash or error." : {
+
+    },
+    "App locked" : {
+      "comment" : "This text will be shown as a title on the locked screen",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App gesperrt"
+          }
+        }
+      }
     },
     "Are you sure?" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sind Sie sicher?"
+          }
+        }
+      }
     },
     "Average" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Durchschnitt"
+          }
+        }
+      }
     },
     "Average mood: " : {
 
@@ -60,11 +256,18 @@
 
     },
     "Back" : {
+      "comment" : "Text on app setup view of the button that goes one slide back",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Zurück"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Назад"
           }
         }
       }
@@ -79,17 +282,40 @@
             "state" : "translated",
             "value" : "Schöne Tagebucheinträge"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Красивые дневниковые записи"
+          }
         }
       }
     },
     "Cancel" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отменить"
+          }
+        }
+      }
+    },
+    "Cancel option" : {
 
     },
     "Chart: Number of sentence -> mood" : {
 
     },
     "Charts" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Диаграммы"
+          }
+        }
+      }
     },
     "Completely Free" : {
       "localizations" : {
@@ -98,11 +324,24 @@
             "state" : "translated",
             "value" : "Völlig kostenlos"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Полностью бесплатно"
+          }
         }
       }
     },
     "Content of your diary entry" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Содержание записи"
+          }
+        }
+      }
     },
     "Continue button text" : {
       "comment" : "This is text is presented on button used to continue the app tour/functions guide",
@@ -119,59 +358,72 @@
             "state" : "new",
             "value" : "Continue"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Продолжить"
+          }
         }
       }
     },
     "Continue writing the entry" : {
-
-    },
-    "Create profile button text" : {
-      "comment" : "This is text is presented on button used to finish the app tour/functions guide",
-      "extractionState" : "stale",
       "localizations" : {
-        "de" : {
+        "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Profil erstellen"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Create profile"
+            "value" : "Продолжить писать"
           }
         }
       }
     },
     "Danger Zone" : {
-
-    },
-    "Delete all" : {
-      "comment" : "Delete all diary entries button",
-      "extractionState" : "stale",
       "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Alle Einträge löschen"
-          }
-        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Удалить все"
+            "value" : "Опасная зона"
           }
         }
       }
     },
-    "Delete all diary entries" : {
+    "Data type" : {
 
+    },
+    "Delete all diary entries" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Удалить все записи из дневника"
+          }
+        }
+      }
     },
     "Delete all entries if inactive for" : {
 
     },
+    "Delete all entries if inactive for picker label" : {
+      "comment" : "Used as label text on Picker that determines the time after which all entries will be deleted if user is inactive",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Delete all entries if inactive for"
+          }
+        }
+      }
+    },
     "Delete the entry I wrote" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Удалить написанную мной запись"
+          }
+        }
+      }
     },
     "Diary Entry" : {
       "comment" : "This is the navigation bar title in EditExistingDiaryEntryView",
@@ -208,33 +460,67 @@
       }
     },
     "Do you want to unlock the JustWrite app with %@?" : {
-      "comment" : "Text asking whether the user wants to unlock the diary with biometric data"
-    },
-    "Edit the currently entry" : {
-      "comment" : "The text is on button that redirects to EditExistingEntryView to edit the entry that is currently viewed",
-      "extractionState" : "stale",
+      "comment" : "Text asking whether the user wants to unlock the diary with biometric data",
       "localizations" : {
-        "de" : {
+        "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ändern"
+            "value" : "Вы хотите разблокировать приложение JustWrite с помощью %@?"
           }
-        },
+        }
+      }
+    },
+    "Edit" : {
+      "comment" : "Used in the Picker between Edit and View mode",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Изменить"
+          }
+        }
+      }
+    },
+    "Edit-View Mode Picker Edit option" : {
+      "comment" : "Used as the edit option text for the Edit-View Mode Picker",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
             "value" : "Edit"
           }
-        },
-        "ru" : {
+        }
+      }
+    },
+    "Edit-View Mode Picker Label" : {
+      "comment" : "Used as the label for the Edit-View Mode Picker",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Редактировать"
+            "state" : "new",
+            "value" : "Mode"
+          }
+        }
+      }
+    },
+    "Edit-View Mode Picker View option" : {
+      "comment" : "Used as the view option text for the Edit-View Mode Picker",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "View"
           }
         }
       }
     },
     "Entry" : {
+
+    },
+    "Example" : {
 
     },
     "Finish setup button text" : {
@@ -246,11 +532,24 @@
             "state" : "new",
             "value" : "Finish setup"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Завершить настройку"
+          }
         }
       }
     },
     "Heading" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Заголовок"
+          }
+        }
+      }
     },
     "Heading of the diary entry" : {
       "comment" : "This text is used as a TextField placeholder where the diary entry should be written",
@@ -269,29 +568,63 @@
         }
       }
     },
-    "If you proceed, all your diary entries and your settings will be deleted. All your data will be lost. This action is irreversable.\nProceed?" : {
+    "Here you can find all the data that is sent in anonymous reports. For each data type there's an example." : {
 
     },
-    "If you proceed, all your diary entries will be deleted. This action is irreversable.\nProceed?" : {
+    "If Anonymous Reports are enabled, they will assist developers in finding bugs and errors more quickly. This, in turn, will result in faster resolution of these issues, ultimately enhancing the app's performance." : {
 
     },
-    "JustWrite" : {
-
+    "If you proceed, all your diary entries and your settings will be deleted. All your data will be lost. This action is irreversable." : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Если вы продолжите, то все ваши записи в дневнике и настройки будут удалены. Все ваши данные будут потеряны. Это действие необратимо."
+          }
+        }
+      }
+    },
+    "If you proceed, all your diary entries will be deleted. This action is irreversable." : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Если вы продолжите, то все ваши записи в дневнике будут удалены. Это действие необратимо."
+          }
+        }
+      }
+    },
+    "Key" : {
+      "extractionState" : "manual"
     },
     "Key features of JustWrite" : {
-      "comment" : "The title after which the key features of the app will be presented"
+      "comment" : "The title after which the key features of the app will be presented",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ключевые особенности JustWrite"
+          }
+        }
+      }
     },
     "Legend: " : {
 
     },
     "Locked text" : {
       "comment" : "This text will be presented if the app is locked.",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
             "value" : "The app is locked"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Приложение заблокировано"
           }
         }
       }
@@ -300,7 +633,15 @@
 
     },
     "Mode" : {
-
+      "comment" : "Used in the Picker between Edit and View mode as Picker label",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Режим"
+          }
+        }
+      }
     },
     "Mood" : {
 
@@ -343,39 +684,17 @@
 
     },
     "New diary entry" : {
-
-    },
-    "New Diary Entry" : {
-      "comment" : "This text is used as the navigation bar title in the AddNewEntryView",
       "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Neuer Tagebucheintrag"
-          }
-        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Новая запись в Дневнике"
+            "value" : "Новая запись"
           }
         }
       }
     },
-    "New Diary Entry - datePicker placeholder" : {
-      "comment" : "This text is used as a DatePicker placeholder where the diary date should be chosen",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Date"
-          }
-        }
-      }
-    },
-    "New Entry" : {
-      "comment" : "This is tab item label text for AddNewEntryView",
+    "New Diary Entry" : {
+      "comment" : "This text is used as the navigation bar title in the AddNewEntryView",
       "extractionState" : "stale",
       "localizations" : {
         "de" : {
@@ -392,11 +711,34 @@
         }
       }
     },
-    "Newest at top" : {
-
+    "New Diary Entry - datePicker placeholder" : {
+      "comment" : "This text is used as a DatePicker placeholder where the diary date should be chosen",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Date"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Дата"
+          }
+        }
+      }
     },
     "No" : {
-
+      "extractionState" : "stale",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нет"
+          }
+        }
+      }
     },
     "No Data Collection, No Ads" : {
       "localizations" : {
@@ -405,41 +747,129 @@
             "state" : "translated",
             "value" : "Keine Datenerfassung, keine Werbung"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Никакого сбора данных, никакой рекламы"
+          }
+        }
+      }
+    },
+    "No search results for **%@**" : {
+      "comment" : "This text is shown when no search results are found when searching for information in entries",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нет результатов поиска для **%@**"
+          }
         }
       }
     },
     "No search results for %@" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нет результатов поиска для %@"
+          }
+        }
+      }
     },
     "Number of negative sentences: %lld" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Количество отрицательных предложений: %lld"
+          }
+        }
+      }
     },
     "Number of neutral sentences: %lld" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Количество нейтральных предложений: %lld"
+          }
+        }
+      }
     },
     "Number of positive sentences: %lld" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Количество положительных предложений: %lld"
+          }
+        }
+      }
     },
     "Number of sentence" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Номер предложения"
+          }
+        }
+      }
     },
     "Number of sentences: %lld" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Количество предложений: %lld"
+          }
+        }
+      }
     },
     "Number of words: %lld" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Количество слов: %lld"
+          }
+        }
+      }
     },
     "OK" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        }
+      }
     },
-    "Oldest at top" : {
-
+    "Open app with %@" : {
+      "comment" : "This text will be shown under the title on the locked screen",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Открыть приложение с %@"
+          }
+        }
+      }
     },
     "Pie Chart" : {
 
     },
     "Privacy And Security" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Конфиденциальность и безопасность"
+          }
+        }
+      }
     },
     "Privacy At Your Fingertips" : {
       "localizations" : {
@@ -447,6 +877,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Datenschutz an Ihren Fingerspitzen"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Конфиденциальность под контролем"
           }
         }
       }
@@ -462,36 +898,77 @@
             "state" : "needs_review",
             "value" : "Die App benötigt Zugriff auf FaceID, um die Tagebucheinträge in der App zu schützen. Hinweis: Wenn mehrere Personen ihre persönlichen Tagebücher in der App haben, ist die Aktivierung der FaceID-Authentifizierung möglicherweise nicht die beste Wahl."
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Allow access to FaceID if you want to unlock the app with FaceID"
+          }
         }
       }
     },
     "Reason for OpticID usage" : {
-      "comment" : "This string will be shown in the system alert, which will promt the user to unlock the device with OpticID"
+      "comment" : "This string will be shown in the system alert, which will promt the user to unlock the device with OpticID",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Allow access to OpticID if you want to unlock the app with OpticID"
+          }
+        }
+      }
     },
     "Reason for TouchID usage" : {
-      "comment" : "This string will be shown in the system alert, which will promt the user to unlock the device with TouchID"
+      "comment" : "This string will be shown in the system alert, which will promt the user to unlock the device with TouchID",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Allow access to TouchID if you want to unlock the app with TouchID"
+          }
+        }
+      }
+    },
+    "Require %@" : {
+
     },
     "Save" : {
       "comment" : "This is text for the button that saves created entries",
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Speichern"
           }
         },
         "ru" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Сохранить"
           }
         }
       }
     },
-    "Select after which time we should delete your profile if you don't use the app" : {
-
+    "Select after which time we should delete your entries if you don't use the app" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выберите, через какое время мы должны удалить ваши записи, если вы не используете приложение"
+          }
+        }
+      }
     },
     "Selected" : {
+
+    },
+    "Send .automatic test error report" : {
+
+    },
+    "Send .yes test error report" : {
+
+    },
+    "Send anonymous reports" : {
 
     },
     "Sentece %lld is %@" : {
@@ -505,16 +982,59 @@
       }
     },
     "Settings" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Настройки"
+          }
+        }
+      }
+    },
+    "Settings navigation title" : {
+      "comment" : "Used as navigation title in Settings",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einstellungen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Settings"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Настройки"
+          }
+        }
+      }
     },
     "Settings Tab Name" : {
       "comment" : "This is tab item label text for SettingsView",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einstellungen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
             "value" : "Settings"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Настройки"
           }
         }
       }
@@ -523,7 +1043,21 @@
 
     },
     "Skip" : {
-
+      "comment" : "Button text on app setup view that skips all slides till the diary setup",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Überspringen"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пропустить"
+          }
+        }
+      }
     },
     "Stats" : {
 
@@ -569,8 +1103,53 @@
         }
       }
     },
-    "The app is locked" : {
-
+    "TextField diary entry content placeholder" : {
+      "comment" : "This text is used as the placeholder for the TextField for the diary entry content",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inhalt Ihres Tagebucheintrags"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Content of your diary entry"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Содержание записи"
+          }
+        }
+      }
+    },
+    "TextField diary entry heading placeholder" : {
+      "comment" : "This text is used as the placeholder for the TextField for the diary entry heading",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Überschrift"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Heading"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Заголовок"
+          }
+        }
+      }
     },
     "There are currently no entries" : {
       "comment" : "This text will be shown in HomeView when there are no diary entries",
@@ -590,28 +1169,44 @@
       }
     },
     "To continue you will need to setup your diary" : {
-
-    },
-    "To continue you will need to setup your profile" : {
-      "extractionState" : "stale",
+      "comment" : "Title that informs user (after the key features of the diary are shown) that he has to setup his diary",
       "localizations" : {
-        "de" : {
+        "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Um fortzufahren, müssen Sie Ihr Profil einrichten"
+            "value" : "Для продолжения работы вам необходимо настроить дневник"
           }
         }
       }
     },
     "To see analytics write a diary entry" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Um Analysen zu sehen, müssen Sie einen Tagebucheintrag schreiben"
+          }
+        }
+      }
     },
     "To unlock the JustWrite App with %@ you need to setup %@ in Settings of your device." : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Um die JustWrite App mit %1$@ zu entsperren, müssen Sie %2$@ in den Einstellungen Ihres Geräts einrichten."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
             "value" : "To unlock the JustWrite App with %1$@ you need to setup %2$@ in Settings of your device."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Для разблокировки приложения JustWrite с помощью %1$@ необходимо настроить %2$@ в Настройках устройства."
           }
         }
       }
@@ -619,11 +1214,17 @@
     "Total" : {
 
     },
-    "Unlock app with %@" : {
+    "Turned off" : {
 
     },
     "Unlock with %@" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Entsperren mit %@"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -647,6 +1248,12 @@
             "state" : "new",
             "value" : "Unlock with FaceID"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Разблокировка с FaceID"
+          }
         }
       }
     },
@@ -664,6 +1271,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Unlock with OpticID"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Разблокировка с OpticID"
           }
         }
       }
@@ -683,8 +1296,17 @@
             "state" : "new",
             "value" : "Unlock with TouchID"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Разблокировка с TouchID"
+          }
         }
       }
+    },
+    "View" : {
+      "comment" : "Used in the Picker between Edit and View mode"
     },
     "We believe that everyone should have access to a free, safe, and beautiful diary-keeping app." : {
       "localizations" : {
@@ -692,6 +1314,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Wir sind der Meinung, dass jeder Zugang zu einer kostenlosen, sicheren und schönen App zum Führen eines Tagebuchs haben sollte."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Мы считаем, что каждый должен иметь доступ к бесплатному, безопасному и красивому приложению для ведения дневника."
           }
         }
       }
@@ -703,19 +1331,28 @@
             "state" : "translated",
             "value" : "Wir bieten Datenschutzoptionen wie Passwort und biometrische Authentifizierung für die Sicherheit Ihrer persönlichen Daten."
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Для обеспечения безопасности ваших личных записей мы предлагаем опции конфиденциальности, такие как пароль и биометрическая аутентификация."
+          }
         }
       }
     },
     "We're excited to have you join us for a new way to keep your personal thoughts and memories safe." : {
-
-    },
-    "We're excited to have you join us for a new way to keep your personal thoughts and memories safe. At JustWrite, we respect the importance of your individuality and privacy, which is why we've created an app designed to make your diary-keeping experience easy and secure." : {
-      "extractionState" : "stale",
+      "comment" : "Used as an introduction in the app when opened for the first time",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Wir freuen uns, Ihnen eine neue Möglichkeit zu bieten, Ihre persönlichen Gedanken und Erinnerungen sicher aufzubewahren. Wir bei JustWrite respektieren die Bedeutung Ihrer Individualität und Privatsphäre. Deshalb haben wir eine App entwickelt, die das Führen eines Tagebuchs einfach und sicher macht."
+            "value" : "Wir freuen uns, Ihnen eine neue Möglichkeit zu bieten, Ihre persönlichen Gedanken und Erinnerungen sicher aufzubewahren."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Мы рады, что вы присоединились к нам, чтобы воспользоваться новым способом сохранения ваших личных мыслей и воспоминаний."
           }
         }
       }
@@ -728,19 +1365,26 @@
             "state" : "translated",
             "value" : "Willkommen bei JustWrite"
           }
-        }
-      }
-    },
-    "Why choose JustWrite?" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
+        },
+        "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Warum JustWrite wählen?"
+            "value" : "Добро пожаловать в JustWrite"
           }
         }
       }
+    },
+    "What are Anonymous Reports?" : {
+
+    },
+    "What is this setting about?" : {
+
+    },
+    "What type of data is collected?" : {
+
+    },
+    "Why should I enable Anonymous Reports?" : {
+
     },
     "Write down your daily thoughts, goals, or special moments in an elegant and user-friendly platform." : {
       "localizations" : {
@@ -749,31 +1393,70 @@
             "state" : "translated",
             "value" : "Schreiben Sie Ihre täglichen Gedanken, Ziele oder besonderen Momente in einer eleganten und benutzerfreundlichen Plattform auf."
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Записывайте свои ежедневные мысли, цели или особые моменты в элегантном и удобном приложении."
+          }
         }
       }
     },
     "Yes" : {
-
-    },
-    "Yes, delete all my data" : {
-
-    },
-    "Yes, delete all my diary entries" : {
-
-    },
-    "You will just need to answer a few questions." : {
-
-    },
-    "You will loose the diary entry you wrote" : {
-
-    },
-    "Your diary entries will be only accessible from your profile." : {
-      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ihre Tagebucheinträge sind nur über Ihr Profil zugänglich."
+            "value" : "Ja"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Да"
+          }
+        }
+      }
+    },
+    "Yes, delete all my diary entries" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ja, alle meine Tagebucheinträge löschen"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Да, удалить все мои записи из дневника"
+          }
+        }
+      }
+    },
+    "You will just need to answer a few questions." : {
+      "comment" : "Body text after 'to continue you need to setup your diary' that says that the setup process won't be long",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вам нужно будет лишь ответить на несколько вопросов."
+          }
+        }
+      }
+    },
+    "You will loose the diary entry you wrote" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sie werden den Tagebucheintrag verlieren, den Sie geschrieben haben"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вы потеряете написанную вами запись"
           }
         }
       }
@@ -801,6 +1484,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ihr Vertrauen ist uns wichtig. JustWrite verwendet Ihre Daten nicht für Marketingzwecke. Genießen Sie JustWrite ohne Werbung."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ваше доверие очень важно для нас. JustWrite не собирает и не использует ваши данные в маркетинговых целях. Наслаждайтесь JustWrite без рекламы."
           }
         }
       }

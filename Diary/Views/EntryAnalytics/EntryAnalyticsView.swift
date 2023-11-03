@@ -8,7 +8,6 @@
 import SwiftUI
 import Charts
 import NaturalLanguage
-import os
 import CoreML
 
 struct ChartSector: Identifiable {
@@ -19,7 +18,7 @@ struct ChartSector: Identifiable {
 
 
 struct EntryAnalyticsView: View {
-    private let logger: Logger = Logger(subsystem: ".com.diaryApp", category: "EntryAnalyticsView")
+    private let logger: AppLogger = AppLogger(category: "EntryAnalyticsView")
     
     let diaryEntry: DiaryEntry
     

@@ -16,7 +16,7 @@ final class Settings {
     var authenticateWithBiometricData: Bool
     
     /// Describes after which time should all user data be deleted if the user will be inactive for this time
-    var deleteProfileWhenInactiveFor: DeleteUserProfileAfterBeingInactiveFor
+    var deleteProfileWhenInactiveFor: DeleteEntriesAfterBeingInactiveFor
     
     //MARK: - Init
     /// Initialises Settings
@@ -24,7 +24,7 @@ final class Settings {
     ///   - authenticateWithBiometricData: Describes whether the user should authenticate biometrically when he opens the app
     ///   - deleteProfileWhenInactiveFor: Describes after which time should all user data be deleted if the user will be inactive for this time
     init(authenticateWithBiometricData: Bool,
-         deleteProfileWhenInactiveFor: DeleteUserProfileAfterBeingInactiveFor) {
+         deleteProfileWhenInactiveFor: DeleteEntriesAfterBeingInactiveFor) {
         self.authenticateWithBiometricData = authenticateWithBiometricData
         self.deleteProfileWhenInactiveFor = deleteProfileWhenInactiveFor
     }

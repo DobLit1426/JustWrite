@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-enum DiaryEntryViewingMode: String, CaseIterable {
-    case edit = "Edit"
-    case view = "Preview"
+enum DiaryEntryViewingMode: CaseIterable {
+    case edit
+    case view
 }
 
 struct NewEntryPopover: View {
@@ -57,13 +57,12 @@ struct NewEntryPopover: View {
             Spacer()
         }
         .interactiveDismissDisabled()
-        .alert("Are you sure?", isPresented: $showAreYouSureAlert) {
-            Button("Continue writing the entry", role: .cancel) { showAreYouSureAlert = false }
+        .confirmationDialog("Are you sure?", isPresented: $showAreYouSureAlert) {
             Button("Delete the entry I wrote", role: .destructive) { dismiss() }
+            Button("Continue writing the entry", role: .cancel) { showAreYouSureAlert = false }
         } message: {
             Text("You will loose the diary entry you wrote")
         }
-
     }
     
     private func saveDiaryEntryAndExit() {

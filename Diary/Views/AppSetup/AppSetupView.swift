@@ -27,9 +27,13 @@ fileprivate struct SetupPage {
     }
 }
 
+//fileprivate struct LocalizedStrings {
+//    static let
+//}
+
 struct AppSetupView: View {
     @State var authenticateWithBiometricData: Bool = false
-    @State var deleteProfileWhenInactiveFor: DeleteUserProfileAfterBeingInactiveFor = .turnedOff
+    @State var deleteProfileWhenInactiveFor: DeleteEntriesAfterBeingInactiveFor = .turnedOff
     
 
     @ObservedObject private var viewModel: AppSetupViewModel
@@ -102,7 +106,7 @@ struct AppSetupView: View {
     private var page2: some View {
         VStack {
             Divider()
-            Text("We're excited to have you join us for a new way to keep your personal thoughts and memories safe.")
+            Text("We're excited to have you join us for a new way to keep your personal thoughts and memories safe.", comment: "Used as an introduction in the app when opened for the first time")
                 .font(.body)
         }
     }
@@ -138,12 +142,12 @@ struct AppSetupView: View {
     
     private var page8: some View {
         VStack {
-            Text("To continue you will need to setup your diary")
+            Text("To continue you will need to setup your diary", comment: "Title that informs user (after the key features of the diary are shown) that he has to setup his diary")
                 .font(.title)
             
             Divider()
             
-            Text("You will just need to answer a few questions.")
+            Text("You will just need to answer a few questions.", comment: "Body text after 'to continue you need to setup your diary' that says that the setup process won't be long")
                 .font(.body)
         }
     }
@@ -168,16 +172,16 @@ struct AppSetupView: View {
     
     private var page10: some View {
         VStack {
-            Text("After which time should we delete your profile if you don't use the app?").font(.title)
+            Text("After which time should we delete your entries if you don't use the app?", comment: "Title text asking user after which time his entries if he's inactive").font(.title)
             Divider()
             Spacer()
             Image(systemName: "person.crop.circle.badge.clock.fill")
                 .symbolRenderingMode(.palette)
                 .font(.system(size: 100))
             Spacer()
-            Picker("Select after which time we should delete your profile if you don't use the app", selection: $deleteProfileWhenInactiveFor) {
-                ForEach(DeleteUserProfileAfterBeingInactiveFor.allCases, id: \.rawValue) { setting in
-                    Text(setting.rawValue).tag(setting.rawValue)
+            Picker("Select after which time we should delete your entries if you don't use the app", selection: $deleteProfileWhenInactiveFor) {
+                ForEach(DeleteEntriesAfterBeingInactiveFor.allCases, id: \.id) { setting in
+                    Text(setting.localized).tag(setting.id)
                 }
             }
             .pickerStyle(.wheel)
@@ -204,7 +208,7 @@ struct AppSetupView: View {
                 Button {
                     previousPage()
                 } label: {
-                    Text(String(localized: "Back"))
+                    Text("Back", comment: "Text on app setup view of the button that goes one slide back")
                 }
                 .buttonStyle(PrimaryButtonStyle())
             }
@@ -234,7 +238,7 @@ struct AppSetupView: View {
             Button {
                 skip()
             } label: {
-                Text(String(localized: "Skip"))
+                Text("Skip", comment: "Button text on app setup view that skips all slides till the diary setup")
             }
             
         }

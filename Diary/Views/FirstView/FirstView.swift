@@ -7,13 +7,12 @@
 
 import SwiftUI
 import SwiftData
-import os
 
 /// Used to control which app part is shown
 struct FirstView: View {
     // MARK: - Logger
     /// Logger instance
-    private let logger: Logger = Logger(subsystem: ".com.diaryApp", category: "FirstView")
+    private let logger: AppLogger = AppLogger(category: "FirstView")
     
     // MARK: - @Environment variables
     /// Describes the current scene phase
@@ -66,27 +65,6 @@ struct FirstView: View {
                 }
                 
                 if !isUnlocked { AuthenticationView(isUnlocked: $isUnlocked) }
-                
-                if deviceHasNotch {
-                    GeometryReader { geometry in
-                        HStack {
-                            Spacer()
-                            ZStack {
-                                Capsule()
-                                    .frame(width: 110, height: 20)
-                                    .foregroundStyle(.blue)
-                                Text("JustWrite")
-                                    .font(.headline)
-                                    .foregroundStyle(.white)
-                                    .padding(10)
-                                    .clipShape(Capsule())
-                                    .frame(width: 110, height: 20)
-                            }
-                            Spacer()
-                        }
-                    }
-                    .ignoresSafeArea()
-                }
             }
         }
         .onAppear { onAppear() }
@@ -165,47 +143,9 @@ struct FirstView: View {
             logger.info("Successfully checked settings. Number of settings: \(settings.count)")
         }
     }
-    
-    var deviceHasNotch: Bool {
-        if #available(iOS 13.0, *) {
-            let scenes = UIApplication.shared.connectedScenes
-            let windowScene = scenes.first as? UIWindowScene
-            guard let window = windowScene?.windows.first else { return false }
-            
-            return window.safeAreaInsets.top > 20
-        }
-        
-        if #available(iOS 11.0, *) {
-            let top = UIApplication.shared.windows[0].safeAreaInsets.top
-            return top > 20
-        } else {
-            // Fallback on earlier versions
-            return false
-        }
-    }
 }
 
 
 #Preview {
     FirstView()
-}
-
-extension UIDevice {
-    var hasNotch: Bool {
-        if #available(iOS 13.0, *) {
-            let scenes = UIApplication.shared.connectedScenes
-            let windowScene = scenes.first as? UIWindowScene
-            guard let window = windowScene?.windows.first else { return false }
-            
-            return window.safeAreaInsets.top > 20
-        }
-        
-        if #available(iOS 11.0, *) {
-            let top = UIApplication.shared.windows[0].safeAreaInsets.top
-            return top > 20
-        } else {
-            // Fallback on earlier versions
-            return false
-        }
-    }
 }

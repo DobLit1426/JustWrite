@@ -12,7 +12,7 @@ import os
 class FirstViewModel: ObservableObject {
     // MARK: - Logger
     /// Logger instance
-    private var logger: Logger = Logger(subsystem: ".diaryApp", category: "FirstViewModel")
+    private var logger: AppLogger = AppLogger(category: "FirstViewModel")
 
     // MARK: - @Published variables
     /// Settings objects
@@ -36,7 +36,7 @@ class FirstViewModel: ObservableObject {
         var viewToReturn: InitialView = .appSetup
         
         if settings.count > 1 {
-            logger.critical("Multiply settings instances found. Returning .diary View")
+            logger.error("Multiply settings instances found. Returning .diary View", sendReport: .no)
             viewToReturn = .diary
         } else if settings.count == 1 {
             if settings[0].authenticateWithBiometricData == true {

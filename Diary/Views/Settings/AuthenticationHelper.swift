@@ -7,10 +7,9 @@
 
 import Foundation
 import LocalAuthentication
-import os
 
 class AuthenticationHelper {
-    private let logger: Logger = Logger(subsystem: ".com.diaryApp", category: "AuthenticationHelper")
+    private let logger: AppLogger = AppLogger(category: "AuthenticationHelper")
     private let localAuthenticationContext: LAContext
     
     init(localAuthenticationContext: LAContext) {

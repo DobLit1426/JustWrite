@@ -6,14 +6,15 @@
 //
 
 import Foundation
-import os
 import SwiftUI
 import LocalAuthentication
 import SwiftData
 
 class SettingsViewModel: ObservableObject {
     /// Logger instance
-    private let logger: Logger = Logger(subsystem: ".com.diaryApp", category: "SettingsViewModel")
+    private let logger: AppLogger = AppLogger(category: "SettingsViewModel")
+    
+    private let settingsObjectDefaultValue: Settings = Settings(authenticateWithBiometricData: false, deleteProfileWhenInactiveFor: .turnedOff)
     
     private let localAuthenticationContext: LAContext = LAContext()
     private let authenticationHelper: AuthenticationHelper
@@ -35,13 +36,11 @@ class SettingsViewModel: ObservableObject {
             checkCountOfSettingsObject(settings: settings)
             
             let settingsObject = determineTheSettingsObject(settings: settings)
-            self.authenticateWithBiometricData = settingsObject.authenticateWithBiometricData
-            self.deleteEverythingAfterBeingInactiveFor = settingsObject.deleteProfileWhenInactiveFor
+            setSettings(basedOn: settingsObject)
         } else {
             logger.info("determineSettingsObject is false, the settings' count won't be checked and the setting's object will be set to a default value.")
-            let settingsObject = Settings(authenticateWithBiometricData: false, deleteProfileWhenInactiveFor: .turnedOff)
-            self.authenticateWithBiometricData = settingsObject.authenticateWithBiometricData
-            self.deleteEverythingAfterBeingInactiveFor = settingsObject.deleteProfileWhenInactiveFor
+            let settingsObject = settingsObjectDefaultValue
+            setSettings(basedOn: settingsObject)
         }
         
         logger.info("Successfully initialised SettingsViewModel.")
@@ -52,11 +51,11 @@ class SettingsViewModel: ObservableObject {
         
         switch settings.count {
         case 0:
-            logger.critical("No settings objects found")
+            logger.critical("No settings objects found", sendReport: .no)
         case 1:
             logger.info("One settings object found")
         default:
-            logger.critical("Multiple settings objects found")
+            logger.critical("Multiple settings objects found", sendReport: .no)
         }
         
         logger.info("Successfully checked the settings' count.")
@@ -65,18 +64,18 @@ class SettingsViewModel: ObservableObject {
     private func determineTheSettingsObject(settings: [Settings]) -> Settings {
         logger.info("Starting function to determine the settings object.")
         
-        var settingsObject: Settings = Settings(authenticateWithBiometricData: false, deleteProfileWhenInactiveFor: .turnedOff)
+        
+        let settingsObjectDefaultValue: Settings = Settings(authenticateWithBiometricData: false, deleteProfileWhenInactiveFor: .turnedOff)
+        var settingsObject: Settings = settingsObjectDefaultValue
         
         switch settings.count {
         case 0:
-            logger.critical("No settings objects found, returning default value.")
-            settingsObject = Settings(authenticateWithBiometricData: false, deleteProfileWhenInactiveFor: .turnedOff)
+            logger.critical("No settings objects found, returning default value.", sendReport: .no)
         case 1:
             logger.info("One settings object found, returning the found settings object.")
             settingsObject = settings[0]
         default:
-            logger.critical("Multiple settings objects found, setting the settings object to Settings(authenticateWithBiometricData: false, deleteProfileWhenInactiveFor: .turnedOff) .")
-            settingsObject = Settings(authenticateWithBiometricData: false, deleteProfileWhenInactiveFor: .turnedOff)
+            logger.critical("Multiple settings objects found, returning default value.", sendReport: .no)
         }
         
         return settingsObject
@@ -84,11 +83,14 @@ class SettingsViewModel: ObservableObject {
     
     
     @Published var authenticateWithBiometricData: Bool = false
-    @Published var deleteEverythingAfterBeingInactiveFor: DeleteUserProfileAfterBeingInactiveFor = .turnedOff
-
+    @Published var deleteEverythingAfterBeingInactiveFor: DeleteEntriesAfterBeingInactiveFor = .turnedOff
     
     func setSettingsObject(basedOn settings: [Settings]) {
         let settingsObject = determineTheSettingsObject(settings: settings)
+        setSettings(basedOn: settingsObject)
+    }
+    
+    private func setSettings(basedOn settingsObject: Settings) {
         self.deleteEverythingAfterBeingInactiveFor = settingsObject.deleteProfileWhenInactiveFor
         self.authenticateWithBiometricData = settingsObject.authenticateWithBiometricData
     }

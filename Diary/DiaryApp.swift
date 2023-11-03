@@ -7,14 +7,13 @@
 
 import SwiftUI
 import SwiftData
-import os
 
 @main
 /// Main struct responisble for launching and setting up the app
 struct DiaryApp: App {
     // MARK: - Logger
     /// Logger instance
-    private let logger: Logger = Logger(subsystem: ".com.diaryApp", category: "DiaryApp")
+    private let logger = AppLogger(category: "DiaryApp")
     
     // MARK: - Body
     var body: some Scene {

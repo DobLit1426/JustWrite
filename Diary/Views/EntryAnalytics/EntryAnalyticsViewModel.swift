@@ -7,7 +7,6 @@
 
 import Foundation
 import NaturalLanguage
-import os
 import CoreML
 
 struct SentenceMood {
@@ -21,7 +20,7 @@ struct SentenceMood {
 }
 
 final class EntryAnalyticsViewModel: ObservableObject {
-    private let logger: Logger = Logger(subsystem: ".com.diaryApp", category: "EntryAnalyticsViewModel")
+    private let logger: AppLogger = AppLogger(category: "EntryAnalyticsViewModel")
     
     @Published var sentencesToMood: [SentenceMood] = []
     @Published var medianMood: Double = 0

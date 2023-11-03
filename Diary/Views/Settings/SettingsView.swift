@@ -7,11 +7,22 @@
 
 import SwiftUI
 import SwiftData
-import os
+
+fileprivate struct LocalizedStrings {
+    static let deleteAllEntriesIfInactiveForPickerLabel: String = String(localized: "Delete all entries if inactive for picker label", defaultValue: "Delete all entries if inactive for", comment: "Used as label text on Picker that determines the time after which all entries will be deleted if user is inactive")
+    static let privacyAndSecuritySection: String = String(localized: "'Privacy And Security' section label", defaultValue: "Privacy And Security", comment: "Used as label for the 'Privacy And Security' section in Settings")
+    
+    static let dangerZoneSection: String = String(localized: "'Danger Zone' section label", defaultValue: "Danger Zone", comment: "Used as label for the 'Danger Zone' section in Settings")
+    static let deleteAllDiaryEntries: String = String(localized: "'Delete all diary entries' button text", defaultValue: "Delete all diary entries", comment: "Used as label for the button in Settings that deletes all diary entries")
+    static let deleteAllData: String = String(localized: "'Delete all data' button text", defaultValue: "Delete all data", comment: "Used as label for the button in Settings that deletes all user data")
+    
+    static let navigationTitle: String = String(localized: "Settings navigation title", defaultValue: "Settings", comment: "Used as navigation title in Settings")
+    static let no: String = String(localized: "Cancel option")
+}
 
 /// Displays app settings and allows changing them
 struct SettingsView: View {
-    private let logger: Logger = Logger(subsystem: ".com.diaryApp", category: "SettingsView")
+    private let logger: AppLogger = AppLogger(category: "SettingsView")
     
     //MARK: - @Environment variables
     @Environment(\.modelContext) private var swiftDataContext
@@ -25,6 +36,7 @@ struct SettingsView: View {
     @State var showBiometricAuthenticationUnavailableExplanationAlert: Bool = false
     @State var showDeleteAllDiaryEntriesAlert: Bool = false
     @State var showDeleteEverythingAlert: Bool = false
+    @State var sendAnonymousErrorReports: Bool = false
     
     //MARK: - @Binding variables
     @Binding var currentTab: CurrentTab
@@ -37,34 +49,46 @@ struct SettingsView: View {
         if currentTab == .settings {
             NavigationStack {
                 Form {
-                    Section {
+                    Section(LocalizedStrings.privacyAndSecuritySection) {
                         if viewModel.deviceSupportsBiometricAuthentication {
-                            Toggle("Unlock with \(viewModel.biometricAuthenticationTypeString)", isOn: $viewModel.authenticateWithBiometricData)
+                            Toggle("Require \(viewModel.biometricAuthenticationTypeString)", isOn: $viewModel.authenticateWithBiometricData)
                         } else if viewModel.deviceSupportsBiometricAuthenticationButItIsNotSetUp {
-                            Button("Unlock with \(viewModel.biometricAuthenticationTypeString)") {
+                            Button("Require \(viewModel.biometricAuthenticationTypeString)"/*, comment: "This text is used in Settings 1. For the Toggle that controls authentication with biometric data 2. For the button that shows alert if the corresponding biometric authentication is possible on device but not set up"*/) {
                                 showBiometricAuthenticationUnavailableExplanationAlert = true
                             }
                         }
-                        Picker("Delete all entries if inactive for", selection: $viewModel.deleteEverythingAfterBeingInactiveFor) {
-                            ForEach(DeleteUserProfileAfterBeingInactiveFor.allCases, id: \.id) { setting in
-                                Text(setting.rawValue).tag(setting)
+                        Picker(LocalizedStrings.deleteAllEntriesIfInactiveForPickerLabel, selection: $viewModel.deleteEverythingAfterBeingInactiveFor) {
+                            ForEach(DeleteEntriesAfterBeingInactiveFor.allCases, id: \.id) { setting in
+                                Text(setting.localized).tag(setting)
                             }
                         }
                         
-                    } header: {
-                        Text("Privacy And Security")
+                    }
+                    
+                    Section("Anonymous Reports") {
+                        Toggle("Send anonymous reports", isOn: $sendAnonymousErrorReports)
+                        NavigationLink("What is this setting about?", destination: DataUsedForAnonymousReports())
+                        #if DEBUG
+                        Button("Send .yes test error report") {
+                            logger.critical("Authentication with FaceID is called although FaceID is not set up, unlocking app because no authentication methods are available", title: "Authentication with FaceID is called although not available", sendReport: .yes)
+                        }
+                        Button("Send .automatic test error report") {
+                            logger.critical("Authentication with FaceID is called although FaceID is not set up, unlocking app because no authentication methods are available", title: "Authentication with FaceID is called although not available", sendReport: .automatic)
+                        }
+                        #endif
                     }
                     
                     Section {
-                        DestructiveButton("Delete all diary entries") { deleteAllDiaryEntriesButtonPressed() }
-                        DestructiveButton("Delete all data") { deleteEverythingButtonPressed() }
+                        DestructiveButton(LocalizedStrings.deleteAllDiaryEntries) { deleteAllDiaryEntriesButtonPressed() }
+                        DestructiveButton(LocalizedStrings.deleteAllData) { deleteEverythingButtonPressed() }
                     } header: {
-                        Text("Danger Zone")
+                        Text(LocalizedStrings.dangerZoneSection)
                             .foregroundStyle(.red)
                     }
+                    
                 }
                 .formStyle(.grouped)
-                .navigationTitle("Settings")
+                .navigationTitle(LocalizedStrings.navigationTitle)
                 .onDisappear { onDisappear() }
                 .onAppear { onAppear() }
                 .animation(.easeInOut, value: viewModel.authenticateWithBiometricData)
@@ -72,24 +96,23 @@ struct SettingsView: View {
             .alert("To unlock the JustWrite App with \(viewModel.biometricAuthenticationTypeString) you need to setup \(viewModel.biometricAuthenticationTypeString) in Settings of your device.", isPresented: $showBiometricAuthenticationUnavailableExplanationAlert) {
                 Button("OK", role: .cancel) {}
             }
-            .alert("If you proceed, all your diary entries will be deleted. This action is irreversable.\nProceed?", isPresented: $showDeleteAllDiaryEntriesAlert) {
-                Button("No", role: .cancel) {}
+            .confirmationDialog("Are you sure?", isPresented: $showDeleteAllDiaryEntriesAlert, actions: {
                 Button("Yes, delete all my diary entries", role: .destructive) { deleteAllDiaryEntries() }
-            }
-            .alert("If you proceed, all your diary entries and your settings will be deleted. All your data will be lost. This action is irreversable.\nProceed?", isPresented: $showDeleteEverythingAlert) {
-                Button("No", role: .cancel) {}
-                Button("Yes, delete all my data", role: .destructive) { deleteEverything() }
-            }
-            .onChange(of: scenePhase) { _, newValue in
-                if newValue != .active {
-                    onDisappear()
-                }
-            }
-            .onChange(of: viewModel.authenticateWithBiometricData) { _, _ in
-                saveSettings()
-            }
-            .onChange(of: viewModel.deleteEverythingAfterBeingInactiveFor) { oldValue, newValue in
-                saveSettings()
+                Button("Cancel", role: .cancel) {}
+            }, message: {
+                Text("If you proceed, all your diary entries will be deleted. This action is irreversable.")
+            })
+            .confirmationDialog("Are you sure?", isPresented: $showDeleteEverythingAlert, actions: {
+                Button(LocalizedStrings.deleteAllData, role: .destructive) { deleteEverything() }
+                Button("Cancel", role: .cancel) {}
+            }, message: {
+                Text("If you proceed, all your diary entries and your settings will be deleted. All your data will be lost. This action is irreversable.")
+            })
+            .onChange(of: scenePhase) { onChangeOfSceenPhase(newValue: $1) }
+            .onChange(of: viewModel.authenticateWithBiometricData) { saveSettings() }
+            .onChange(of: viewModel.deleteEverythingAfterBeingInactiveFor) { saveSettings() }
+            .onChange(of: sendAnonymousErrorReports) { _, newValue in
+                UserDefaultsInteractor.setSendAnonymousReportsValue(newValue)
             }
         } else {
             Text("")
@@ -147,6 +170,8 @@ struct SettingsView: View {
         logger.info("Starting function on View appear")
         viewModel.setSettingsObject(basedOn: settings)
         
+        self.sendAnonymousErrorReports = UserDefaultsInteractor.getSendAnonymousReportsValue()
+        
         logger.info("Setted settings object \(viewModel.settingsObject.description)")
         
         logger.info("Finished function on View appear")
@@ -164,10 +189,19 @@ struct SettingsView: View {
             swiftDataContext.insert(settingsObjectToSave)
         }
         
-        logger.critical("Saved Settings \(viewModel.settingsObject.description)")
+        UserDefaultsInteractor.setSendAnonymousReportsValue(sendAnonymousErrorReports)
+        
+        
+        logger.info("Saved Settings \(viewModel.settingsObject.description), sendAnonymousReports: \(sendAnonymousErrorReports)")
+    }
+    
+    private func onChangeOfSceenPhase(newValue: ScenePhase) {
+        if newValue != .active {
+            onDisappear()
+        }
     }
 }
 
-//#Preview {
-//    SettingsView()
-//}
+#Preview {
+    SettingsView(currentTab: .constant(.settings))
+}

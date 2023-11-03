@@ -6,10 +6,9 @@
 //
 
 import Foundation
-import os
 
 final class EntriesAnalyticsViewModel: ObservableObject {
-    private let logger: Logger = Logger(subsystem: ".com.diaryApp", category: "EntriesAnalyticsViewModel")
+    private let logger: AppLogger = AppLogger(category: "EntriesAnalyticsViewModel")
     
     @Published var totalNumberOfSentences: Int = 0
     @Published var averageNumberOfSentences: Double = 0

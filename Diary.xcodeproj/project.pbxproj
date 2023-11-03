@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C00C3772AF11C660092743C /* UserDefaultsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C00C3762AF11C660092743C /* UserDefaultsInteractor.swift */; };
+		3C00C3792AF11DFE0092743C /* DataUsedForAnonymousReports.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C00C3782AF11DFE0092743C /* DataUsedForAnonymousReports.swift */; };
 		3C1452EC2AD6E88400C8BC80 /* EntriesAnalyticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1452EB2AD6E88400C8BC80 /* EntriesAnalyticsView.swift */; };
 		3C1452EF2AD6E93A00C8BC80 /* EntriesAnalyticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1452EE2AD6E93A00C8BC80 /* EntriesAnalyticsViewModel.swift */; };
 		3C1452F32AD713CF00C8BC80 /* AnalyticProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1452F22AD713CF00C8BC80 /* AnalyticProperty.swift */; };
 		3C1452F52AD97F4D00C8BC80 /* InitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1452F42AD97F4D00C8BC80 /* InitialView.swift */; };
 		3C1452FA2AD9A11100C8BC80 /* Documentation.docc in Sources */ = {isa = PBXBuildFile; fileRef = 3C1452F92AD9A11100C8BC80 /* Documentation.docc */; };
 		3C1452FC2ADA926100C8BC80 /* KeychainError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1452FB2ADA926100C8BC80 /* KeychainError.swift */; };
-		3C2AFD5F2AD00FFB00C47519 /* AddNewEntryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2AFD5E2AD00FFB00C47519 /* AddNewEntryViewModel.swift */; };
 		3C2AFD612AD0413A00C47519 /* EntryAnalyticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2AFD602AD0413A00C47519 /* EntryAnalyticsView.swift */; };
 		3C2AFD682AD041F900C47519 /* EntryAnalyticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2AFD672AD041F900C47519 /* EntryAnalyticsViewModel.swift */; };
 		3C2AFD742AD0703400C47519 /* EmotionalityRecognizer.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 3C2AFD732AD0703400C47519 /* EmotionalityRecognizer.mlpackage */; };
@@ -26,8 +27,10 @@
 		3C846CF92AB9F85C0086A487 /* DeviceSpecifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C846CF82AB9F85C0086A487 /* DeviceSpecifications.swift */; };
 		3C8B563C2AEBF1C0000F70C2 /* EditEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C8B563B2AEBF1C0000F70C2 /* EditEntryView.swift */; };
 		3C8B563E2AEBF251000F70C2 /* MarkdownText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C8B563D2AEBF251000F70C2 /* MarkdownText.swift */; };
-		3C9792602AAB3F1400612572 /* AddNewEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C97925F2AAB3F1400612572 /* AddNewEntryView.swift */; };
 		3C9792622AAB401B00612572 /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9792612AAB401B00612572 /* NavigationManager.swift */; };
+		3C9F668F2AEEE2CB007768B7 /* DiaryEntriesSortingTechnique.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9F668E2AEEE2CB007768B7 /* DiaryEntriesSortingTechnique.swift */; };
+		3C9F66942AEFD822007768B7 /* CrashReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9F66932AEFD822007768B7 /* CrashReporter.swift */; };
+		3C9F66962AEFE19A007768B7 /* AppLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9F66952AEFE19A007768B7 /* AppLogger.swift */; };
 		3CA8AAEB2AD4314A00352AAE /* EntriesSentimentClassifier.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 3CA8AAEA2AD4314A00352AAE /* EntriesSentimentClassifier.mlpackage */; };
 		3CB77C1B2AADAC37004CE4D8 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 3CB77C1A2AADAC37004CE4D8 /* Localizable.xcstrings */; };
 		3CB77C1D2AADBF3D004CE4D8 /* EditExistingDiaryEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB77C1C2AADBF3D004CE4D8 /* EditExistingDiaryEntryView.swift */; };
@@ -71,13 +74,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3C00C3762AF11C660092743C /* UserDefaultsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsInteractor.swift; sourceTree = "<group>"; };
+		3C00C3782AF11DFE0092743C /* DataUsedForAnonymousReports.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataUsedForAnonymousReports.swift; sourceTree = "<group>"; };
 		3C1452EB2AD6E88400C8BC80 /* EntriesAnalyticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntriesAnalyticsView.swift; sourceTree = "<group>"; };
 		3C1452EE2AD6E93A00C8BC80 /* EntriesAnalyticsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntriesAnalyticsViewModel.swift; sourceTree = "<group>"; };
 		3C1452F22AD713CF00C8BC80 /* AnalyticProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticProperty.swift; sourceTree = "<group>"; };
 		3C1452F42AD97F4D00C8BC80 /* InitialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialView.swift; sourceTree = "<group>"; };
 		3C1452F92AD9A11100C8BC80 /* Documentation.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Documentation.docc; sourceTree = "<group>"; };
 		3C1452FB2ADA926100C8BC80 /* KeychainError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainError.swift; sourceTree = "<group>"; };
-		3C2AFD5E2AD00FFB00C47519 /* AddNewEntryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewEntryViewModel.swift; sourceTree = "<group>"; };
 		3C2AFD602AD0413A00C47519 /* EntryAnalyticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryAnalyticsView.swift; sourceTree = "<group>"; };
 		3C2AFD672AD041F900C47519 /* EntryAnalyticsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryAnalyticsViewModel.swift; sourceTree = "<group>"; };
 		3C2AFD732AD0703400C47519 /* EmotionalityRecognizer.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = EmotionalityRecognizer.mlpackage; sourceTree = "<group>"; };
@@ -90,8 +94,10 @@
 		3C846CF82AB9F85C0086A487 /* DeviceSpecifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceSpecifications.swift; sourceTree = "<group>"; };
 		3C8B563B2AEBF1C0000F70C2 /* EditEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEntryView.swift; sourceTree = "<group>"; };
 		3C8B563D2AEBF251000F70C2 /* MarkdownText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownText.swift; sourceTree = "<group>"; };
-		3C97925F2AAB3F1400612572 /* AddNewEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewEntryView.swift; sourceTree = "<group>"; };
 		3C9792612AAB401B00612572 /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
+		3C9F668E2AEEE2CB007768B7 /* DiaryEntriesSortingTechnique.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryEntriesSortingTechnique.swift; sourceTree = "<group>"; };
+		3C9F66932AEFD822007768B7 /* CrashReporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashReporter.swift; sourceTree = "<group>"; };
+		3C9F66952AEFE19A007768B7 /* AppLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLogger.swift; sourceTree = "<group>"; };
 		3CA718882AC03356008A303A /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = /System/Library/Frameworks/WidgetKit.framework; sourceTree = "<absolute>"; };
 		3CA7188A2AC03356008A303A /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = /System/Library/Frameworks/SwiftUI.framework; sourceTree = "<absolute>"; };
 		3CA8AAEA2AD4314A00352AAE /* EntriesSentimentClassifier.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = EntriesSentimentClassifier.mlpackage; sourceTree = "<group>"; };
@@ -156,15 +162,6 @@
 			path = FirstView;
 			sourceTree = "<group>";
 		};
-		3C2AFD5D2AD00FE400C47519 /* AddNewEntry */ = {
-			isa = PBXGroup;
-			children = (
-				3C97925F2AAB3F1400612572 /* AddNewEntryView.swift */,
-				3C2AFD5E2AD00FFB00C47519 /* AddNewEntryViewModel.swift */,
-			);
-			path = AddNewEntry;
-			sourceTree = "<group>";
-		};
 		3C2AFD662AD041DE00C47519 /* EntryAnalytics */ = {
 			isa = PBXGroup;
 			children = (
@@ -178,11 +175,22 @@
 			isa = PBXGroup;
 			children = (
 				3CB77C242AAE3591004CE4D8 /* SettingsView.swift */,
+				3C00C3782AF11DFE0092743C /* DataUsedForAnonymousReports.swift */,
 				3C2CF1A32AC472DD0050DB45 /* SettingsViewModel.swift */,
 				3C2CF1A52AC489CA0050DB45 /* AuthenticationHelper.swift */,
 				3C7A5CB62AE2CCE900B0B8A4 /* DestructiveButton.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		3C9F66972AEFE2D9007768B7 /* Logging and Reporting */ = {
+			isa = PBXGroup;
+			children = (
+				3C9F66932AEFD822007768B7 /* CrashReporter.swift */,
+				3C9F66952AEFE19A007768B7 /* AppLogger.swift */,
+				3C00C3762AF11C660092743C /* UserDefaultsInteractor.swift */,
+			);
+			path = "Logging and Reporting";
 			sourceTree = "<group>";
 		};
 		3CA718872AC03356008A303A /* Frameworks */ = {
@@ -226,7 +234,6 @@
 				3C9792612AAB401B00612572 /* NavigationManager.swift */,
 				3CF49CEC2AEE3FB200EC59B6 /* EditEntryView */,
 				3C1452ED2AD6E89A00C8BC80 /* EntriesAnalytics */,
-				3C2AFD5D2AD00FE400C47519 /* AddNewEntry */,
 				3CCA3B152AED607B00B7809E /* EditExistingDiaryEntry */,
 				3C2AFD662AD041DE00C47519 /* EntryAnalytics */,
 				3C2CF1A22AC472D20050DB45 /* Settings */,
@@ -250,8 +257,8 @@
 			isa = PBXGroup;
 			children = (
 				3CB77C1A2AADAC37004CE4D8 /* Localizable.xcstrings */,
-				3C7A5CB02ADBF73800B0B8A4 /* .gitignore */,
 				3CE0975E2AAB16D200BE933B /* Diary */,
+				3C7A5CB02ADBF73800B0B8A4 /* .gitignore */,
 				3CA718872AC03356008A303A /* Frameworks */,
 				3CE0975D2AAB16D200BE933B /* Products */,
 			);
@@ -275,6 +282,7 @@
 				3CE29E342AC3158D00E20490 /* Enum */,
 				3C1452F92AD9A11100C8BC80 /* Documentation.docc */,
 				3C846CF82AB9F85C0086A487 /* DeviceSpecifications.swift */,
+				3C9F66972AEFE2D9007768B7 /* Logging and Reporting */,
 				3CCB1FDB2AE94A3F00184020 /* Views */,
 				3CB77C2D2AAEF4F7004CE4D8 /* Components Styles */,
 				3CB77C1E2AADD4D5004CE4D8 /* SwiftData Models */,
@@ -312,6 +320,7 @@
 				3C1452FB2ADA926100C8BC80 /* KeychainError.swift */,
 				3C7A5CB42AE0472500B0B8A4 /* CurrentTab.swift */,
 				3CF49CED2AEE40DF00EC59B6 /* DeviceType.swift */,
+				3C9F668E2AEEE2CB007768B7 /* DiaryEntriesSortingTechnique.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -430,7 +439,6 @@
 				3CCB1FDD2AE94AAA00184020 /* PrimaryButtonStyle.swift in Sources */,
 				3CF49CEE2AEE40DF00EC59B6 /* DeviceType.swift in Sources */,
 				3CE29E392AC316C100E20490 /* AppSetupViewModel.swift in Sources */,
-				3C9792602AAB3F1400612572 /* AddNewEntryView.swift in Sources */,
 				3CE097712AAB18CB00BE933B /* DiaryEntry.swift in Sources */,
 				3CB77C1D2AADBF3D004CE4D8 /* EditExistingDiaryEntryView.swift in Sources */,
 				3CDDF42C2AAB8CF4006E1C99 /* HomeView.swift in Sources */,
@@ -440,9 +448,11 @@
 				3CF8AE4B2AB4A1C600D29A89 /* FirstView.swift in Sources */,
 				3C2CF1A42AC472DD0050DB45 /* SettingsViewModel.swift in Sources */,
 				3CB77C252AAE3591004CE4D8 /* SettingsView.swift in Sources */,
+				3C9F66942AEFD822007768B7 /* CrashReporter.swift in Sources */,
 				3C1452F32AD713CF00C8BC80 /* AnalyticProperty.swift in Sources */,
 				3C7A5CB52AE0472500B0B8A4 /* CurrentTab.swift in Sources */,
 				3C2CF1A62AC489CA0050DB45 /* AuthenticationHelper.swift in Sources */,
+				3C9F668F2AEEE2CB007768B7 /* DiaryEntriesSortingTechnique.swift in Sources */,
 				3CE097602AAB16D200BE933B /* DiaryApp.swift in Sources */,
 				3CE29E312AC3139200E20490 /* AuthenticationViewModel.swift in Sources */,
 				3CF8AE492AB4A09400D29A89 /* FirstViewModel.swift in Sources */,
@@ -451,12 +461,12 @@
 				3C1452EC2AD6E88400C8BC80 /* EntriesAnalyticsView.swift in Sources */,
 				3CF8AE4D2AB5A5EC00D29A89 /* AppSetupView.swift in Sources */,
 				3CA8AAEB2AD4314A00352AAE /* EntriesSentimentClassifier.mlpackage in Sources */,
-				3C2AFD5F2AD00FFB00C47519 /* AddNewEntryViewModel.swift in Sources */,
 				3CB77C202AADD860004CE4D8 /* AuthenticationView.swift in Sources */,
 				3C2AFD682AD041F900C47519 /* EntryAnalyticsViewModel.swift in Sources */,
 				3C1452FC2ADA926100C8BC80 /* KeychainError.swift in Sources */,
 				3CF49CF02AEE536400EC59B6 /* EntriesList.swift in Sources */,
 				3C2AFD612AD0413A00C47519 /* EntryAnalyticsView.swift in Sources */,
+				3C9F66962AEFE19A007768B7 /* AppLogger.swift in Sources */,
 				3CCB2FF92AB1E21D00FD8F25 /* CurrentView.swift in Sources */,
 				3C7A5CB72AE2CCE900B0B8A4 /* DestructiveButton.swift in Sources */,
 				3CB77C292AAE3683004CE4D8 /* Settings.swift in Sources */,
@@ -470,6 +480,8 @@
 				3CCA3B172AED609700B7809E /* EntryViewMode.swift in Sources */,
 				3CF49CF22AEE6AF300EC59B6 /* EntriesSearchResults.swift in Sources */,
 				3C9792622AAB401B00612572 /* NavigationManager.swift in Sources */,
+				3C00C3792AF11DFE0092743C /* DataUsedForAnonymousReports.swift in Sources */,
+				3C00C3772AF11C660092743C /* UserDefaultsInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

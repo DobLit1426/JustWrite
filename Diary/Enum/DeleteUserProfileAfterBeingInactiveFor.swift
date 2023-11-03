@@ -8,8 +8,8 @@
 import Foundation
 
 /// Describes after which time should all information the user created be deleted from the app if the app was inactive for this period of time. 
-/// - Important: The rawValue is the localized textual representation of the time period. The rawValue is NOT native Swift rawValue.
-enum DeleteUserProfileAfterBeingInactiveFor: Codable, CaseIterable, Hashable {
+/// - Important: localized is the localized textual representation of the time period.
+enum DeleteEntriesAfterBeingInactiveFor: Codable, CaseIterable, Hashable {
     /// The setting is turned off
     case turnedOff
     
@@ -29,21 +29,27 @@ enum DeleteUserProfileAfterBeingInactiveFor: Codable, CaseIterable, Hashable {
     case year
     
     /// Localized String based on the enum's value
-    /// - Important: This is NOT native Swift rawValue
-    var rawValue: String {
-        let comment: String = "This string is used as the rawValue for an instance of DeleteUserProfileAfterBeingInactiveFor"
-        
-        var rawValue: String = ""
+    var localized: String {
+        var defaultValue: String.LocalizationValue = ""
         switch self {
-        case .turnedOff: rawValue = "Turned off"
-        case .week: rawValue = "After 1 week"
-        case .month: rawValue = "After 1 month"
-        case .threeMonths: rawValue = "After 3 months"
-        case .sixMonths: rawValue = "After 6 months"
-        case .year: rawValue = "After 1 year"
+        case .turnedOff: 
+            defaultValue = "Turned off"
+        case .week:
+            defaultValue = "After 1 week"
+        case .month: 
+            defaultValue = "After 1 month"
+        case .threeMonths: 
+            defaultValue = "After 3 months"
+        case .sixMonths: 
+            defaultValue = "After 6 months"
+        case .year: 
+            defaultValue = "After 1 year"
         }
         
-        return NSLocalizedString(rawValue, comment: comment)
+        let comment: StaticString = "This string is used as the rawValue for an instance of DeleteEntriesAfterBeingInactiveFor"
+        let localizedKey: StaticString = "'Delete entries after being inactive for' enum localized value"
+        
+        return String(localized: localizedKey, defaultValue: defaultValue, comment: comment)
     }
     
     

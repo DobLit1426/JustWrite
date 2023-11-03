@@ -6,11 +6,10 @@
 //
 
 import SwiftUI
-import os
 
 struct EntriesList: View {
-    private static let logger: Logger = Logger(subsystem: ".com.diaryApp", category: "EntriesList")
-    private let logger: Logger = EntriesList.logger
+    private static let logger: AppLogger = AppLogger(category: "EntriesList")/*Logger(subsystem: ".com.diaryApp", category: "EntriesList")*/
+    private let logger = EntriesList.logger
     
     let entries: [DiaryEntry]
     let onDelete: (_ entryID: UUID) -> Void
@@ -60,7 +59,7 @@ struct EntriesList: View {
                 return entry1.date < entry2.date
             }
         default:
-            logger.critical("The used sorting technique isn't in the switch, returning entries with newest at the top")
+            logger.error("The used sorting technique isn't in the switch, returning entries with newest at the top")
             return entriesToSort.sorted { entry1, entry2 in
                 return entry1.date > entry2.date
             }

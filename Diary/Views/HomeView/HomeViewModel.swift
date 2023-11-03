@@ -6,13 +6,10 @@
 //
 
 import Foundation
-import CryptoKit
-import os
-import SwiftData
 import SwiftUI
 
 class HomeViewModel: ObservableObject {
-    private var logger: Logger = Logger(subsystem: ".diaryApp", category: "HomeViewViewModel")
+    private var logger: AppLogger = AppLogger(subsystem: ".diaryApp", category: "HomeViewViewModel")
     
     init() {
         logger.info("Starting intialising HomeViewViewModel object")

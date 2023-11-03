@@ -6,13 +6,12 @@
 //
 
 import SwiftUI
-import os
 
 /// Shows specified Text based on the Markdown used
 struct MarkdownText: View {
     // MARK: - Logger
     /// Logger instance
-    private let logger: Logger = Logger(subsystem: ".com.diaryApp", category: "MarkdownText")
+    private let logger: AppLogger = AppLogger(subsystem: ".com.diaryApp", category: "MarkdownText")
     
     // MARK: - Markdown Titles prefixes
     /// Prefix for the title size 1

@@ -6,11 +6,18 @@
 //
 
 import SwiftUI
-import os
 
 fileprivate struct LocalizedStrings {
     static let diaryDateDatepickerDescription: String = String(localized: "New Diary Entry - datePicker placeholder", defaultValue: "Date", comment: "This text is used as a DatePicker placeholder where the diary date should be chosen")
     
+    // TextField placeholders
+    static let headingTextFieldPlaceholder: String = String(localized: "TextField diary entry heading placeholder", defaultValue: "Heading", comment: "This text is used as the placeholder for the TextField for the diary entry heading")
+    static let contentTextFieldPlaceholder: String = String(localized: "TextField diary entry content placeholder", defaultValue: "Content of your diary entry", comment: "This text is used as the placeholder for the TextField for the diary entry content")
+    
+    // Mode picker
+    static let modePickerLabel: String = String(localized: "Edit-View Mode Picker Label", defaultValue: "Mode", comment: "Used as the label for the Edit-View Mode Picker")
+    static let modePickerEdit: String = String(localized: "Edit-View Mode Picker Edit option", defaultValue: "Edit", comment: "Used as the edit option text for the Edit-View Mode Picker")
+    static let modePickerView: String = String(localized: "Edit-View Mode Picker View option", defaultValue: "View", comment: "Used as the view option text for the Edit-View Mode Picker")
 }
 
 /// Used to edit entry using Binding.
@@ -18,7 +25,7 @@ fileprivate struct LocalizedStrings {
 struct EditEntryView: View {
     // MARK: - Logger
     /// Logger instance
-    private let logger: Logger = Logger(subsystem: ".com.diaryApp", category: "EditEntryView")
+    private let logger: AppLogger = AppLogger(subsystem: ".com.diaryApp", category: "EditEntryView")
     
     // MARK: - @Binding variables
     /// The diary entry to edit
@@ -42,28 +49,18 @@ struct EditEntryView: View {
         let date100YearsAgo = calendar.date(byAdding: dateComponents, to: currentDate)!
         return date100YearsAgo
     }
-
-    // MARK: - Init
-    /// Initialises View with DiaryEntry Binding and default mode, with whom the page will be shown for the first time
-//    init(diaryEntry: DiaryEntry, defaultMode: DiaryEntryViewingMode) {
-//        logger.info("Initialising EditEntryView...")
-//        
-//        self.mode = defaultMode
-//        self.diaryEntry = diaryEntry
-//        
-//        logger.info("Successfully initialised EditEntryView")
-//    }
     
     // MARK: - Body
     var body: some View {
         VStack {
             Picker(selection: $mode) {
-                Text(DiaryEntryViewingMode.edit.rawValue).tag(DiaryEntryViewingMode.edit)
-                Text(DiaryEntryViewingMode.view.rawValue).tag(DiaryEntryViewingMode.view)
+                Text(LocalizedStrings.modePickerEdit).tag(DiaryEntryViewingMode.edit)
+                Text(LocalizedStrings.modePickerView).tag(DiaryEntryViewingMode.view)
             } label: {
-                Text("Mode")
+                Text(LocalizedStrings.modePickerLabel)
             }
             .pickerStyle(.segmented)
+            .labelsHidden()
             
             VStack {
                 if mode == .view {
@@ -73,14 +70,14 @@ struct EditEntryView: View {
                     
                     Divider()
                     
-                    TextField("Heading", text: $diaryEntry.heading, axis: .vertical)
+                    TextField(LocalizedStrings.headingTextFieldPlaceholder, text: $diaryEntry.heading, axis: .vertical)
                         .lineLimit(nil)
                         .font(.largeTitle)
                         .onSubmit {
                             contentTextFieldFocused = true
                         }
                     
-                    TextField("Content of your diary entry", text: $diaryEntry.content, axis: .vertical)
+                    TextField(LocalizedStrings.contentTextFieldPlaceholder, text: $diaryEntry.content, axis: .vertical)
                         .lineLimit(nil)
                         .font(.body)
                         .focused($contentTextFieldFocused)

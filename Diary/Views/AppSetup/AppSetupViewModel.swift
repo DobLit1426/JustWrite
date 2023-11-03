@@ -124,7 +124,7 @@ class AppSetupViewModel: ObservableObject {
         }
     }
     
-    func createSettingsObject(swiftDataContext: ModelContext, authenticateWithBiometricData: Bool, deleteProfileWhenInactiveFor: DeleteUserProfileAfterBeingInactiveFor) {
+    func createSettingsObject(swiftDataContext: ModelContext, authenticateWithBiometricData: Bool, deleteProfileWhenInactiveFor: DeleteEntriesAfterBeingInactiveFor) {
         let settingsObject = Settings(authenticateWithBiometricData: authenticateWithBiometricData, deleteProfileWhenInactiveFor: deleteProfileWhenInactiveFor)
         
         swiftDataContext.insert(settingsObject)
