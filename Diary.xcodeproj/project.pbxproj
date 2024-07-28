@@ -8,18 +8,36 @@
 
 /* Begin PBXBuildFile section */
 		3C00C3772AF11C660092743C /* UserDefaultsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C00C3762AF11C660092743C /* UserDefaultsInteractor.swift */; };
-		3C00C3792AF11DFE0092743C /* DataUsedForAnonymousReports.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C00C3782AF11DFE0092743C /* DataUsedForAnonymousReports.swift */; };
+		3C00C3792AF11DFE0092743C /* WhatAreAnonymousReports.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C00C3782AF11DFE0092743C /* WhatAreAnonymousReports.swift */; };
 		3C1452EC2AD6E88400C8BC80 /* EntriesAnalyticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1452EB2AD6E88400C8BC80 /* EntriesAnalyticsView.swift */; };
 		3C1452EF2AD6E93A00C8BC80 /* EntriesAnalyticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1452EE2AD6E93A00C8BC80 /* EntriesAnalyticsViewModel.swift */; };
 		3C1452F32AD713CF00C8BC80 /* AnalyticProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1452F22AD713CF00C8BC80 /* AnalyticProperty.swift */; };
 		3C1452F52AD97F4D00C8BC80 /* InitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1452F42AD97F4D00C8BC80 /* InitialView.swift */; };
 		3C1452FA2AD9A11100C8BC80 /* Documentation.docc in Sources */ = {isa = PBXBuildFile; fileRef = 3C1452F92AD9A11100C8BC80 /* Documentation.docc */; };
 		3C1452FC2ADA926100C8BC80 /* KeychainError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1452FB2ADA926100C8BC80 /* KeychainError.swift */; };
+		3C1812AD2AF78D8C00E5FA61 /* UnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1812AC2AF78D8C00E5FA61 /* UnitTests.swift */; };
+		3C1812B32AF78DA100E5FA61 /* DiaryEntryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1812A42AF78B5800E5FA61 /* DiaryEntryTest.swift */; };
+		3C1812BB2AF79F3F00E5FA61 /* DiaryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1812BA2AF79F3F00E5FA61 /* DiaryUITests.swift */; };
+		3C1812BD2AF79F3F00E5FA61 /* DiaryUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1812BC2AF79F3F00E5FA61 /* DiaryUITestsLaunchTests.swift */; };
+		3C1812C42AF7A13200E5FA61 /* EntriesListTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1812C32AF7A13200E5FA61 /* EntriesListTest.swift */; };
 		3C2AFD612AD0413A00C47519 /* EntryAnalyticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2AFD602AD0413A00C47519 /* EntryAnalyticsView.swift */; };
 		3C2AFD682AD041F900C47519 /* EntryAnalyticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2AFD672AD041F900C47519 /* EntryAnalyticsViewModel.swift */; };
 		3C2AFD742AD0703400C47519 /* EmotionalityRecognizer.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 3C2AFD732AD0703400C47519 /* EmotionalityRecognizer.mlpackage */; };
 		3C2CF1A42AC472DD0050DB45 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2CF1A32AC472DD0050DB45 /* SettingsViewModel.swift */; };
 		3C2CF1A62AC489CA0050DB45 /* AuthenticationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2CF1A52AC489CA0050DB45 /* AuthenticationHelper.swift */; };
+		3C376B9A2B07A7DB009AAD03 /* EntryAnalyticsViewPrototype.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C376B992B07A7DB009AAD03 /* EntryAnalyticsViewPrototype.swift */; };
+		3C3CCF8F2AF4EDE90056841A /* LogType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3CCF8E2AF4EDE90056841A /* LogType.swift */; };
+		3C3CCF942AF6549D0056841A /* ReportErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3CCF932AF6549D0056841A /* ReportErrorView.swift */; };
+		3C4A5B852AFE8920000B9128 /* ExistsModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4A5B842AFE8920000B9128 /* ExistsModifier.swift */; };
+		3C5E45022B0D0B970021F6B0 /* EntryAnalyticsPieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5E45012B0D0B970021F6B0 /* EntryAnalyticsPieChart.swift */; };
+		3C5E45042B0D10AD0021F6B0 /* EntryAnalyticsMoodDistributionChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5E45032B0D10AD0021F6B0 /* EntryAnalyticsMoodDistributionChart.swift */; };
+		3C5E45092B0DF7BA0021F6B0 /* MoodGauge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5E45082B0DF7BA0021F6B0 /* MoodGauge.swift */; };
+		3C5E450B2B0DF9740021F6B0 /* MoodIndicatorsPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5E450A2B0DF9740021F6B0 /* MoodIndicatorsPreview.swift */; };
+		3C5E450E2B0DFA0A0021F6B0 /* Needle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5E450D2B0DFA0A0021F6B0 /* Needle.swift */; };
+		3C5E45102B0DFAB20021F6B0 /* SentenceMood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5E450F2B0DFAB20021F6B0 /* SentenceMood.swift */; };
+		3C6F9D502AFA7C4A00C02C10 /* EntriesAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6F9D4F2AFA7C4A00C02C10 /* EntriesAnalyzer.swift */; };
+		3C6F9D522AFA944F00C02C10 /* PrivacyAndSecuritySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6F9D512AFA944F00C02C10 /* PrivacyAndSecuritySection.swift */; };
+		3C6F9D542AFBB26300C02C10 /* MoodSpeedometer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6F9D532AFBB26300C02C10 /* MoodSpeedometer.swift */; };
 		3C7A5CB12ADBF73800B0B8A4 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 3C7A5CB02ADBF73800B0B8A4 /* .gitignore */; };
 		3C7A5CB52AE0472500B0B8A4 /* CurrentTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7A5CB42AE0472500B0B8A4 /* CurrentTab.swift */; };
 		3C7A5CB72AE2CCE900B0B8A4 /* DestructiveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7A5CB62AE2CCE900B0B8A4 /* DestructiveButton.swift */; };
@@ -29,9 +47,10 @@
 		3C8B563E2AEBF251000F70C2 /* MarkdownText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C8B563D2AEBF251000F70C2 /* MarkdownText.swift */; };
 		3C9792622AAB401B00612572 /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9792612AAB401B00612572 /* NavigationManager.swift */; };
 		3C9F668F2AEEE2CB007768B7 /* DiaryEntriesSortingTechnique.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9F668E2AEEE2CB007768B7 /* DiaryEntriesSortingTechnique.swift */; };
-		3C9F66942AEFD822007768B7 /* CrashReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9F66932AEFD822007768B7 /* CrashReporter.swift */; };
+		3C9F66942AEFD822007768B7 /* LogReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9F66932AEFD822007768B7 /* LogReporter.swift */; };
 		3C9F66962AEFE19A007768B7 /* AppLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9F66952AEFE19A007768B7 /* AppLogger.swift */; };
 		3CA8AAEB2AD4314A00352AAE /* EntriesSentimentClassifier.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 3CA8AAEA2AD4314A00352AAE /* EntriesSentimentClassifier.mlpackage */; };
+		3CAC38A42AFF7E9A005F9AC1 /* SortingMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CAC38A32AFF7E9A005F9AC1 /* SortingMenu.swift */; };
 		3CB77C1B2AADAC37004CE4D8 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 3CB77C1A2AADAC37004CE4D8 /* Localizable.xcstrings */; };
 		3CB77C1D2AADBF3D004CE4D8 /* EditExistingDiaryEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB77C1C2AADBF3D004CE4D8 /* EditExistingDiaryEntryView.swift */; };
 		3CB77C202AADD860004CE4D8 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB77C1F2AADD860004CE4D8 /* AuthenticationView.swift */; };
@@ -39,6 +58,7 @@
 		3CB77C292AAE3683004CE4D8 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB77C282AAE3683004CE4D8 /* Settings.swift */; };
 		3CB77C2F2AAEF57C004CE4D8 /* SecondaryButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB77C2E2AAEF57C004CE4D8 /* SecondaryButtonStyle.swift */; };
 		3CB77C352AAF6E9A004CE4D8 /* DeleteUserProfileAfterBeingInactiveFor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB77C342AAF6E9A004CE4D8 /* DeleteUserProfileAfterBeingInactiveFor.swift */; };
+		3CBB1CF02AF91FC000BC1396 /* ShareDiaryEntryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBB1CEF2AF91FC000BC1396 /* ShareDiaryEntryButton.swift */; };
 		3CCA3B172AED609700B7809E /* EntryViewMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCA3B162AED609700B7809E /* EntryViewMode.swift */; };
 		3CCB1FDD2AE94AAA00184020 /* PrimaryButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCB1FDC2AE94AAA00184020 /* PrimaryButtonStyle.swift */; };
 		3CCB1FE02AE956EC00184020 /* NewEntryPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCB1FDF2AE956EC00184020 /* NewEntryPopover.swift */; };
@@ -60,6 +80,23 @@
 		3CF8AE4D2AB5A5EC00D29A89 /* AppSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF8AE4C2AB5A5EC00D29A89 /* AppSetupView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		3C1812AE2AF78D8C00E5FA61 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3CE097542AAB16D200BE933B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3CE0975B2AAB16D200BE933B;
+			remoteInfo = Diary;
+		};
+		3C1812BE2AF79F3F00E5FA61 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3CE097542AAB16D200BE933B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3CE0975B2AAB16D200BE933B;
+			remoteInfo = Diary;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		3CA7189A2AC03358008A303A /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -75,18 +112,38 @@
 
 /* Begin PBXFileReference section */
 		3C00C3762AF11C660092743C /* UserDefaultsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsInteractor.swift; sourceTree = "<group>"; };
-		3C00C3782AF11DFE0092743C /* DataUsedForAnonymousReports.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataUsedForAnonymousReports.swift; sourceTree = "<group>"; };
+		3C00C3782AF11DFE0092743C /* WhatAreAnonymousReports.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatAreAnonymousReports.swift; sourceTree = "<group>"; };
 		3C1452EB2AD6E88400C8BC80 /* EntriesAnalyticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntriesAnalyticsView.swift; sourceTree = "<group>"; };
 		3C1452EE2AD6E93A00C8BC80 /* EntriesAnalyticsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntriesAnalyticsViewModel.swift; sourceTree = "<group>"; };
 		3C1452F22AD713CF00C8BC80 /* AnalyticProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticProperty.swift; sourceTree = "<group>"; };
 		3C1452F42AD97F4D00C8BC80 /* InitialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialView.swift; sourceTree = "<group>"; };
 		3C1452F92AD9A11100C8BC80 /* Documentation.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Documentation.docc; sourceTree = "<group>"; };
 		3C1452FB2ADA926100C8BC80 /* KeychainError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainError.swift; sourceTree = "<group>"; };
+		3C1812A42AF78B5800E5FA61 /* DiaryEntryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryEntryTest.swift; sourceTree = "<group>"; };
+		3C1812AA2AF78D8C00E5FA61 /* UnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3C1812AC2AF78D8C00E5FA61 /* UnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitTests.swift; sourceTree = "<group>"; };
+		3C1812B82AF79F3F00E5FA61 /* DiaryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DiaryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3C1812BA2AF79F3F00E5FA61 /* DiaryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryUITests.swift; sourceTree = "<group>"; };
+		3C1812BC2AF79F3F00E5FA61 /* DiaryUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		3C1812C32AF7A13200E5FA61 /* EntriesListTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntriesListTest.swift; sourceTree = "<group>"; };
 		3C2AFD602AD0413A00C47519 /* EntryAnalyticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryAnalyticsView.swift; sourceTree = "<group>"; };
 		3C2AFD672AD041F900C47519 /* EntryAnalyticsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryAnalyticsViewModel.swift; sourceTree = "<group>"; };
 		3C2AFD732AD0703400C47519 /* EmotionalityRecognizer.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = EmotionalityRecognizer.mlpackage; sourceTree = "<group>"; };
 		3C2CF1A32AC472DD0050DB45 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		3C2CF1A52AC489CA0050DB45 /* AuthenticationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationHelper.swift; sourceTree = "<group>"; };
+		3C376B992B07A7DB009AAD03 /* EntryAnalyticsViewPrototype.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryAnalyticsViewPrototype.swift; sourceTree = "<group>"; };
+		3C3CCF8E2AF4EDE90056841A /* LogType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogType.swift; sourceTree = "<group>"; };
+		3C3CCF932AF6549D0056841A /* ReportErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportErrorView.swift; sourceTree = "<group>"; };
+		3C4A5B842AFE8920000B9128 /* ExistsModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExistsModifier.swift; sourceTree = "<group>"; };
+		3C5E45012B0D0B970021F6B0 /* EntryAnalyticsPieChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryAnalyticsPieChart.swift; sourceTree = "<group>"; };
+		3C5E45032B0D10AD0021F6B0 /* EntryAnalyticsMoodDistributionChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryAnalyticsMoodDistributionChart.swift; sourceTree = "<group>"; };
+		3C5E45082B0DF7BA0021F6B0 /* MoodGauge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodGauge.swift; sourceTree = "<group>"; };
+		3C5E450A2B0DF9740021F6B0 /* MoodIndicatorsPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodIndicatorsPreview.swift; sourceTree = "<group>"; };
+		3C5E450D2B0DFA0A0021F6B0 /* Needle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Needle.swift; sourceTree = "<group>"; };
+		3C5E450F2B0DFAB20021F6B0 /* SentenceMood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentenceMood.swift; sourceTree = "<group>"; };
+		3C6F9D4F2AFA7C4A00C02C10 /* EntriesAnalyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntriesAnalyzer.swift; sourceTree = "<group>"; };
+		3C6F9D512AFA944F00C02C10 /* PrivacyAndSecuritySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyAndSecuritySection.swift; sourceTree = "<group>"; };
+		3C6F9D532AFBB26300C02C10 /* MoodSpeedometer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodSpeedometer.swift; sourceTree = "<group>"; };
 		3C7A5CB02ADBF73800B0B8A4 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		3C7A5CB42AE0472500B0B8A4 /* CurrentTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTab.swift; sourceTree = "<group>"; };
 		3C7A5CB62AE2CCE900B0B8A4 /* DestructiveButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestructiveButton.swift; sourceTree = "<group>"; };
@@ -96,11 +153,12 @@
 		3C8B563D2AEBF251000F70C2 /* MarkdownText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownText.swift; sourceTree = "<group>"; };
 		3C9792612AAB401B00612572 /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
 		3C9F668E2AEEE2CB007768B7 /* DiaryEntriesSortingTechnique.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryEntriesSortingTechnique.swift; sourceTree = "<group>"; };
-		3C9F66932AEFD822007768B7 /* CrashReporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashReporter.swift; sourceTree = "<group>"; };
+		3C9F66932AEFD822007768B7 /* LogReporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogReporter.swift; sourceTree = "<group>"; };
 		3C9F66952AEFE19A007768B7 /* AppLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLogger.swift; sourceTree = "<group>"; };
 		3CA718882AC03356008A303A /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = /System/Library/Frameworks/WidgetKit.framework; sourceTree = "<absolute>"; };
 		3CA7188A2AC03356008A303A /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = /System/Library/Frameworks/SwiftUI.framework; sourceTree = "<absolute>"; };
 		3CA8AAEA2AD4314A00352AAE /* EntriesSentimentClassifier.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = EntriesSentimentClassifier.mlpackage; sourceTree = "<group>"; };
+		3CAC38A32AFF7E9A005F9AC1 /* SortingMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingMenu.swift; sourceTree = "<group>"; };
 		3CB77C1A2AADAC37004CE4D8 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		3CB77C1C2AADBF3D004CE4D8 /* EditExistingDiaryEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditExistingDiaryEntryView.swift; sourceTree = "<group>"; };
 		3CB77C1F2AADD860004CE4D8 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
@@ -109,6 +167,7 @@
 		3CB77C282AAE3683004CE4D8 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		3CB77C2E2AAEF57C004CE4D8 /* SecondaryButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryButtonStyle.swift; sourceTree = "<group>"; };
 		3CB77C342AAF6E9A004CE4D8 /* DeleteUserProfileAfterBeingInactiveFor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteUserProfileAfterBeingInactiveFor.swift; sourceTree = "<group>"; };
+		3CBB1CEF2AF91FC000BC1396 /* ShareDiaryEntryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareDiaryEntryButton.swift; sourceTree = "<group>"; };
 		3CCA3B162AED609700B7809E /* EntryViewMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewMode.swift; sourceTree = "<group>"; };
 		3CCB1FDC2AE94AAA00184020 /* PrimaryButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButtonStyle.swift; sourceTree = "<group>"; };
 		3CCB1FDF2AE956EC00184020 /* NewEntryPopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEntryPopover.swift; sourceTree = "<group>"; };
@@ -133,6 +192,20 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		3C1812A72AF78D8C00E5FA61 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3C1812B52AF79F3F00E5FA61 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3CE097592AAB16D200BE933B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -153,6 +226,25 @@
 			path = EntriesAnalytics;
 			sourceTree = "<group>";
 		};
+		3C1812AB2AF78D8C00E5FA61 /* UnitTests */ = {
+			isa = PBXGroup;
+			children = (
+				3C1812AC2AF78D8C00E5FA61 /* UnitTests.swift */,
+				3C1812A42AF78B5800E5FA61 /* DiaryEntryTest.swift */,
+			);
+			path = UnitTests;
+			sourceTree = "<group>";
+		};
+		3C1812B92AF79F3F00E5FA61 /* DiaryUITests */ = {
+			isa = PBXGroup;
+			children = (
+				3C1812BA2AF79F3F00E5FA61 /* DiaryUITests.swift */,
+				3C1812C32AF7A13200E5FA61 /* EntriesListTest.swift */,
+				3C1812BC2AF79F3F00E5FA61 /* DiaryUITestsLaunchTests.swift */,
+			);
+			path = DiaryUITests;
+			sourceTree = "<group>";
+		};
 		3C2AFD5C2AD00F4200C47519 /* FirstView */ = {
 			isa = PBXGroup;
 			children = (
@@ -166,6 +258,11 @@
 			isa = PBXGroup;
 			children = (
 				3C2AFD602AD0413A00C47519 /* EntryAnalyticsView.swift */,
+				3C5E45032B0D10AD0021F6B0 /* EntryAnalyticsMoodDistributionChart.swift */,
+				3C5E45012B0D0B970021F6B0 /* EntryAnalyticsPieChart.swift */,
+				3C376B992B07A7DB009AAD03 /* EntryAnalyticsViewPrototype.swift */,
+				3C6F9D4F2AFA7C4A00C02C10 /* EntriesAnalyzer.swift */,
+				3C5E45052B0DE3020021F6B0 /* MoodIndicators */,
 				3C2AFD672AD041F900C47519 /* EntryAnalyticsViewModel.swift */,
 			);
 			path = EntryAnalytics;
@@ -175,7 +272,9 @@
 			isa = PBXGroup;
 			children = (
 				3CB77C242AAE3591004CE4D8 /* SettingsView.swift */,
-				3C00C3782AF11DFE0092743C /* DataUsedForAnonymousReports.swift */,
+				3C6F9D512AFA944F00C02C10 /* PrivacyAndSecuritySection.swift */,
+				3C3CCF932AF6549D0056841A /* ReportErrorView.swift */,
+				3C00C3782AF11DFE0092743C /* WhatAreAnonymousReports.swift */,
 				3C2CF1A32AC472DD0050DB45 /* SettingsViewModel.swift */,
 				3C2CF1A52AC489CA0050DB45 /* AuthenticationHelper.swift */,
 				3C7A5CB62AE2CCE900B0B8A4 /* DestructiveButton.swift */,
@@ -183,10 +282,46 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
+		3C3CCF922AF4FC010056841A /* NavigationManager */ = {
+			isa = PBXGroup;
+			children = (
+				3C9792612AAB401B00612572 /* NavigationManager.swift */,
+			);
+			path = NavigationManager;
+			sourceTree = "<group>";
+		};
+		3C5E45052B0DE3020021F6B0 /* MoodIndicators */ = {
+			isa = PBXGroup;
+			children = (
+				3C5E450C2B0DF99B0021F6B0 /* MoodSpeedometer */,
+				3C5E450A2B0DF9740021F6B0 /* MoodIndicatorsPreview.swift */,
+				3C5E45082B0DF7BA0021F6B0 /* MoodGauge.swift */,
+			);
+			path = MoodIndicators;
+			sourceTree = "<group>";
+		};
+		3C5E450C2B0DF99B0021F6B0 /* MoodSpeedometer */ = {
+			isa = PBXGroup;
+			children = (
+				3C6F9D532AFBB26300C02C10 /* MoodSpeedometer.swift */,
+				3C5E450D2B0DFA0A0021F6B0 /* Needle.swift */,
+			);
+			path = MoodSpeedometer;
+			sourceTree = "<group>";
+		};
+		3C7D78582AF4EDAB0071B7A6 /* LogReporter */ = {
+			isa = PBXGroup;
+			children = (
+				3C9F66932AEFD822007768B7 /* LogReporter.swift */,
+				3C3CCF8E2AF4EDE90056841A /* LogType.swift */,
+			);
+			path = LogReporter;
+			sourceTree = "<group>";
+		};
 		3C9F66972AEFE2D9007768B7 /* Logging and Reporting */ = {
 			isa = PBXGroup;
 			children = (
-				3C9F66932AEFD822007768B7 /* CrashReporter.swift */,
+				3C7D78582AF4EDAB0071B7A6 /* LogReporter */,
 				3C9F66952AEFE19A007768B7 /* AppLogger.swift */,
 				3C00C3762AF11C660092743C /* UserDefaultsInteractor.swift */,
 			);
@@ -223,6 +358,7 @@
 			isa = PBXGroup;
 			children = (
 				3CB77C1C2AADBF3D004CE4D8 /* EditExistingDiaryEntryView.swift */,
+				3CBB1CEF2AF91FC000BC1396 /* ShareDiaryEntryButton.swift */,
 			);
 			path = EditExistingDiaryEntry;
 			sourceTree = "<group>";
@@ -231,7 +367,7 @@
 			isa = PBXGroup;
 			children = (
 				3C2AFD5C2AD00F4200C47519 /* FirstView */,
-				3C9792612AAB401B00612572 /* NavigationManager.swift */,
+				3C3CCF922AF4FC010056841A /* NavigationManager */,
 				3CF49CEC2AEE3FB200EC59B6 /* EditEntryView */,
 				3C1452ED2AD6E89A00C8BC80 /* EntriesAnalytics */,
 				3CCA3B152AED607B00B7809E /* EditExistingDiaryEntry */,
@@ -259,6 +395,8 @@
 				3CB77C1A2AADAC37004CE4D8 /* Localizable.xcstrings */,
 				3CE0975E2AAB16D200BE933B /* Diary */,
 				3C7A5CB02ADBF73800B0B8A4 /* .gitignore */,
+				3C1812AB2AF78D8C00E5FA61 /* UnitTests */,
+				3C1812B92AF79F3F00E5FA61 /* DiaryUITests */,
 				3CA718872AC03356008A303A /* Frameworks */,
 				3CE0975D2AAB16D200BE933B /* Products */,
 			);
@@ -268,6 +406,8 @@
 			isa = PBXGroup;
 			children = (
 				3CE0975C2AAB16D200BE933B /* Diary.app */,
+				3C1812AA2AF78D8C00E5FA61 /* UnitTests.xctest */,
+				3C1812B82AF79F3F00E5FA61 /* DiaryUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -279,6 +419,7 @@
 				3CA8AAEA2AD4314A00352AAE /* EntriesSentimentClassifier.mlpackage */,
 				3CB77C212AADDB4E004CE4D8 /* Info.plist */,
 				3CE0975F2AAB16D200BE933B /* DiaryApp.swift */,
+				3C4A5B842AFE8920000B9128 /* ExistsModifier.swift */,
 				3CE29E342AC3158D00E20490 /* Enum */,
 				3C1452F92AD9A11100C8BC80 /* Documentation.docc */,
 				3C846CF82AB9F85C0086A487 /* DeviceSpecifications.swift */,
@@ -321,6 +462,7 @@
 				3C7A5CB42AE0472500B0B8A4 /* CurrentTab.swift */,
 				3CF49CED2AEE40DF00EC59B6 /* DeviceType.swift */,
 				3C9F668E2AEEE2CB007768B7 /* DiaryEntriesSortingTechnique.swift */,
+				3C5E450F2B0DFAB20021F6B0 /* SentenceMood.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -329,6 +471,7 @@
 			isa = PBXGroup;
 			children = (
 				3CDDF42B2AAB8CF4006E1C99 /* HomeView.swift */,
+				3CAC38A32AFF7E9A005F9AC1 /* SortingMenu.swift */,
 				3CF49CF12AEE6AF300EC59B6 /* EntriesSearchResults.swift */,
 				3CF49CEF2AEE536400EC59B6 /* EntriesList.swift */,
 				3CF49CF32AEE6C1000EC59B6 /* EntriesListRow.swift */,
@@ -360,6 +503,42 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		3C1812A92AF78D8C00E5FA61 /* UnitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3C1812B02AF78D8C00E5FA61 /* Build configuration list for PBXNativeTarget "UnitTests" */;
+			buildPhases = (
+				3C1812A62AF78D8C00E5FA61 /* Sources */,
+				3C1812A72AF78D8C00E5FA61 /* Frameworks */,
+				3C1812A82AF78D8C00E5FA61 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3C1812AF2AF78D8C00E5FA61 /* PBXTargetDependency */,
+			);
+			name = UnitTests;
+			productName = UnitTests;
+			productReference = 3C1812AA2AF78D8C00E5FA61 /* UnitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		3C1812B72AF79F3F00E5FA61 /* DiaryUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3C1812C02AF79F3F00E5FA61 /* Build configuration list for PBXNativeTarget "DiaryUITests" */;
+			buildPhases = (
+				3C1812B42AF79F3F00E5FA61 /* Sources */,
+				3C1812B52AF79F3F00E5FA61 /* Frameworks */,
+				3C1812B62AF79F3F00E5FA61 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3C1812BF2AF79F3F00E5FA61 /* PBXTargetDependency */,
+			);
+			name = DiaryUITests;
+			productName = DiaryUITests;
+			productReference = 3C1812B82AF79F3F00E5FA61 /* DiaryUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		3CE0975B2AAB16D200BE933B /* Diary */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3CE0976D2AAB16D400BE933B /* Build configuration list for PBXNativeTarget "Diary" */;
@@ -385,12 +564,17 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				KnownAssetTags = (
-					com.apple.gamecenter.Leaderboard,
-				);
 				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
+					3C1812A92AF78D8C00E5FA61 = {
+						CreatedOnToolsVersion = 15.0;
+						TestTargetID = 3CE0975B2AAB16D200BE933B;
+					};
+					3C1812B72AF79F3F00E5FA61 = {
+						CreatedOnToolsVersion = 15.0;
+						TestTargetID = 3CE0975B2AAB16D200BE933B;
+					};
 					3CE0975B2AAB16D200BE933B = {
 						CreatedOnToolsVersion = 15.0;
 					};
@@ -412,11 +596,27 @@
 			projectRoot = "";
 			targets = (
 				3CE0975B2AAB16D200BE933B /* Diary */,
+				3C1812A92AF78D8C00E5FA61 /* UnitTests */,
+				3C1812B72AF79F3F00E5FA61 /* DiaryUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		3C1812A82AF78D8C00E5FA61 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3C1812B62AF79F3F00E5FA61 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3CE0975A2AAB16D200BE933B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -431,6 +631,25 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		3C1812A62AF78D8C00E5FA61 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C1812B32AF78DA100E5FA61 /* DiaryEntryTest.swift in Sources */,
+				3C1812AD2AF78D8C00E5FA61 /* UnitTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3C1812B42AF79F3F00E5FA61 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C1812BD2AF79F3F00E5FA61 /* DiaryUITestsLaunchTests.swift in Sources */,
+				3C1812C42AF7A13200E5FA61 /* EntriesListTest.swift in Sources */,
+				3C1812BB2AF79F3F00E5FA61 /* DiaryUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3CE097582AAB16D200BE933B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -438,17 +657,23 @@
 				3C8B563E2AEBF251000F70C2 /* MarkdownText.swift in Sources */,
 				3CCB1FDD2AE94AAA00184020 /* PrimaryButtonStyle.swift in Sources */,
 				3CF49CEE2AEE40DF00EC59B6 /* DeviceType.swift in Sources */,
+				3C5E45102B0DFAB20021F6B0 /* SentenceMood.swift in Sources */,
+				3C4A5B852AFE8920000B9128 /* ExistsModifier.swift in Sources */,
 				3CE29E392AC316C100E20490 /* AppSetupViewModel.swift in Sources */,
 				3CE097712AAB18CB00BE933B /* DiaryEntry.swift in Sources */,
 				3CB77C1D2AADBF3D004CE4D8 /* EditExistingDiaryEntryView.swift in Sources */,
 				3CDDF42C2AAB8CF4006E1C99 /* HomeView.swift in Sources */,
+				3C376B9A2B07A7DB009AAD03 /* EntryAnalyticsViewPrototype.swift in Sources */,
+				3C6F9D542AFBB26300C02C10 /* MoodSpeedometer.swift in Sources */,
 				3CE29E362AC3166800E20490 /* HomeViewModel.swift in Sources */,
 				3CF49CF42AEE6C1000EC59B6 /* EntriesListRow.swift in Sources */,
 				3CCB1FE02AE956EC00184020 /* NewEntryPopover.swift in Sources */,
+				3C6F9D502AFA7C4A00C02C10 /* EntriesAnalyzer.swift in Sources */,
 				3CF8AE4B2AB4A1C600D29A89 /* FirstView.swift in Sources */,
 				3C2CF1A42AC472DD0050DB45 /* SettingsViewModel.swift in Sources */,
 				3CB77C252AAE3591004CE4D8 /* SettingsView.swift in Sources */,
-				3C9F66942AEFD822007768B7 /* CrashReporter.swift in Sources */,
+				3C9F66942AEFD822007768B7 /* LogReporter.swift in Sources */,
+				3C5E45042B0D10AD0021F6B0 /* EntryAnalyticsMoodDistributionChart.swift in Sources */,
 				3C1452F32AD713CF00C8BC80 /* AnalyticProperty.swift in Sources */,
 				3C7A5CB52AE0472500B0B8A4 /* CurrentTab.swift in Sources */,
 				3C2CF1A62AC489CA0050DB45 /* AuthenticationHelper.swift in Sources */,
@@ -459,12 +684,16 @@
 				3C2AFD742AD0703400C47519 /* EmotionalityRecognizer.mlpackage in Sources */,
 				3C846CF92AB9F85C0086A487 /* DeviceSpecifications.swift in Sources */,
 				3C1452EC2AD6E88400C8BC80 /* EntriesAnalyticsView.swift in Sources */,
+				3C5E45022B0D0B970021F6B0 /* EntryAnalyticsPieChart.swift in Sources */,
 				3CF8AE4D2AB5A5EC00D29A89 /* AppSetupView.swift in Sources */,
 				3CA8AAEB2AD4314A00352AAE /* EntriesSentimentClassifier.mlpackage in Sources */,
 				3CB77C202AADD860004CE4D8 /* AuthenticationView.swift in Sources */,
+				3CAC38A42AFF7E9A005F9AC1 /* SortingMenu.swift in Sources */,
 				3C2AFD682AD041F900C47519 /* EntryAnalyticsViewModel.swift in Sources */,
+				3C5E45092B0DF7BA0021F6B0 /* MoodGauge.swift in Sources */,
 				3C1452FC2ADA926100C8BC80 /* KeychainError.swift in Sources */,
 				3CF49CF02AEE536400EC59B6 /* EntriesList.swift in Sources */,
+				3CBB1CF02AF91FC000BC1396 /* ShareDiaryEntryButton.swift in Sources */,
 				3C2AFD612AD0413A00C47519 /* EntryAnalyticsView.swift in Sources */,
 				3C9F66962AEFE19A007768B7 /* AppLogger.swift in Sources */,
 				3CCB2FF92AB1E21D00FD8F25 /* CurrentView.swift in Sources */,
@@ -473,21 +702,125 @@
 				3CB77C352AAF6E9A004CE4D8 /* DeleteUserProfileAfterBeingInactiveFor.swift in Sources */,
 				3C7A5CB92AE3A73300B0B8A4 /* LockSymbol.swift in Sources */,
 				3CB77C2F2AAEF57C004CE4D8 /* SecondaryButtonStyle.swift in Sources */,
+				3C5E450B2B0DF9740021F6B0 /* MoodIndicatorsPreview.swift in Sources */,
 				3C1452FA2AD9A11100C8BC80 /* Documentation.docc in Sources */,
+				3C3CCF942AF6549D0056841A /* ReportErrorView.swift in Sources */,
 				3C1452EF2AD6E93A00C8BC80 /* EntriesAnalyticsViewModel.swift in Sources */,
 				3C8B563C2AEBF1C0000F70C2 /* EditEntryView.swift in Sources */,
+				3C5E450E2B0DFA0A0021F6B0 /* Needle.swift in Sources */,
 				3C1452F52AD97F4D00C8BC80 /* InitialView.swift in Sources */,
 				3CCA3B172AED609700B7809E /* EntryViewMode.swift in Sources */,
 				3CF49CF22AEE6AF300EC59B6 /* EntriesSearchResults.swift in Sources */,
+				3C3CCF8F2AF4EDE90056841A /* LogType.swift in Sources */,
+				3C6F9D522AFA944F00C02C10 /* PrivacyAndSecuritySection.swift in Sources */,
 				3C9792622AAB401B00612572 /* NavigationManager.swift in Sources */,
-				3C00C3792AF11DFE0092743C /* DataUsedForAnonymousReports.swift in Sources */,
+				3C00C3792AF11DFE0092743C /* WhatAreAnonymousReports.swift in Sources */,
 				3C00C3772AF11C660092743C /* UserDefaultsInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		3C1812AF2AF78D8C00E5FA61 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3CE0975B2AAB16D200BE933B /* Diary */;
+			targetProxy = 3C1812AE2AF78D8C00E5FA61 /* PBXContainerItemProxy */;
+		};
+		3C1812BF2AF79F3F00E5FA61 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3CE0975B2AAB16D200BE933B /* Diary */;
+			targetProxy = 3C1812BE2AF79F3F00E5FA61 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		3C1812B12AF78D8C00E5FA61 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PU366SCQNB;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = d.litvinov.UnitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Diary.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Diary";
+			};
+			name = Debug;
+		};
+		3C1812B22AF78D8C00E5FA61 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PU366SCQNB;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = d.litvinov.UnitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Diary.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Diary";
+			};
+			name = Release;
+		};
+		3C1812C12AF79F3F00E5FA61 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PU366SCQNB;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = d.litvinov.DiaryUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Diary;
+			};
+			name = Debug;
+		};
+		3C1812C22AF79F3F00E5FA61 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PU366SCQNB;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = d.litvinov.DiaryUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Diary;
+			};
+			name = Release;
+		};
 		3CE0976B2AAB16D400BE933B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -641,7 +974,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = litvinov.Diary;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -685,7 +1018,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = litvinov.Diary;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -697,6 +1030,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		3C1812B02AF78D8C00E5FA61 /* Build configuration list for PBXNativeTarget "UnitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3C1812B12AF78D8C00E5FA61 /* Debug */,
+				3C1812B22AF78D8C00E5FA61 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3C1812C02AF79F3F00E5FA61 /* Build configuration list for PBXNativeTarget "DiaryUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3C1812C12AF79F3F00E5FA61 /* Debug */,
+				3C1812C22AF79F3F00E5FA61 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		3CE097572AAB16D200BE933B /* Build configuration list for PBXProject "Diary" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

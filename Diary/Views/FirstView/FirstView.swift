@@ -51,25 +51,28 @@ struct FirstView: View {
     // MARK: - Body
     var body: some View {
         ZStack {
-            if determiniedInitialView {
-                switch currentView {
-                case .appSetup:
-                    AppSetupView(currentView: $currentView)
-                case .diary:
-                    NavigationManager()
-                default:
-                    EmptyView()
-                        .onAppear {
-                            logger.critical("The specified currentView '\(currentView.rawValue)' isn't included in Switch in FirstView")
-                        }
+            Group {
+                if determiniedInitialView {
+                    switch currentView {
+                    case .appSetup:
+                        AppSetupView(currentView: $currentView)
+                    case .diary:
+                        NavigationManager()
+                    default:
+                        EmptyView()
+                            .onAppear {
+                                logger.critical("The specified currentView '\(currentView.rawValue)' isn't included in Switch in FirstView")
+                            }
+                    }
                 }
-                
-                if !isUnlocked { AuthenticationView(isUnlocked: $isUnlocked) }
             }
+            .opacity(isUnlocked ? 1 : 0)
+            
+            if !isUnlocked { AuthenticationView(isUnlocked: $isUnlocked) }
         }
         .onAppear { onAppear() }
         .animation(.easeInOut, value: currentView)
-        .animation(.easeInOut, value: isUnlocked)
+        .animation(.easeInOut.delay(0.01), value: isUnlocked)
         .onChange(of: scenePhase) { oldValue, newValue in
             if newValue == .background {
                 if viewModel.shouldLockTheApp(settings) {

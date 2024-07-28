@@ -53,7 +53,7 @@ struct SettingsView: View {
                         if viewModel.deviceSupportsBiometricAuthentication {
                             Toggle("Require \(viewModel.biometricAuthenticationTypeString)", isOn: $viewModel.authenticateWithBiometricData)
                         } else if viewModel.deviceSupportsBiometricAuthenticationButItIsNotSetUp {
-                            Button("Require \(viewModel.biometricAuthenticationTypeString)"/*, comment: "This text is used in Settings 1. For the Toggle that controls authentication with biometric data 2. For the button that shows alert if the corresponding biometric authentication is possible on device but not set up"*/) {
+                            Button("Require \(viewModel.biometricAuthenticationTypeString)") {
                                 showBiometricAuthenticationUnavailableExplanationAlert = true
                             }
                         }
@@ -62,20 +62,23 @@ struct SettingsView: View {
                                 Text(setting.localized).tag(setting)
                             }
                         }
-                        
                     }
                     
-                    Section("Anonymous Reports") {
+                    Section("Anonymous error reports") {
                         Toggle("Send anonymous reports", isOn: $sendAnonymousErrorReports)
-                        NavigationLink("What is this setting about?", destination: DataUsedForAnonymousReports())
+                        NavigationLink("What is this setting about?", destination: WhatAreAnonymousReports())
                         #if DEBUG
                         Button("Send .yes test error report") {
-                            logger.critical("Authentication with FaceID is called although FaceID is not set up, unlocking app because no authentication methods are available", title: "Authentication with FaceID is called although not available", sendReport: .yes)
+                            logger.critical("Test .yes error report", sendReport: .yes)
                         }
                         Button("Send .automatic test error report") {
-                            logger.critical("Authentication with FaceID is called although FaceID is not set up, unlocking app because no authentication methods are available", title: "Authentication with FaceID is called although not available", sendReport: .automatic)
+                            logger.critical("Test .yes error report", sendReport: .automatic)
                         }
                         #endif
+                    }
+
+                    Section("Manual error report") {
+                        NavigationLink("Submit an error report", destination: ReportErrorView())
                     }
                     
                     Section {

@@ -17,15 +17,23 @@ struct EntriesListRow: View {
     var body: some View {
         VStack {
             HStack {
-                Text(entry.heading)
-                    .font(.headline)
-                Spacer()
-            }
-            
-            HStack {
-                Text(entry.formattedDate)
-                    .font(.subheadline)
-                Spacer()
+                VStack {
+                    HStack {
+                        Text(entry.heading)
+                            .font(.headline)
+                        Spacer()
+                    }
+                    
+                    HStack {
+                        Text(entry.formattedDate)
+                            .font(.subheadline)
+                        Spacer()
+                    }
+                }
+                
+                if let mood = entry.mood {
+                    MoodGauge(mood: Int(mood))
+                }
             }
         }
     }

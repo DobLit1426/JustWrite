@@ -4,7 +4,7 @@
     "" : {
 
     },
-    " " : {
+    "-10" : {
 
     },
     "'Danger Zone' section label" : {
@@ -79,6 +79,30 @@
         }
       }
     },
+    "'Higher mood in the beginning' sorting technique" : {
+      "comment" : "Textual representation of the DiaryEntriesSortingTechnique 'Higher mood in the beginning' sorting technique",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Higher mood in the beginning"
+          }
+        }
+      }
+    },
+    "'Lower mood in the beginning' sorting technique" : {
+      "comment" : "Textual representation of the DiaryEntriesSortingTechnique 'Lower mood in the beginning' sorting technique",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Lower mood in the beginning"
+          }
+        }
+      }
+    },
     "'Newest in the beginning' sorting technique" : {
       "comment" : "Textual representation of the DiaryEntriesSortingTechnique 'Newest in the beginning' sorting technique",
       "extractionState" : "extracted_with_value",
@@ -149,6 +173,18 @@
     "%lld" : {
 
     },
+    "10" : {
+
+    },
+    "010101" : {
+
+    },
+    "100101" : {
+
+    },
+    "101001" : {
+
+    },
     "After 1 month" : {
 
     },
@@ -208,6 +244,9 @@
           }
         }
       }
+    },
+    "Anonymous error reports" : {
+
     },
     "Anonymous Reports" : {
 
@@ -308,6 +347,7 @@
 
     },
     "Charts" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -378,6 +418,7 @@
       }
     },
     "Danger Zone" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -391,6 +432,7 @@
 
     },
     "Delete all diary entries" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -399,9 +441,6 @@
           }
         }
       }
-    },
-    "Delete all entries if inactive for" : {
-
     },
     "Delete all entries if inactive for picker label" : {
       "comment" : "Used as label text on Picker that determines the time after which all entries will be deleted if user is inactive",
@@ -472,6 +511,7 @@
     },
     "Edit" : {
       "comment" : "Used in the Picker between Edit and View mode",
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -518,6 +558,12 @@
       }
     },
     "Entry" : {
+
+    },
+    "Error cause" : {
+
+    },
+    "Error type" : {
 
     },
     "Example" : {
@@ -629,11 +675,15 @@
         }
       }
     },
+    "Manual error report" : {
+
+    },
     "Median" : {
 
     },
     "Mode" : {
       "comment" : "Used in the Picker between Edit and View mode as Picker label",
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -758,6 +808,7 @@
     },
     "No search results for **%@**" : {
       "comment" : "This text is shown when no search results are found when searching for information in entries",
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -858,10 +909,11 @@
         }
       }
     },
-    "Pie Chart" : {
+    "Please fill all red fields" : {
 
     },
     "Privacy And Security" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -929,6 +981,9 @@
         }
       }
     },
+    "Report error" : {
+
+    },
     "Require %@" : {
 
     },
@@ -950,6 +1005,7 @@
       }
     },
     "Select after which time we should delete your entries if you don't use the app" : {
+      "comment" : "This text is shown as the Picker label during the diary setup, when user should choose after which time the diary entries should be deleted, if he's inactive",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -971,6 +1027,9 @@
     "Send anonymous reports" : {
 
     },
+    "Send report" : {
+
+    },
     "Sentece %lld is %@" : {
       "localizations" : {
         "en" : {
@@ -982,6 +1041,7 @@
       }
     },
     "Settings" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -1060,6 +1120,9 @@
       }
     },
     "Stats" : {
+
+    },
+    "Submit an error report" : {
 
     },
     "Tap to continue button text" : {
@@ -1150,6 +1213,9 @@
           }
         }
       }
+    },
+    "Thank you!" : {
+
     },
     "There are currently no entries" : {
       "comment" : "This text will be shown in HomeView when there are no diary entries",
@@ -1305,9 +1371,6 @@
         }
       }
     },
-    "View" : {
-      "comment" : "Used in the Picker between Edit and View mode"
-    },
     "We believe that everyone should have access to a free, safe, and beautiful diary-keeping app." : {
       "localizations" : {
         "de" : {
@@ -1377,10 +1440,22 @@
     "What are Anonymous Reports?" : {
 
     },
+    "What error did you encounter?" : {
+
+    },
     "What is this setting about?" : {
 
     },
     "What type of data is collected?" : {
+
+    },
+    "Which action did lead to error(s)?" : {
+
+    },
+    "Which actions resulted error?%@" : {
+
+    },
+    "Which error(s) occured?%@" : {
 
     },
     "Why should I enable Anonymous Reports?" : {
@@ -1403,6 +1478,7 @@
       }
     },
     "Yes" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1433,6 +1509,9 @@
           }
         }
       }
+    },
+    "You are welcome!" : {
+
     },
     "You will just need to answer a few questions." : {
       "comment" : "Body text after 'to continue you need to setup your diary' that says that the setup process won't be long",

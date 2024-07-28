@@ -28,6 +28,30 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES"
       shouldAutocreateTestPlan = "YES">
+      <Testables>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "3C1812A92AF78D8C00E5FA61"
+               BuildableName = "UnitTests.xctest"
+               BlueprintName = "UnitTests"
+               ReferencedContainer = "container:Diary.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "3C1812B72AF79F3F00E5FA61"
+               BuildableName = "DiaryUITests.xctest"
+               BlueprintName = "DiaryUITests"
+               ReferencedContainer = "container:Diary.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+      </Testables>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -51,8 +75,8 @@
       </BuildableProductRunnable>
       <EnvironmentVariables>
          <EnvironmentVariable
-            key = "reportLogsUrlApi"
-            value = "https://hook.eu2.make.com/9h6w2ke20527l584pcuw5avs1di8l15x"
+            key = "MAKE_COM_LOG_REPORT_API"
+            value = "https://hook.eu2.make.com/q7f21fskxf99sdzh2zdr4oyvufijuvja"
             isEnabled = "YES">
          </EnvironmentVariable>
       </EnvironmentVariables>

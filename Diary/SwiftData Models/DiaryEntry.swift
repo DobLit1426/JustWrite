@@ -28,6 +28,9 @@ final class DiaryEntry: Identifiable {
     /// The date of the diary entry
     var date: Date
     
+    /// The mood of the diary entry
+    var mood: Double?
+    
     // MARK: - Computed properites
     /// The formatted date of the diary entry
     var formattedDate: String {
@@ -38,9 +41,17 @@ final class DiaryEntry: Identifiable {
         return formattedString ?? String(date.formatted())
     }
     
+    var formattedMood: Int? {
+        if let mood {
+            return Int(round(mood * 10))
+        } else {
+            return nil
+        }
+    }
+    
     /// Textual representation for debugging purposes
     var description: String {
-        return "DiaryEntry(heading: \(heading), content: \(content), date: \(date), id: \(id))"
+        return "DiaryEntry(heading: \(heading), content: \(content), mood: \(String(describing: mood)), date: \(date), id: \(id)"
     }
     
     // MARK: - Inits
@@ -50,13 +61,15 @@ final class DiaryEntry: Identifiable {
     ///   - content: The content (body) of the diary entry
     ///   - date: The ID of the diary entry, by default current date
     ///   - id: The date of the diary entry, by default UUID()
-    init(heading: String, content: String, date: Date = Date(), id: UUID = UUID()) {
+    ///   - mood: The mood of the diary entry
+    init(heading: String, content: String, mood: Double? = nil, date: Date = Date(), id: UUID = UUID()) {
         logger.info("Starting to initialise DiaryEntry")
         
         self.heading = heading
         self.content = content
         self.id = id
         self.date = date
+        self.mood = mood
         
         logger.info("Successfully initialised DiaryEntry")
     }
@@ -69,6 +82,7 @@ final class DiaryEntry: Identifiable {
         self.content = ""
         self.id = UUID()
         self.date = Date()
+        self.mood = 0
         
         logger.info("Successfully initialised empty DiaryEntry")
     }

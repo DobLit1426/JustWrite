@@ -10,7 +10,9 @@ import SwiftData
 
 struct EntriesSearchResults: View {
     @Query private var entries: [DiaryEntry]
+    
     @State var filteredEntries: [DiaryEntry]?
+    
     let promt: String
     
     init(promt: String) {
@@ -23,11 +25,14 @@ struct EntriesSearchResults: View {
                 if filteredEntries.isEmpty {
                     Text("No search results for \(promt)")
                 } else {
-                    List(filteredEntries) { entry in
-                        NavigationLink {
-                            EditExistingDiaryEntryView(diaryEntry: entry)
-                        } label: {
-                            EntriesListRow(entry: entry)
+                    List {
+                        ForEach(filteredEntries, id: \.id) { entry in
+                            NavigationLink {
+                                EditExistingDiaryEntryView(diaryEntry: entries.first(where: { $0.id == entry.id })!
+                                )
+                            } label: {
+                                EntriesListRow(entry: entry)
+                            }
                         }
                     }
                 }

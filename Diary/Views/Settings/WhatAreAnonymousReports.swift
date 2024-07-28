@@ -20,7 +20,7 @@ fileprivate struct CollectedData: Identifiable {
     }
 }
 
-struct DataUsedForAnonymousReports: View {
+struct WhatAreAnonymousReports: View {
     private let collectedData: [CollectedData] = [
         CollectedData(dataType: "Type of your device", example: "iPhone"),
         CollectedData(dataType: "Firmware version of your device", example: "iOS 17.1"),
@@ -98,5 +98,5 @@ struct DataUsedForAnonymousReports: View {
 }
 
 #Preview {
-    DataUsedForAnonymousReports()
+    WhatAreAnonymousReports()
 }

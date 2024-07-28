@@ -58,11 +58,27 @@ struct EntriesList: View {
             return entriesToSort.sorted { entry1, entry2 in
                 return entry1.date < entry2.date
             }
-        default:
-            logger.error("The used sorting technique isn't in the switch, returning entries with newest at the top")
+        case .higherMoodAtTop:
             return entriesToSort.sorted { entry1, entry2 in
-                return entry1.date > entry2.date
+                if !(entry1.mood != nil && entry2.mood != nil) {
+                    return entry1.date > entry2.date
+                } else {
+                    return entry1.mood! > entry2.mood!
+                }
             }
+        case .lowerMoodAtTop:
+            return entriesToSort.sorted { entry1, entry2 in
+                if !(entry1.mood != nil && entry2.mood != nil) {
+                    return entry1.date > entry2.date
+                } else {
+                    return entry1.mood! < entry2.mood!
+                }
+            }
+//        default:
+//            logger.error("The used sorting technique isn't in the switch, returning entries with newest at the top")
+//            return entriesToSort.sorted { entry1, entry2 in
+//                return entry1.date > entry2.date
+//            }
         }
         
     }

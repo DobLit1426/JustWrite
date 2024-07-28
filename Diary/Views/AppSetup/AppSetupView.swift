@@ -9,6 +9,7 @@ import SwiftUI
 import LocalAuthentication
 import SwiftData
 
+/// Describes a single part of the setup that is shown after and before a certain index
 fileprivate struct SetupPage {
     let view: AnyView
     let showAfterIndex: Int
@@ -27,28 +28,40 @@ fileprivate struct SetupPage {
     }
 }
 
-//fileprivate struct LocalizedStrings {
-//    static let
-//}
+fileprivate struct LocalizedStrings {
+    static let deleteEntriesAfterPickerLabel: String = String(localized: "Select after which time we should delete your entries if you don't use the app", defaultValue: "Select after which time we should delete your entries if you don't use the app", comment: "This text is shown as the Picker label during the diary setup, when user should choose after which time the diary entries should be deleted, if he's inactive")
+}
 
 struct AppSetupView: View {
-    @State var authenticateWithBiometricData: Bool = false
-    @State var deleteProfileWhenInactiveFor: DeleteEntriesAfterBeingInactiveFor = .turnedOff
+    // MARK: - Logger
+    /// Logger instance
+    private let logger: AppLogger = AppLogger(category: "AppSetupView")
     
-
+    // MARK: - @State variables
+    /// Determines whether the user wants to use biometric authentication to log in the app
+    @State var authenticateWithBiometricData: Bool = false
+    
+    /// Determines whether the user wants all entries to be automatically deleted after a certain period of time
+    @State var deleteEntriesWhenInactiveFor: DeleteEntriesAfterBeingInactiveFor = .turnedOff
+    
+    // MARK: - ViewModel
+    /// ViewModel
     @ObservedObject private var viewModel: AppSetupViewModel
+    
+    // MARK: - Computed variables
+    /// Shows whether the first setup page is shown
     var theFirstPageIsShown: Bool { viewModel.theFirstPageIsShown }
+    
+    /// Shows whether the last setup page is shown
     var theLastPageIsShown: Bool { viewModel.theLastPageIsShown }
+    
+    /// Shows the app setup progress
     var appSetupProgress: Int { viewModel.appSetupProgress }
+    
+    /// Shows the total number of setup pages
     var totalNumberOfPages: Int { viewModel.totalNumberOfPages }
     
-    @Environment(\.modelContext) private var swiftDataContext
-    
-    
-    // @Binding variable
-    @Binding var currentView: CurrentView
-    
-    
+    /// Setup pages
     fileprivate var setupPages: [SetupPage] {
         var pages: [SetupPage] = [
             SetupPage(view: AnyView(page1), showAfterIndex: 1, showBeforeIndex: 3),
@@ -68,6 +81,25 @@ struct AppSetupView: View {
         return pages
     }
     
+    // MARK: - @Environment variables
+    /// SwiftData context
+    @Environment(\.modelContext) private var swiftDataContext
+    
+    // MARK: - @Binding variables
+    /// Current view
+    @Binding var currentView: CurrentView
+    
+    // MARK: - Init
+    init(currentView: Binding<CurrentView>) {
+        self._currentView = currentView
+        self.authenticateWithBiometricData = false
+        self.viewModel = AppSetupViewModel(numberOfPagesIfDeviceSupportsBiometricAuthentication: 10, numberOfPagesIfDeviceDoesntSupportBiometricAuthentication: 9)
+        if viewModel.deviceSupportsBiometricAuthentication {
+            authenticateWithBiometricData = true
+        }
+    }
+    
+    // MARK: - Body
     var body: some View {
         NavigationStack {
             VStack {
@@ -97,7 +129,7 @@ struct AppSetupView: View {
         .padding()
     }
     
-    // Pages
+    // MARK: - View variables - Setup pages
     private var page1: some View {
         Text("Welcome to JustWrite", comment: "The welcome text that will greet the user when the user will open the app for the first time")
             .font(DeviceSpecifications.isIPad ? .system(size: 40) : .title)
@@ -179,7 +211,7 @@ struct AppSetupView: View {
                 .symbolRenderingMode(.palette)
                 .font(.system(size: 100))
             Spacer()
-            Picker("Select after which time we should delete your entries if you don't use the app", selection: $deleteProfileWhenInactiveFor) {
+            Picker(LocalizedStrings.deleteEntriesAfterPickerLabel, selection: $deleteEntriesWhenInactiveFor) {
                 ForEach(DeleteEntriesAfterBeingInactiveFor.allCases, id: \.id) { setting in
                     Text(setting.localized).tag(setting.id)
                 }
@@ -190,7 +222,7 @@ struct AppSetupView: View {
         .padding()
     }
     
-    // View variables
+    // MARK: - View variables
     private var progressBar: some View {
         VStack {
             if appSetupProgress > 1 {
@@ -247,22 +279,19 @@ struct AppSetupView: View {
         .animation(.easeInOut, value: viewModel.skipGuideButtonDisabled)
     }
     
-    // Functions
+    // MARK: - Private functions
+    /// Opens the next setup page, if possible
     private func previousPage() { viewModel.previousPage() }
+    
+    /// Goes to the previous setup page, if possible
     private func nextPage() { viewModel.nextPage() }
+    
+    /// Skips to the part, where the user should setup their diary
     private func skip() { viewModel.skip() }
     
-    init(currentView: Binding<CurrentView>) {
-        self._currentView = currentView
-        self.authenticateWithBiometricData = false
-        self.viewModel = AppSetupViewModel(numberOfPagesIfDeviceSupportsBiometricAuthentication: 10, numberOfPagesIfDeviceDoesntSupportBiometricAuthentication: 9)
-        if viewModel.deviceSupportsBiometricAuthentication {
-            authenticateWithBiometricData = true
-        }
-    }
-    
+    /// Creates the settings object
     private func createSettings() {
-        viewModel.createSettingsObject(swiftDataContext: swiftDataContext, authenticateWithBiometricData: authenticateWithBiometricData, deleteProfileWhenInactiveFor: deleteProfileWhenInactiveFor)
+        viewModel.createSettingsObject(swiftDataContext: swiftDataContext, authenticateWithBiometricData: authenticateWithBiometricData, deleteProfileWhenInactiveFor: deleteEntriesWhenInactiveFor)
     }
 }
 

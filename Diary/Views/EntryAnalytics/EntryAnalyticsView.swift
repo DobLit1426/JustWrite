@@ -24,8 +24,6 @@ struct EntryAnalyticsView: View {
     
     @State var chartSectors = [ChartSector]()
     
-    @State var graphSelectedSentence: Int? = nil
-    
     
     @StateObject private var viewModel: EntryAnalyticsViewModel = EntryAnalyticsViewModel()
     @State private var emotionalityRecognizer: NLModel?
@@ -35,106 +33,91 @@ struct EntryAnalyticsView: View {
     var sentencesToMood: [SentenceMood] { viewModel.sentencesToMood }
     var numberOfWords: Int { viewModel.numberOfWords }
     var numberOfSentences: Int { viewModel.numberOfSentences }
-    var medianMood: Double { viewModel.medianMood }
+    var medianMood: Double { viewModel.averageMood }
     var averageNumberOfWordsInSentence: Double { viewModel.averageNumberOfWordsInSentence }
     
     var numberOfPositiveSentences: Int { viewModel.numberOfPositiveSentences }
     var numberOfNegativeSentences: Int { viewModel.numberOfNegativeSentences }
     var numberOfNeutralSentences: Int { viewModel.numberOfNeutralSentences }
     
-    var sections: [AnyView] { [AnyView(section1), AnyView(section2), AnyView(section3), AnyView(section4)] }
+    
+    //    var body: some View {
+    //        NavigationStack {
+    //            VStack {
+    //                TabView(selection: $selectedSection) {
+    //                    ForEach(sections.startIndex..<sections.endIndex, id: \.description) { index in
+    //                        sections[index].tag(index)
+    //                    }
+    //                }
+    //                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+    //                .gesture(DragGesture().onEnded({ value in
+    //                    if value.translation.width < 0 {
+    //                        selectedSection = min(selectedSection + 1, 2)
+    //                    } else {
+    //                        selectedSection = max(selectedSection - 1, 0)
+    //                    }
+    //                }))
+    //
+    //                SectionIndicator(currentIndex: selectedSection, numberOfSections: sections.count)
+    //            }
+    //            .navigationTitle("Analytics")
+    //        }
+    //        .onAppear {
+    //            setupModels()
+    //            viewModel.update(entry: diaryEntry, sentimentPredictor: sentimentPredictor!, emotionalityRecognizer: emotionalityRecognizer!)
+    //            chartSectors = [ChartSector(part: Double(numberOfPositiveSentences)/Double(numberOfSentences), name: "Positive sentences"), ChartSector(part: Double(numberOfNegativeSentences)/Double(numberOfSentences), name: "Negative sentences"), ChartSector(part: Double(numberOfNeutralSentences)/Double(numberOfSentences), name: "Neutral sentences")]
+    //        }
+    //    }
     
     var body: some View {
         NavigationStack {
             VStack {
-                TabView(selection: $selectedSection) {
-                    ForEach(sections.startIndex..<sections.endIndex, id: \.description) { index in
-                        sections[index].tag(index)
+                Spacer()
+                HStack {
+                    Spacer()
+                    
+                    EntryAnalyticsQuestionSymbol()
+                    
+                    Spacer()
+                    Spacer()
+                    
+                    NavigationLink {
+                        EntryAnalyticsMoodDistributionChart(sentencesToMood: sentencesToMood)
+                    } label: {
+                        EntryAnalyticsChartSymbol()
                     }
+                    
+                    Spacer()
                 }
-                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-                .gesture(DragGesture().onEnded({ value in
-                    if value.translation.width < 0 {
-                        selectedSection = min(selectedSection + 1, 2)
-                    } else {
-                        selectedSection = max(selectedSection - 1, 0)
-                    }
-                }))
                 
-                SectionIndicator(currentIndex: selectedSection, numberOfSections: sections.count)
+                MoodSpeedometer(value: diaryEntry.formattedMood ?? 0)
+                    .padding()
+                
+                HStack {
+                    Spacer()
+                    
+                    EntryAnalyticsDataSymbol()
+                    
+                    Spacer()
+                    Spacer()
+                    
+                    NavigationLink {
+                        EntryAnalyticsPieChart(numberOfPositiveSentences: numberOfPositiveSentences, numberOfNegativeSentences: numberOfNegativeSentences, numberOfNeutralSentences: numberOfNeutralSentences)
+                    } label: {
+                        EntryAnalyticsPieChartSymbol()
+                    }
+                    
+                    Spacer()
+                }
+                Spacer()
             }
-            .navigationTitle("Analytics")
         }
+        .navigationTitle("Analytics")
+        .navigationBarTitleDisplayMode(.inline)
         .onAppear {
             setupModels()
             viewModel.update(entry: diaryEntry, sentimentPredictor: sentimentPredictor!, emotionalityRecognizer: emotionalityRecognizer!)
-            chartSectors = [ChartSector(part: Double(numberOfPositiveSentences)/Double(numberOfSentences), name: "Positive sentences"), ChartSector(part: Double(numberOfNegativeSentences)/Double(numberOfSentences), name: "Negative sentences"), ChartSector(part: Double(numberOfNeutralSentences)/Double(numberOfSentences), name: "Neutral sentences")]
         }
-        
-    }
-    
-    private var section1: some View {
-        VStack {
-            HStack(alignment: .center) {
-                Text("Charts")
-                    .font(.title)
-            }
-            GeometryReader { geometry in
-                ScrollView {
-                    VStack {
-                        HStack(alignment: .center) {
-                            Spacer()
-                            if DeviceSpecifications.isIPad {
-                                statsInSection1
-                                Spacer()
-                            }
-                            Chart {
-                                RuleMark(y: .value("Median", medianMood))
-                                    .foregroundStyle(foregroundStyleForMood(medianMood))
-                                
-                                ForEach(sentencesToMood, id: \.sentenceNumber) { sentenceMood in
-                                    LineMark(
-                                        x: .value("Number of sentence", sentenceMood.sentenceNumber),
-                                        y: .value("Mood", sentenceMood.mood)
-                                    )
-                                    .interpolationMethod(.monotone)
-                                    
-                                    PointMark(
-                                        x: .value("Number of sentence", sentenceMood.sentenceNumber),
-                                        y: .value("Mood", sentenceMood.mood)
-                                    )
-                                    .foregroundStyle(foregroundStyleForMood(Double(sentenceMood.mood)))
-                                    .symbol(.cross)
-                                }
-                                
-                                if let graphSelectedSentence, graphSelectedSentence <= sentencesToMood.count && graphSelectedSentence >= sentencesToMood.startIndex + 1 {
-                                    RuleMark(x: .value("Selected", graphSelectedSentence))
-                                        .foregroundStyle(.gray.opacity(0.4))
-                                        .zIndex(-1)
-                                        .offset(yStart: -10)
-                                        .annotation(position: .top, spacing: 0, overflowResolution: .init(x: .fit(to: .chart), y: .disabled)) {
-                                            let sentenceMood = sentencesToMood.first(where: { $0.sentenceNumber == graphSelectedSentence }) ?? SentenceMood(sentenceNumber: graphSelectedSentence, mood: 0)
-                                            Text("Sentece \(graphSelectedSentence) is \(moodTextualRepresantation(sentenceMood.mood))")
-                                                .background(.gray.opacity(0.4))
-                                        }
-                                }
-                            }
-                            .chartXSelection(value: $graphSelectedSentence)
-                            .padding()
-                            .frame(width: geometry.size.width * (DeviceSpecifications.isIPad ? 0.6 : 0.9), height: geometry.size.height < 100 ? 400 : geometry.size.height * 0.99)
-                            
-                            Spacer()
-                        }
-                        
-                        
-                        if !DeviceSpecifications.isIPad { statsInSection1 }
-                    }
-                    .padding(.top, 20)
-                }
-                .scrollIndicators(.visible)
-            }
-        }
-        .padding()
     }
     
     private var section4: some View {
@@ -154,30 +137,6 @@ struct EntryAnalyticsView: View {
             Spacer()
         }
         .padding()
-    }
-    
-    private var section2: some View {
-        VStack {
-            HStack(alignment: .center) {
-                Text("Pie Chart")
-                    .font(.title)
-            }
-            GeometryReader { geometry in
-                HStack(alignment: .center) {
-                    Spacer()
-                    Chart(chartSectors) { sector in
-                        SectorMark (
-                            angle: .value(Text(verbatim: sector.name), sector.part),
-                            angularInset: 1.5
-                        )
-                        .foregroundStyle(by: .value(Text(verbatim: sector.name), sector.name))
-                    }
-                    .padding()
-                    .frame(width: geometry.size.width * 0.6, height: geometry.size.height < 100 ? 400 : geometry.size.height * 0.9)
-                    Spacer()
-                }
-            }
-        }
     }
     
     private var section3: some View {
@@ -202,80 +161,18 @@ struct EntryAnalyticsView: View {
         }
     }
     
-    private var statsInSection1: some View {
-        VStack(alignment: .leading) {
-            Divider()
-            Text("Chart: Number of sentence -> mood").bold()
-            Divider()
-            Text("Number of positive sentences: \(numberOfPositiveSentences)")
-            Text("Number of neutral sentences: \(numberOfNeutralSentences)")
-            Text("Number of negative sentences: \(numberOfNegativeSentences)")
-            Divider()
-            Text("Average mood: ") + Text("\(medianMood) (\(moodAsString(medianMood)))").foregroundStyle(foregroundStyleForMood(medianMood))
-            Divider()
-            Text("Legend: ")
-            Text("* 1 is a positive sentence").foregroundStyle(.green)
-            Text("* 0 is a neutral sentence").foregroundStyle(.black)
-            Text("* -1 is a negative sentence").foregroundStyle(.red)
-        }
-        .padding()
-    }
-    
-    private func foregroundStyleForMood(_ mood: Double) -> Color {
-        if mood > 0 {
-            return .green
-        } else if mood == 0{
-            return .black
-        } else {
-            return .red
-        }
-    }
-    
-    private func moodAsString(_ mood: Double) -> String {
-        if mood > 0 {
-            return "positive"
-        } else if mood == 0 {
-            return "neutral"
-        } else {
-            return "negative"
-        }
-    }
-    
     init(diaryEntry: DiaryEntry) {
         self.diaryEntry = diaryEntry
     }
     
     private func setupModels() {
-        guard let sentimentPredictorMLModel = try? EntriesSentimentClassifier(configuration: MLModelConfiguration()).model else {
-            logger.critical("Couldn't create sentimentPredictorMLModel")
-            fatalError()
-        }
-        guard let sentimentPredictorNLModel = try? NLModel(mlModel: sentimentPredictorMLModel) else {
-            logger.critical("Couldn't create sentimentPredictorModel")
-            fatalError()
-        }
-        self.sentimentPredictor = sentimentPredictorNLModel
-        
-        guard let emotionalityRecognizerMLModel = try? EmotionalityRecognizer(configuration: MLModelConfiguration()).model else {
-            logger.critical("Couldn't create emotionalityRecognizer")
-            fatalError()
+        guard let models = EntriesAnalyzer.setupModels() else {
+            logger.critical("No NL models were created")
+            return
         }
         
-        guard let emotionalityRecognizerNLModel = try? NLModel(mlModel: emotionalityRecognizerMLModel) else {
-            logger.critical("Couldn't create emotionalityRecognizer")
-            fatalError()
-        }
-        self.emotionalityRecognizer = emotionalityRecognizerNLModel
-    }
-    
-    func moodTextualRepresantation(_ mood: Int) -> String {
-        if mood > 0 {
-            return "positive"
-        } else if mood == 0 {
-            return "neutral"
-        } else {
-            return "negative"
-        }
+        sentimentPredictor = models.0
+        emotionalityRecognizer = models.1
     }
 }
 
@@ -319,5 +216,5 @@ The day ended with a captivating novel that transported me to a world of complex
 
 As I lay down to rest, my mind buzzed with the day's events. This diary entry, dear diary, is but a glimpse into the intricate tapestry of my life, filled with challenges, triumphs, and the ever-present beauty of complexity.
 """)
-    return EntryAnalyticsView(diaryEntry: entry)
+    return EntryAnalyticsView(diaryEntry: entry).modelContainer(for: DiaryEntry.self)
 }

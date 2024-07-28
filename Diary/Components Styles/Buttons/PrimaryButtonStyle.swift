@@ -10,12 +10,26 @@ import SwiftUI
 
 struct PrimaryButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .padding()
-            .background(.blue)
-            .foregroundStyle(.white)
-            .clipShape(Capsule(style: .continuous))
-            .scaleEffect(configuration.isPressed ? 1.05 : 1)
-            .animation(.linear(duration: 0.1), value: configuration.isPressed)
+        Group {
+            configuration.label
+                .padding(.all)
+                .foregroundStyle(.white)
+                .bold()
+                .background(
+                    Capsule()
+                        .fill(Color.blue)
+                        .frame(maxWidth: .infinity)
+                        .padding(.horizontal, 3)
+                )
+        }
+        .scaleEffect(configuration.isPressed ? 1.015 : 1)
+        .animation(.linear(duration: 0.1), value: configuration.isPressed)
+        .padding()
+        
     }
+}
+
+#Preview {
+    Button("Authenticate really long text ") { }
+        .buttonStyle(PrimaryButtonStyle())
 }

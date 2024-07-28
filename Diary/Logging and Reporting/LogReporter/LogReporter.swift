@@ -8,36 +8,15 @@
 import Foundation
 import UIKit
 
-enum LogType: String {
-    case warning = "Warning"
-    case error = "Error"
-    case critical = "Critical"
-    case fatalError = "Fatal error"
-}
 
-// https://maker.ifttt.com/trigger/justwrite_log/json/with/key/jRz7Be2KJuSJWkKjnexKP4XLR982gvtw8ehvRo1Ejip
-// https://hook.eu2.make.com/9h6w2ke20527l584pcuw5avs1di8l15x
-//curl -X POST https://hook.eu2.make.com/9h6w2ke20527l584pcuw5avs1di8l15x \
-//-H "Content-Type: application/json" \
-//-d '{
-//    "Title": "Title",
-//    "Description": "",
-//    "Device Model": "",
-//    "Device Firmware": "",
-//    "Subsystem": "",
-//    "Category": "",
-//    "Type": ""
-//}'
-
-// Pipedream 25 http request per day - https://eou42t3u6ow47x1.m.pipedream.net
-// make.com - as many as I want requests per day - https://hook.eu2.make.com/9h6w2ke20527l584pcuw5avs1di8l15x
-
-class CrashReporter {
+class LogReporter {
+    static let logger: AppLogger = AppLogger(category: "Crash")
+    
     static func sendLog(type: LogType, title: String, description: String, subsystem: String, category: String) {
-//        guard let urlString = ProcessInfo.processInfo.environment["reportLogsUrlApi"] else {
-//            return
-//        }
-        let urlString = "https://hook.eu2.make.com/9h6w2ke20527l584pcuw5avs1di8l15x"
+        guard let urlString = ProcessInfo.processInfo.environment["MAKE_COM_LOG_REPORT_API"] else {
+            print("Couldn't get URL string")
+            return
+        }
         var deviceInfo: String {
             let device = UIDevice.current
             let model = device.model

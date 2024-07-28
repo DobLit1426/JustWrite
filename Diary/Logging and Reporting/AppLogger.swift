@@ -37,31 +37,62 @@ class AppLogger {
         self.systemLogger = Logger(subsystem: subsystem, category: category)
     }
     
-    func error(_ message: String, title: String = "", sendReport: SendReportOption = .automatic) {
+    func error(_ message: String, sendReport: SendReportOption = .automatic) {
         systemLogger.error("\(message)")
-        
-        if sendReport == .yes || (sendReport == .automatic && UserDefaultsInteractor.getSendAnonymousReportsValue()) {
-            CrashReporter.sendLog(type: .error, title: title, description: "\(message)", subsystem: self.subsystem, category: self.category)
-        }
+
+        sendReportBasedOn(sendReport: sendReport, sendReportAction: {
+            LogReporter.sendLog(type: .error, title: "", description: "\(message)", subsystem: self.subsystem, category: self.category)
+        })
     }
     
     func info(_ message: String) {
         systemLogger.info("\(message)")
     }
     
-    func critical(_ message: String, title: String = "", sendReport: SendReportOption = .automatic) {
+    func critical(_ message: String, sendReport: SendReportOption = .automatic) {
         systemLogger.critical("\(message)")
         
-        if sendReport == .yes || (sendReport == .automatic && UserDefaultsInteractor.getSendAnonymousReportsValue()) {
-            CrashReporter.sendLog(type: .critical, title: title, description: "\(message)", subsystem: self.subsystem, category: self.category)
-        }
+        sendReportBasedOn(sendReport: sendReport, sendReportAction: {
+            LogReporter.sendLog(type: .critical, title: "", description: "\(message)", subsystem: self.subsystem, category: self.category)
+        })
     }
     
-    func warning(_ message: String, title: String = "", sendReport: SendReportOption = .no) {
+    func warning(_ message: String, sendReport: SendReportOption = .no) {
         systemLogger.warning("\(message)")
         
-        if sendReport == .yes || (sendReport == .automatic && UserDefaultsInteractor.getSendAnonymousReportsValue()) {
-            CrashReporter.sendLog(type: .warning, title: title, description: "\(message)", subsystem: self.subsystem, category: self.category)
+        sendReportBasedOn(sendReport: sendReport, sendReportAction: {
+            LogReporter.sendLog(type: .warning, title: "", description: "\(message)", subsystem: self.subsystem, category: self.category)
+        })
+    }
+    
+    func fatalError(_ message: String, sendReport: SendReportOption = .automatic) {
+        systemLogger.critical("\(message)")
+        
+        sendReportBasedOn(sendReport: sendReport, sendReportAction: {
+            LogReporter.sendLog(type: .fatalError, title: "Fatal error", description: "\(message)", subsystem: self.subsystem, category: self.category)
+        })
+    }
+    
+    func reportableLog(logType: LogType, title: String, message: String, sendReport: SendReportOption = .automatic) {
+        switch logType {
+        case .warning:
+            systemLogger.warning("\(message)")
+        case .error:
+            systemLogger.error("\(message)")
+        default:
+            systemLogger.critical("\(message)")
+        }
+        
+        sendReportBasedOn(sendReport: sendReport, sendReportAction: {
+            LogReporter.sendLog(type: logType, title: title, description: "\(message)", subsystem: self.subsystem, category: self.category)
+        })
+    }
+    
+    private func sendReportBasedOn(sendReport: SendReportOption, sendReportAction: () -> Void) {
+        if sendReport == .yes {
+            sendReportAction()
+        } else if sendReport == .automatic && UserDefaultsInteractor.getSendAnonymousReportsValue() {
+            sendReportAction()
         }
     }
 }

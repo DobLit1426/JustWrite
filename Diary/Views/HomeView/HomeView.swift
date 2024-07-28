@@ -7,6 +7,8 @@
 
 import SwiftUI
 import SwiftData
+import NaturalLanguage
+import CoreML
 
 fileprivate class LocalizedStrings {
     static let navigationBarTitle: String = String(localized: "My entries", defaultValue: "My entries", comment: "This is navigation bar title in HomeView")
@@ -14,29 +16,36 @@ fileprivate class LocalizedStrings {
 }
 
 struct HomeView: View {
-    //MARK: - SwiftData properties
+    // MARK: - Logger
+    private let logger: AppLogger = AppLogger(category: "HomeView")
+    
+    // MARK: - SwiftData properties
     @Environment(\.modelContext) private var swiftDataContext
     @Query(animation: .easeInOut) var entries: [DiaryEntry]
     
-    //MARK: - ViewModel
+    // MARK: - ViewModel
     var homeViewModel: HomeViewModel
     
-    //MARK: - @State variables
+    // MARK: - @State variables
     @State var showAddNewEntryPopover: Bool = false
     @State var sortingTechnique: DiaryEntriesSortingTechnique = .newestAtTop
     @State var searchPromt: String = ""
     @State var searchActive: Bool = false
     
-    //MARK: - Computed properties
+    // MARK: @State variables - NLModel-s
+    @State private var sentimentPredictor: NLModel? = nil
+    @State private var emotionalityRecognizer: NLModel? = nil
+    
+    // MARK: - Computed properties
     private var showEntriesList: Bool { !entries.isEmpty && searchPromt.isEmpty }
     private var showSearchResults: Bool { !searchPromt.isEmpty && searchActive }
     
-    //MARK: - Init
+    // MARK: - Init
     init() {
         homeViewModel = HomeViewModel()
     }
     
-    //MARK: - Body
+    // MARK: - Body
     var body: some View {
         NavigationStack {
             VStack {
@@ -47,39 +56,14 @@ struct HomeView: View {
                     .animation(.easeInOut, value: sortingTechnique)
                 } else if showSearchResults {
                     EntriesSearchResults(promt: searchPromt)
-                    
-                    Group {
-                        let filteredEntries = entries.filter({ entry in
-                            let promtTextInHeading: Bool = entry.heading.contains(searchPromt)
-                            let promtTextInContent: Bool = entry.content.contains(searchPromt)
-                            
-                            let includeEntryInSearchResults: Bool = promtTextInHeading || promtTextInContent
-                            return includeEntryInSearchResults
-                        })
-                        
-                        let sortedEntries = filteredEntries.sorted { entryA, entryB in
-                            if entryA.heading.contains(searchPromt) && entryB.heading.contains(searchPromt) {
-                                return entryA.content.contains(searchPromt)
-                            } else {
-                                return entryA.heading.contains(searchPromt) && !entryB.heading.contains(searchPromt)
-                            }
-                        }
-                        
-                        if sortedEntries.isEmpty {
-                            Text("No search results for **\(searchPromt)**", comment: "This text is shown when no search results are found when searching for information in entries")
-                        } else {
-                            List(sortedEntries) { entry in
-                                NavigationLink {
-                                    EditExistingDiaryEntryView(diaryEntry: entry)
-                                } label: {
-                                    EntriesListRow(entry: entry)
-                                }
-                            }
-                        }
-                    }
-                    .animation(.easeInOut, value: searchPromt)
+                        .animation(.easeInOut, value: searchPromt)
                 } else {
                     Text(LocalizedStrings.noEntriesText)
+                }
+                
+                if !entries.isEmpty {
+                    EmptyView()
+                        .searchable(text: $searchPromt, isPresented: $searchActive)
                 }
             }
 #if os(macOS)
@@ -95,28 +79,26 @@ struct HomeView: View {
                     }
                 }
                 
-                ToolbarItem(placement: .topBarLeading) {
-                    Picker(selection: $sortingTechnique) {
-                        Text(sortingTechnique.localized).tag(DiaryEntriesSortingTechnique.newestAtTop)
-                        Text(sortingTechnique.localized).tag(DiaryEntriesSortingTechnique.oldestAtTop)
-                    } label: {
-                        Image(systemName: "arrow.up.arrow.down")
+                if !entries.isEmpty {
+                    ToolbarItem(placement: .topBarLeading) {
+                        SortingMenu(sortingTechnique: $sortingTechnique)
                     }
                 }
             }
-            .popover(isPresented: $showAddNewEntryPopover) {
+            .sheet(isPresented: $showAddNewEntryPopover) {
                 NewEntryPopover { entryToSave in
                     swiftDataContext.insert(entryToSave)
                 }
             }
-            .background {
-                List {
-                    EmptyView()
-                }
-            }
             .animation(.easeInOut, value: searchActive)
+            .onAppear {
+                setupModels()
+                predictMoodForEntries()
+            }
+            .onChange(of: entries) {
+                predictMoodForEntries()
+            }
         }
-        .searchable(text: $searchPromt, isPresented: $searchActive)
     }
     
     // MARK: - Private functions
@@ -125,6 +107,30 @@ struct HomeView: View {
         let fetchDescriptor = FetchDescriptor(predicate: predicate)
         if let entriesToDelete = try? swiftDataContext.fetch(fetchDescriptor), let entryToDelete = entriesToDelete.first {
             swiftDataContext.delete(entryToDelete)
+        }
+    }
+    
+    
+    // MARK: - Sentiment recognition functions
+    private func performSentimentAnalysis(for entry: DiaryEntry) -> Double? {
+        return EntriesAnalyzer.sentimentAnalysis(for: entry, sentimentPredictor: sentimentPredictor, emotionalityRecognizer: emotionalityRecognizer)
+    }
+    
+    private func setupModels() {
+        guard let models = EntriesAnalyzer.setupModels() else {
+            logger.critical("No NL models were created")
+            return
+        }
+        
+        sentimentPredictor = models.0
+        emotionalityRecognizer = models.1
+    }
+    
+    private func predictMoodForEntries() {
+        for entry in entries {
+//            if entry.mood == nil {
+                entry.mood = performSentimentAnalysis(for: entry)
+//            }
         }
     }
 }
