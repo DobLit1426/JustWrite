@@ -18,24 +18,32 @@ struct EntriesAnalyticsView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                if showAnalytics {
+                Group {
                     Form {
                         Section("Total") {
-                            AnalyticProperty(propertyName: "Entries", value: viewModel.totalNumberOfEntries)
-                            AnalyticProperty(propertyName: "Sentences", value: viewModel.totalNumberOfSentences)
-                            AnalyticProperty(propertyName: "Words", value: viewModel.totalNumberOfWords)
+                            AnalyticPropertyView(propertyName: "Entries", value: viewModel.totalNumberOfEntries)
+                            AnalyticPropertyView(propertyName: "Sentences", value: viewModel.totalNumberOfSentences)
+                            AnalyticPropertyView(propertyName: "Words", value: viewModel.totalNumberOfWords)
                         }
                         
                         Section("Average") {
-                            AnalyticProperty(propertyName: "Sentences per entry", value: viewModel.averageNumberOfSentences)
-                            AnalyticProperty(propertyName: "Words in sentences", value: viewModel.averageNumberOfWordsPerSentence)
-                            AnalyticProperty(propertyName: "Days between diary entries", value: viewModel.averageNumberOfDaysBetweenDiaryEntries)
+                            AnalyticPropertyView(propertyName: "Sentences per entry", value: viewModel.averageNumberOfSentences)
+                            AnalyticPropertyView(propertyName: "Words in sentences", value: viewModel.averageNumberOfWordsPerSentence)
+                            AnalyticPropertyView(propertyName: "Days between diary entries", value: viewModel.averageNumberOfDaysBetweenDiaryEntries)
+                        }
+                        
+                        Section("Graphs") {
+                            MoodOverTimeGraph(dateToAverageMoodOfDate: viewModel.dateToAverageMoodOfDate)
+                                .padding()
                         }
                     }
-                } else {
-                    Text("To see analytics write a diary entry")
-                        .padding()
                 }
+                .exists(showAnalytics)
+                
+                Text("To see analytics write a few diary entry")
+                    .padding()
+                    .exists(!showAnalytics)
+                
             }
             .navigationTitle("Analytics")
         }
