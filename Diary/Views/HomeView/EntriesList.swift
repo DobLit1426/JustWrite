@@ -85,7 +85,7 @@ struct EntriesList: View {
 }
 
 #Preview {
-    EntriesList(entries: [DiaryEntry(heading: "Diary Entry 1", content: "Some content")]) {
+    EntriesList(entries: [DebugDummyValues.diaryEntry()]) {
         print("Deleting entry with id \($0)")
     }
 }

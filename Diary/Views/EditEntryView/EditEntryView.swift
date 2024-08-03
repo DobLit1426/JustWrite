@@ -77,10 +77,10 @@ struct EditEntryView: View {
                             contentTextFieldFocused = true
                         }
                     
-                    TextField(LocalizedStrings.contentTextFieldPlaceholder, text: $diaryEntry.content, axis: .vertical)
-                        .lineLimit(nil)
-                        .font(.body)
-                        .focused($contentTextFieldFocused)
+//                    TextField(LocalizedStrings.contentTextFieldPlaceholder, text: $diaryEntry.content, axis: .vertical)
+//                        .lineLimit(nil)
+//                        .font(.body)
+//                        .focused($contentTextFieldFocused)
                         
                 }
             }
@@ -90,20 +90,7 @@ struct EditEntryView: View {
 }
 
 #Preview {
-    @State var entry: DiaryEntry = DiaryEntry(heading: "Role of the AI in our modern world", content: """
-Well, as **you** see, ...
-
-# Title 1
-## Title 2
-### Title 3
-**Some bold text**
-*Some cursive text*
-***Bold and cursive text***
-~Strikethrough text~
-~~Strikethrough text 2~~
-`Monospaced text`
-""")
-
+    @State var entry: DiaryEntry = DebugDummyValues.diaryEntry(entryHeading: "Role of the AI in our modern world", includeMarkdownText: true)
 
     return EditEntryView(diaryEntry: $entry, mode: .edit)
 }

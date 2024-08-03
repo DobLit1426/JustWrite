@@ -57,6 +57,6 @@ struct ShareDiaryEntryButton: View {
 
 #Preview {
     NavigationStack {
-        ShareDiaryEntryButton(diaryEntry: DiaryEntry(heading: "heading", content: "Sample content"))
+        ShareDiaryEntryButton(diaryEntry: DebugDummyValues.diaryEntry())
     }
 }

@@ -65,5 +65,5 @@ struct EntryViewMode: View {
 }
 
 #Preview {
-    EntryViewMode(diaryEntry: DiaryEntry(heading: "Test", content: "test"))
+    EntryViewMode(diaryEntry: DebugDummyValues.diaryEntry())
 }

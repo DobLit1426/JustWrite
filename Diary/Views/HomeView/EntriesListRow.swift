@@ -40,5 +40,5 @@ struct EntriesListRow: View {
 }
 
 #Preview {
-    EntriesListRow(entry: DiaryEntry(heading: "Heading", content: "Content"))
+    EntriesListRow(entry: DebugDummyValues.diaryEntry())
 }

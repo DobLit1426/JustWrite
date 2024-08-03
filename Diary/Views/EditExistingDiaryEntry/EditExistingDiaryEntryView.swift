@@ -84,7 +84,7 @@ struct EditExistingDiaryEntryView: View {
 }
 
 #Preview {
-    @State var diaryEntry: DiaryEntry = DiaryEntry(heading: "heading", content: "Sample content")
+    @State var diaryEntry: DiaryEntry = DebugDummyValues.diaryEntry()
     
     return EditExistingDiaryEntryView(diaryEntry: diaryEntry)
 }
