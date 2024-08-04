@@ -50,11 +50,42 @@ final class DiaryEntry: Entry, CustomDebugStringConvertible {
     }
     
     /// Textual representation for debugging purposes
-    var description: String {
+    var debugDescription: String {
         return "DiaryEntry(heading: \(heading), content: \(content), mood: \(String(describing: mood)), date: \(date), id: \(id)"
     }
     
-    var debugDescription: String { description }
+    var description: String { debugDescription }
+    
+    var formattedContent: [any ContentBlock] {
+        var result: [any ContentBlock] = []
+        
+        for blockWrapper in content {
+            switch blockWrapper {
+            case .textBlock(let textContentBlock):
+                result.append(textContentBlock)
+            case .imageBlock(let imageContentBlock):
+                result.append(imageContentBlock)
+            case .dividerBlock(let dividerContentBlock):
+                result.append(dividerContentBlock)
+            }
+        }
+        
+        return result
+    }
+    
+    var allEntryTextInSingleString: String {
+        var result: String = ""
+        
+        for blockWrapper in content {
+            switch blockWrapper {
+            case .textBlock(let textContentBlock):
+                result += textContentBlock.content + "\n"
+            default: continue
+            }
+        }
+        
+        return result
+    }
     
     // MARK: - Inits
     /// Initialises the diary entry object by setting the properties to the provided parameters

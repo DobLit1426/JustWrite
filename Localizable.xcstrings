@@ -285,6 +285,9 @@
         }
       }
     },
+    "Average Mood Data" : {
+
+    },
     "Average mood: " : {
 
     },
@@ -374,6 +377,7 @@
       }
     },
     "Content of your diary entry" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -429,6 +433,9 @@
       }
     },
     "Data type" : {
+
+    },
+    "Date" : {
 
     },
     "Delete all diary entries" : {
@@ -587,7 +594,11 @@
         }
       }
     },
+    "Graphs" : {
+
+    },
     "Heading" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -731,6 +742,9 @@
       }
     },
     "Name" : {
+
+    },
+    "New Data" : {
 
     },
     "New diary entry" : {
@@ -938,6 +952,9 @@
           }
         }
       }
+    },
+    "Raw Mood Data" : {
+
     },
     "Reason for device password usage" : {
       "comment" : "This string will be shown in the system alert, which will promt the user to unlock the device with device passcode"
@@ -1246,6 +1263,7 @@
       }
     },
     "To see analytics write a diary entry" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1254,6 +1272,9 @@
           }
         }
       }
+    },
+    "To see analytics write a few diary entries" : {
+
     },
     "To unlock the JustWrite App with %@ you need to setup %@ in Settings of your device." : {
       "localizations" : {

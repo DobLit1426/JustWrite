@@ -87,6 +87,11 @@ struct HomeView: View {
             }
             .sheet(isPresented: $showAddNewEntryPopover) {
                 NewEntryPopover { entryToSave in
+                    #if DEBUG
+                    let someDummyEntry: DiaryEntry = DebugDummyValues.diaryEntry(entryHeading: entryToSave.heading, includeNormalText: true, includeMarkdownText: true)
+                    swiftDataContext.insert(someDummyEntry)
+                    #endif
+                
                     swiftDataContext.insert(entryToSave)
                 }
             }
@@ -113,7 +118,7 @@ struct HomeView: View {
     
     // MARK: - Sentiment recognition functions
     private func performSentimentAnalysis(for entry: DiaryEntry) -> Double? {
-        return EntriesAnalyzer.sentimentAnalysis(for: entry, sentimentPredictor: sentimentPredictor, emotionalityRecognizer: emotionalityRecognizer)
+        return EntriesAnalyzer.sentimentAnalysis(for: entry.allEntryTextInSingleString, sentimentPredictor: sentimentPredictor, emotionalityRecognizer: emotionalityRecognizer)
     }
     
     private func setupModels() {

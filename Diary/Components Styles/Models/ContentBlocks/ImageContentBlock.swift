@@ -8,10 +8,12 @@
 import Foundation
 
 struct ImageContentBlock: ContentBlock {
-    let type: ContentBlockType = .image
+    private(set) var type: ContentBlockType = .image
     var content: Data
+    var id: UUID
     
-    init(content: Data) {
+    init(content: Data, id: UUID = UUID()) {
         self.content = content
+        self.id = id
     }
 }

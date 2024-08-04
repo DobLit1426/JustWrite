@@ -63,34 +63,105 @@ struct EditEntryView: View {
             .labelsHidden()
             
             VStack {
-                if mode == .view {
-                    EntryViewMode(diaryEntry: diaryEntry)
-                } else {
-                    DatePicker(LocalizedStrings.diaryDateDatepickerDescription, selection: $diaryEntry.date, in: datePickerStartingDate...Date.now)
-                    
-                    Divider()
-                    
-                    TextField(LocalizedStrings.headingTextFieldPlaceholder, text: $diaryEntry.heading, axis: .vertical)
-                        .lineLimit(nil)
-                        .font(.largeTitle)
-                        .onSubmit {
-                            contentTextFieldFocused = true
-                        }
-                    
-//                    TextField(LocalizedStrings.contentTextFieldPlaceholder, text: $diaryEntry.content, axis: .vertical)
-//                        .lineLimit(nil)
-//                        .font(.body)
-//                        .focused($contentTextFieldFocused)
-                        
-                }
+                //                if mode == .view {
+                //                    EntryViewMode(diaryEntry: diaryEntry)
+                //                } else {
+                DatePicker(LocalizedStrings.diaryDateDatepickerDescription, selection: $diaryEntry.date, in: datePickerStartingDate...Date.now)
+                
+                Divider()
+                
+                TextField(LocalizedStrings.headingTextFieldPlaceholder, text: $diaryEntry.heading, axis: .vertical)
+                    .lineLimit(nil)
+                    .font(.largeTitle)
+                    .onSubmit {
+                        contentTextFieldFocused = true
+                    }
+                
+                contentBlocks
+                
+                //                    TextField(LocalizedStrings.contentTextFieldPlaceholder, text: $diaryEntry.content, axis: .vertical)
+                //                        .lineLimit(nil)
+                //                        .font(.body)
+                //                        .focused($contentTextFieldFocused)
+                
             }
+            //            }
         }
         .animation(.easeInOut, value: mode)
     }
+    
+    let fonts: [Font] = [.title, .title2, .body]
+    
+    // MARK: - View variables
+    @ViewBuilder var contentBlocks: some View {
+        VStack {
+            ForEach(Array(diaryEntry.formattedContent.enumerated()), id: \.offset) { index, block in
+                Group {
+                    if let textBlock = block as? TextContentBlock {
+//                        produceTextBlock(textBlock)
+//                        EmptyView()
+                        let font: Font = fonts[textBlock.textSize.rawValue - 1]
+                        
+                        Text(textBlock.content)
+                            .font(font)
+                            .lineLimit(nil)
+                            .padding()
+                    } else if let imageBlock = block as? ImageContentBlock {
+                        // MARK: TODO
+                        EmptyView()
+                    } else if let dividerBlock = block as? DividerContentBlock {
+//                        produceDividerBlock(block)
+//                        EmptyView()
+                        Rectangle()
+                            .fill(.black)
+                            .frame(width: .infinity, height: dividerBlock.content == DividerType.thick ? 2 : 1)
+                            .padding()
+                    } else {
+                        EmptyView()
+                    }
+                }
+            }
+        }
+    }
+    
+    // MARK: - Private functions
+//    private func produceTextBlock(_ textContentBlock: TextContentBlock) -> any View {
+//        let fontSize: Font
+//        
+//        switch textContentBlock.textSize {
+//        case .h1:
+//            fontSize = .title
+//        case .h2:
+//            fontSize = .title2
+//        case .h3:
+//            fontSize = .title3
+//        }
+//        
+//        return Text(textContentBlock.content)
+//            .font(fontSize)
+//            .lineLimit(nil)
+//            .padding()
+//    }
+    
+//    private func produceDividerBlock(_ dividerContentBlock: DividerContentBlock) -> any View {
+//        let rectangleHeight: CGFloat
+//        
+//        switch dividerContentBlock.content {
+//        case .thick:
+//            rectangleHeight = 2.5
+//        case .thin:
+//            rectangleHeight = 1
+//        }
+//        
+//        return Rectangle()
+//            .fill(.black)
+//            .frame(width: .infinity, height: 1)
+//            .padding()
+//    }
 }
 
 #Preview {
     @State var entry: DiaryEntry = DebugDummyValues.diaryEntry(entryHeading: "Role of the AI in our modern world", includeMarkdownText: true)
-
+    
     return EditEntryView(diaryEntry: $entry, mode: .edit)
 }

@@ -8,10 +8,12 @@
 import Foundation
 
 struct DividerContentBlock: ContentBlock {
-    let type: ContentBlockType = .divider
+    private(set) var type: ContentBlockType = .divider
     var content: DividerType
+    var id: UUID
     
-    init(content: DividerType) {
+    init(content: DividerType, id: UUID = UUID()) {
         self.content = content
+        self.id = id
     }
 }

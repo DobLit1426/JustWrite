@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum DividerType: String, Codable {
+public enum DividerType: String, Codable {
     case thick
     case thin
 }

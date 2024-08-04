@@ -53,9 +53,7 @@
 		3C93A0E22C5E6DC4007007C0 /* DiaryEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C93A0D32C5E6DC4007007C0 /* DiaryEntry.swift */; };
 		3C93A0E32C5E6DC4007007C0 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C93A0D42C5E6DC4007007C0 /* Settings.swift */; };
 		3C93A0E42C5E6DC4007007C0 /* ImageContentBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C93A0D62C5E6DC4007007C0 /* ImageContentBlock.swift */; };
-		3C93A0E52C5E6DC4007007C0 /* H2ContentBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C93A0D82C5E6DC4007007C0 /* H2ContentBlock.swift */; };
 		3C93A0E62C5E6DC4007007C0 /* TextContentBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C93A0D92C5E6DC4007007C0 /* TextContentBlock.swift */; };
-		3C93A0E72C5E6DC4007007C0 /* H3ContentBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C93A0DA2C5E6DC4007007C0 /* H3ContentBlock.swift */; };
 		3C93A0E82C5E6DC4007007C0 /* DividerContentBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C93A0DB2C5E6DC4007007C0 /* DividerContentBlock.swift */; };
 		3C93A0E92C5E6DC4007007C0 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C93A0DD2C5E6DC4007007C0 /* Entry.swift */; };
 		3C93A0EA2C5E6DC4007007C0 /* ContentBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C93A0DE2C5E6DC4007007C0 /* ContentBlock.swift */; };
@@ -171,9 +169,7 @@
 		3C93A0D32C5E6DC4007007C0 /* DiaryEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiaryEntry.swift; sourceTree = "<group>"; };
 		3C93A0D42C5E6DC4007007C0 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		3C93A0D62C5E6DC4007007C0 /* ImageContentBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageContentBlock.swift; sourceTree = "<group>"; };
-		3C93A0D82C5E6DC4007007C0 /* H2ContentBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = H2ContentBlock.swift; sourceTree = "<group>"; };
 		3C93A0D92C5E6DC4007007C0 /* TextContentBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextContentBlock.swift; sourceTree = "<group>"; };
-		3C93A0DA2C5E6DC4007007C0 /* H3ContentBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = H3ContentBlock.swift; sourceTree = "<group>"; };
 		3C93A0DB2C5E6DC4007007C0 /* DividerContentBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DividerContentBlock.swift; sourceTree = "<group>"; };
 		3C93A0DD2C5E6DC4007007C0 /* Entry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		3C93A0DE2C5E6DC4007007C0 /* ContentBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentBlock.swift; sourceTree = "<group>"; };
@@ -354,9 +350,9 @@
 		3C93A0CE2C5E6DC4007007C0 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				3C93A0CF2C5E6DC4007007C0 /* Enums */,
 				3C93A0D32C5E6DC4007007C0 /* DiaryEntry.swift */,
 				3C93A0D42C5E6DC4007007C0 /* Settings.swift */,
+				3C93A0CF2C5E6DC4007007C0 /* Enums */,
 				3C93A0D52C5E6DC4007007C0 /* ContentBlocks */,
 				3C93A0DC2C5E6DC4007007C0 /* Protocols */,
 			);
@@ -378,20 +374,10 @@
 			isa = PBXGroup;
 			children = (
 				3C93A0D62C5E6DC4007007C0 /* ImageContentBlock.swift */,
-				3C93A0D72C5E6DC4007007C0 /* TextContentBlocks */,
+				3C93A0D92C5E6DC4007007C0 /* TextContentBlock.swift */,
 				3C93A0DB2C5E6DC4007007C0 /* DividerContentBlock.swift */,
 			);
 			path = ContentBlocks;
-			sourceTree = "<group>";
-		};
-		3C93A0D72C5E6DC4007007C0 /* TextContentBlocks */ = {
-			isa = PBXGroup;
-			children = (
-				3C93A0D82C5E6DC4007007C0 /* H2ContentBlock.swift */,
-				3C93A0D92C5E6DC4007007C0 /* TextContentBlock.swift */,
-				3C93A0DA2C5E6DC4007007C0 /* H3ContentBlock.swift */,
-			);
-			path = TextContentBlocks;
 			sourceTree = "<group>";
 		};
 		3C93A0DC2C5E6DC4007007C0 /* Protocols */ = {
@@ -754,11 +740,9 @@
 				3C93A0CB2C5E6C6E007007C0 /* EntriesAnalyticsView.swift in Sources */,
 				3C93A0C42C5E6391007007C0 /* DebugDummyValues.swift in Sources */,
 				3C9F66942AEFD822007768B7 /* LogReporter.swift in Sources */,
-				3C93A0E72C5E6DC4007007C0 /* H3ContentBlock.swift in Sources */,
 				3C93A0CD2C5E6CCA007007C0 /* MoodOverTimeGraph.swift in Sources */,
 				3C5E45042B0D10AD0021F6B0 /* EntryAnalyticsMoodDistributionChart.swift in Sources */,
 				3C1452F32AD713CF00C8BC80 /* AnalyticPropertyView.swift in Sources */,
-				3C93A0E52C5E6DC4007007C0 /* H2ContentBlock.swift in Sources */,
 				3C93A0E92C5E6DC4007007C0 /* Entry.swift in Sources */,
 				3C7A5CB52AE0472500B0B8A4 /* CurrentTab.swift in Sources */,
 				3C2CF1A62AC489CA0050DB45 /* AuthenticationHelper.swift in Sources */,

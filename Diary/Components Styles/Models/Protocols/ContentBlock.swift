@@ -8,7 +8,7 @@
 import Foundation
 import SwiftData
 
-protocol ContentBlock: Codable {
+protocol ContentBlock: Codable, Identifiable {
     associatedtype TypeOfTheContentOfTheBlock
     
     var type: ContentBlockType { get }

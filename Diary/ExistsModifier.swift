@@ -23,3 +23,10 @@ struct ExistsModifier: ViewModifier {
         }
     }
 }
+
+
+extension View {
+    @ViewBuilder func exists(_ exists: Bool) -> some View {
+        self.modifier(ExistsModifier(existsIf: exists))
+    }
+}

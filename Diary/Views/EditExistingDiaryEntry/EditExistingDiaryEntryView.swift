@@ -46,9 +46,9 @@ struct EditExistingDiaryEntryView: View {
                         ShareDiaryEntryButton(diaryEntry: diaryEntry)
 
                         NavigationLink(destination: EntryAnalyticsView(diaryEntry: diaryEntry), label: {
-                            if let formattedMood = diaryEntry.formattedMood {
+                            if let mood = diaryEntry.mood {
                                 Spacer()
-                                MoodGauge(mood: formattedMood)
+                                MoodGauge(mood: Int(mood.rounded()))
                                     .scaleEffect(CGSize(width: 0.6, height: 0.6))
                             } else {
                                 Image(systemName: "chart.bar.fill")
@@ -58,7 +58,7 @@ struct EditExistingDiaryEntryView: View {
                 }
             Spacer()
         }
-        .onChange(of: diaryEntry.content, { oldValue, newValue in
+        .onChange(of: diaryEntry.allEntryTextInSingleString, { oldValue, newValue in
             predictMoodForTheEntry()
         })
         .onAppear {
@@ -79,7 +79,7 @@ struct EditExistingDiaryEntryView: View {
     }
     
     private func predictMoodForTheEntry() {
-        diaryEntry.mood = EntriesAnalyzer.sentimentAnalysis(for: diaryEntry, sentimentPredictor: sentimentPredictor, emotionalityRecognizer: emotionalityRecognizer)
+        diaryEntry.mood = EntriesAnalyzer.sentimentAnalysis(for: diaryEntry.allEntryTextInSingleString, sentimentPredictor: sentimentPredictor, emotionalityRecognizer: emotionalityRecognizer)
     }
 }
 

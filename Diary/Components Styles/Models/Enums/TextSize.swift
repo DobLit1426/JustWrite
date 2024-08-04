@@ -7,8 +7,8 @@
 
 import Foundation
 
-public enum TextSize: String, Codable {
-    case h1
-    case h2
-    case h3
+public enum TextSize: Int, Codable {
+    case h1 = 1
+    case h2 = 2
+    case h3 = 3
 }

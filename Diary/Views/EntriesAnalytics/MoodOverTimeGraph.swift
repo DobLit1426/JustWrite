@@ -51,7 +51,7 @@ struct MoodOverTimeGraph: View {
                 }
             }
             
-            if data.count >= 10 {
+            if data.count >= 5 {
                 RuleMark(y: .value("Average", averageMood))
                     .foregroundStyle(foregroundStyleBased(on: averageMood))
             }

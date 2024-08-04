@@ -9,25 +9,15 @@ import Foundation
 
 struct TextContentBlock: ContentBlock {
     var type: ContentBlockType { .text(size: textSize) }
+    var content: String
+    var id: UUID
+    
     var textSize: TextSize
     
-    var content: String
     
-    init(textSize: TextSize, content: String) {
+    init(textSize: TextSize, content: String, id: UUID = UUID()) {
         self.textSize = textSize
         self.content = content
+        self.id = id
     }
 }
-
-//struct H1ContentBlock: ContentBlock {
-//    static func == (lhs: H1ContentBlock, rhs: H1ContentBlock) -> Bool {
-//        lhs.content == rhs.content
-//    }
-//    
-//    let type: ContentBlockType = .text(size: .h1)
-//    var content: String
-//    
-//    init(content: String) {
-//        self.content = content
-//    }
-//}
