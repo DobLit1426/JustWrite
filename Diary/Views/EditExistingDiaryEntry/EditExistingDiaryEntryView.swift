@@ -37,23 +37,14 @@ struct EditExistingDiaryEntryView: View {
     // MARK: - Body
     var body: some View {
         NavigationStack {
-            EditEntryView(diaryEntry: $diaryEntry, mode: .view)
+            EditEntryView(diaryEntry: $diaryEntry)
                 .padding()
                 .navigationTitle("Entry")
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItemGroup(placement: .navigation) {
                         ShareDiaryEntryButton(diaryEntry: diaryEntry)
-
-                        NavigationLink(destination: EntryAnalyticsView(diaryEntry: diaryEntry), label: {
-                            if let mood = diaryEntry.mood {
-                                Spacer()
-                                MoodGauge(mood: Int(mood.rounded()))
-                                    .scaleEffect(CGSize(width: 0.6, height: 0.6))
-                            } else {
-                                Image(systemName: "chart.bar.fill")
-                            }
-                        })
+                        navigationLinkToMoodInsights
                     }
                 }
             Spacer()
@@ -65,6 +56,19 @@ struct EditExistingDiaryEntryView: View {
             setupModels()
             predictMoodForTheEntry()
         }
+    }
+    
+    // MARK: - View variables
+    private var navigationLinkToMoodInsights: some View {
+        NavigationLink(destination: EntryAnalyticsView(diaryEntry: diaryEntry), label: {
+            if let mood = diaryEntry.mood {
+                Spacer()
+                MoodGauge(mood: Int(mood.rounded()))
+                    .scaleEffect(CGSize(width: 0.6, height: 0.6))
+            } else {
+                Image(systemName: "chart.bar.fill")
+            }
+        })
     }
     
     // MARK: - Sentiment recognition functions

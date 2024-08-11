@@ -87,10 +87,10 @@ struct HomeView: View {
             }
             .sheet(isPresented: $showAddNewEntryPopover) {
                 NewEntryPopover { entryToSave in
-                    #if DEBUG
-                    let someDummyEntry: DiaryEntry = DebugDummyValues.diaryEntry(entryHeading: entryToSave.heading, includeNormalText: true, includeMarkdownText: true)
-                    swiftDataContext.insert(someDummyEntry)
-                    #endif
+//                    #if DEBUG
+//                    let someDummyEntry: DiaryEntry = DebugDummyValues.diaryEntry(entryHeading: entryToSave.heading, includeNormalText: true, includeMarkdownText: true)
+//                    swiftDataContext.insert(someDummyEntry)
+//                    #endif
                 
                     swiftDataContext.insert(entryToSave)
                 }

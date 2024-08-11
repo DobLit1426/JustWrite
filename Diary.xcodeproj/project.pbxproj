@@ -28,6 +28,7 @@
 		3C3CCF8F2AF4EDE90056841A /* LogType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3CCF8E2AF4EDE90056841A /* LogType.swift */; };
 		3C3CCF942AF6549D0056841A /* ReportErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3CCF932AF6549D0056841A /* ReportErrorView.swift */; };
 		3C4A5B852AFE8920000B9128 /* ExistsModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4A5B842AFE8920000B9128 /* ExistsModifier.swift */; };
+		3C50434B2C5FF56E00B75F84 /* ContentBlockAdderHub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C50434A2C5FF56E00B75F84 /* ContentBlockAdderHub.swift */; };
 		3C5E45022B0D0B970021F6B0 /* EntryAnalyticsPieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5E45012B0D0B970021F6B0 /* EntryAnalyticsPieChart.swift */; };
 		3C5E45042B0D10AD0021F6B0 /* EntryAnalyticsMoodDistributionChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5E45032B0D10AD0021F6B0 /* EntryAnalyticsMoodDistributionChart.swift */; };
 		3C5E45092B0DF7BA0021F6B0 /* MoodGauge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5E45082B0DF7BA0021F6B0 /* MoodGauge.swift */; };
@@ -52,7 +53,7 @@
 		3C93A0E12C5E6DC4007007C0 /* ContentBlockType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C93A0D22C5E6DC4007007C0 /* ContentBlockType.swift */; };
 		3C93A0E22C5E6DC4007007C0 /* DiaryEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C93A0D32C5E6DC4007007C0 /* DiaryEntry.swift */; };
 		3C93A0E32C5E6DC4007007C0 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C93A0D42C5E6DC4007007C0 /* Settings.swift */; };
-		3C93A0E42C5E6DC4007007C0 /* ImageContentBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C93A0D62C5E6DC4007007C0 /* ImageContentBlock.swift */; };
+		3C93A0E42C5E6DC4007007C0 /* ImagesContentBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C93A0D62C5E6DC4007007C0 /* ImagesContentBlock.swift */; };
 		3C93A0E62C5E6DC4007007C0 /* TextContentBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C93A0D92C5E6DC4007007C0 /* TextContentBlock.swift */; };
 		3C93A0E82C5E6DC4007007C0 /* DividerContentBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C93A0DB2C5E6DC4007007C0 /* DividerContentBlock.swift */; };
 		3C93A0E92C5E6DC4007007C0 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C93A0DD2C5E6DC4007007C0 /* Entry.swift */; };
@@ -144,6 +145,7 @@
 		3C3CCF8E2AF4EDE90056841A /* LogType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogType.swift; sourceTree = "<group>"; };
 		3C3CCF932AF6549D0056841A /* ReportErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportErrorView.swift; sourceTree = "<group>"; };
 		3C4A5B842AFE8920000B9128 /* ExistsModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExistsModifier.swift; sourceTree = "<group>"; };
+		3C50434A2C5FF56E00B75F84 /* ContentBlockAdderHub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentBlockAdderHub.swift; sourceTree = "<group>"; };
 		3C5E45012B0D0B970021F6B0 /* EntryAnalyticsPieChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryAnalyticsPieChart.swift; sourceTree = "<group>"; };
 		3C5E45032B0D10AD0021F6B0 /* EntryAnalyticsMoodDistributionChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryAnalyticsMoodDistributionChart.swift; sourceTree = "<group>"; };
 		3C5E45082B0DF7BA0021F6B0 /* MoodGauge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodGauge.swift; sourceTree = "<group>"; };
@@ -168,7 +170,7 @@
 		3C93A0D22C5E6DC4007007C0 /* ContentBlockType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentBlockType.swift; sourceTree = "<group>"; };
 		3C93A0D32C5E6DC4007007C0 /* DiaryEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiaryEntry.swift; sourceTree = "<group>"; };
 		3C93A0D42C5E6DC4007007C0 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
-		3C93A0D62C5E6DC4007007C0 /* ImageContentBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageContentBlock.swift; sourceTree = "<group>"; };
+		3C93A0D62C5E6DC4007007C0 /* ImagesContentBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagesContentBlock.swift; sourceTree = "<group>"; };
 		3C93A0D92C5E6DC4007007C0 /* TextContentBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextContentBlock.swift; sourceTree = "<group>"; };
 		3C93A0DB2C5E6DC4007007C0 /* DividerContentBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DividerContentBlock.swift; sourceTree = "<group>"; };
 		3C93A0DD2C5E6DC4007007C0 /* Entry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
@@ -373,7 +375,7 @@
 		3C93A0D52C5E6DC4007007C0 /* ContentBlocks */ = {
 			isa = PBXGroup;
 			children = (
-				3C93A0D62C5E6DC4007007C0 /* ImageContentBlock.swift */,
+				3C93A0D62C5E6DC4007007C0 /* ImagesContentBlock.swift */,
 				3C93A0D92C5E6DC4007007C0 /* TextContentBlock.swift */,
 				3C93A0DB2C5E6DC4007007C0 /* DividerContentBlock.swift */,
 			);
@@ -559,6 +561,7 @@
 				3C8B563B2AEBF1C0000F70C2 /* EditEntryView.swift */,
 				3CCA3B162AED609700B7809E /* EntryViewMode.swift */,
 				3C8B563D2AEBF251000F70C2 /* MarkdownText.swift */,
+				3C50434A2C5FF56E00B75F84 /* ContentBlockAdderHub.swift */,
 			);
 			path = EditEntryView;
 			sourceTree = "<group>";
@@ -737,6 +740,7 @@
 				3CF8AE4B2AB4A1C600D29A89 /* FirstView.swift in Sources */,
 				3C2CF1A42AC472DD0050DB45 /* SettingsViewModel.swift in Sources */,
 				3CB77C252AAE3591004CE4D8 /* SettingsView.swift in Sources */,
+				3C50434B2C5FF56E00B75F84 /* ContentBlockAdderHub.swift in Sources */,
 				3C93A0CB2C5E6C6E007007C0 /* EntriesAnalyticsView.swift in Sources */,
 				3C93A0C42C5E6391007007C0 /* DebugDummyValues.swift in Sources */,
 				3C9F66942AEFD822007768B7 /* LogReporter.swift in Sources */,
@@ -768,7 +772,7 @@
 				3C9F66962AEFE19A007768B7 /* AppLogger.swift in Sources */,
 				3CCB2FF92AB1E21D00FD8F25 /* CurrentView.swift in Sources */,
 				3C7A5CB72AE2CCE900B0B8A4 /* DestructiveButton.swift in Sources */,
-				3C93A0E42C5E6DC4007007C0 /* ImageContentBlock.swift in Sources */,
+				3C93A0E42C5E6DC4007007C0 /* ImagesContentBlock.swift in Sources */,
 				3C93A0E12C5E6DC4007007C0 /* ContentBlockType.swift in Sources */,
 				3CB77C352AAF6E9A004CE4D8 /* DeleteUserProfileAfterBeingInactiveFor.swift in Sources */,
 				3C7A5CB92AE3A73300B0B8A4 /* LockSymbol.swift in Sources */,

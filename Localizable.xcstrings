@@ -438,6 +438,9 @@
     "Date" : {
 
     },
+    "Delete" : {
+
+    },
     "Delete all diary entries" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -528,42 +531,6 @@
         }
       }
     },
-    "Edit-View Mode Picker Edit option" : {
-      "comment" : "Used as the edit option text for the Edit-View Mode Picker",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Edit"
-          }
-        }
-      }
-    },
-    "Edit-View Mode Picker Label" : {
-      "comment" : "Used as the label for the Edit-View Mode Picker",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Mode"
-          }
-        }
-      }
-    },
-    "Edit-View Mode Picker View option" : {
-      "comment" : "Used as the view option text for the Edit-View Mode Picker",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "View"
-          }
-        }
-      }
-    },
     "Entry" : {
 
     },
@@ -595,6 +562,15 @@
       }
     },
     "Graphs" : {
+
+    },
+    "H1" : {
+
+    },
+    "H2" : {
+
+    },
+    "H3" : {
 
     },
     "Heading" : {
@@ -1250,6 +1226,12 @@
           }
         }
       }
+    },
+    "Thick" : {
+
+    },
+    "Thin" : {
+
     },
     "To continue you will need to setup your diary" : {
       "comment" : "Title that informs user (after the key features of the diary are shown) that he has to setup his diary",

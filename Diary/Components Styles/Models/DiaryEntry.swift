@@ -11,14 +11,13 @@ import os
 
 enum ContentBlockWrapper: Codable {
     case textBlock(TextContentBlock)
-    case imageBlock(ImageContentBlock)
+    case imageBlock(ImagesContentBlock)
     case dividerBlock(DividerContentBlock)
 }
 
 /// Represents a single diary entry
 @Model
 final class DiaryEntry: Entry, CustomDebugStringConvertible {
-    
     /// Logger instance
     @Transient private var logger: Logger = Logger(subsystem: ".com.diaryApp", category: "DiaryEntry")
     
@@ -30,7 +29,7 @@ final class DiaryEntry: Entry, CustomDebugStringConvertible {
     var content: [ContentBlockWrapper]
     
     /// The ID of the diary entry
-    var id: UUID
+    @Attribute(.unique) var id: UUID
     
     /// The date of the diary entry
     var date: Date

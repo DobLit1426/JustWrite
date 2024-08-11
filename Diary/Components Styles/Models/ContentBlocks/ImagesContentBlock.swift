@@ -7,12 +7,12 @@
 
 import Foundation
 
-struct ImageContentBlock: ContentBlock {
+struct ImagesContentBlock: ContentBlock {
     private(set) var type: ContentBlockType = .image
-    var content: Data
+    var content: [Data]
     var id: UUID
     
-    init(content: Data, id: UUID = UUID()) {
+    init(content: [Data], id: UUID = UUID()) {
         self.content = content
         self.id = id
     }
