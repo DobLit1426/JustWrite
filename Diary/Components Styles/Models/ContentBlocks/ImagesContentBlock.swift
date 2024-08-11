@@ -9,6 +9,7 @@ import Foundation
 
 struct ImagesContentBlock: ContentBlock {
     private(set) var type: ContentBlockType = .image
+    
     var content: [Data]
     var id: UUID
     

@@ -13,4 +13,5 @@ protocol ContentBlock: Codable, Identifiable {
     
     var type: ContentBlockType { get }
     var content: TypeOfTheContentOfTheBlock { get set }
+    var id: UUID { get set }
 }

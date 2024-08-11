@@ -34,7 +34,7 @@ struct ShareDiaryEntryButton: View {
     }
     
     var shareItem: String {
-        return diaryEntry.description
+        return diaryEntry.debugDescription
     }
     
     func shareDiaryEntry() {

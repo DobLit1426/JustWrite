@@ -77,6 +77,6 @@ struct NewEntryPopover: View {
 
 #Preview {
     NewEntryPopover(onSave: { entryToSave in
-        print(entryToSave.description)
+        print(entryToSave)
     })
 }

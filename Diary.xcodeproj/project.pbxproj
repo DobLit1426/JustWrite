@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3C00C3772AF11C660092743C /* UserDefaultsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C00C3762AF11C660092743C /* UserDefaultsInteractor.swift */; };
 		3C00C3792AF11DFE0092743C /* WhatAreAnonymousReports.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C00C3782AF11DFE0092743C /* WhatAreAnonymousReports.swift */; };
+		3C0F527D2C6912590081AD83 /* SwiftDataTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0F527C2C6912590081AD83 /* SwiftDataTest.swift */; };
 		3C1452EF2AD6E93A00C8BC80 /* EntriesAnalyticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1452EE2AD6E93A00C8BC80 /* EntriesAnalyticsViewModel.swift */; };
 		3C1452F32AD713CF00C8BC80 /* AnalyticPropertyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1452F22AD713CF00C8BC80 /* AnalyticPropertyView.swift */; };
 		3C1452F52AD97F4D00C8BC80 /* InitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1452F42AD97F4D00C8BC80 /* InitialView.swift */; };
@@ -124,6 +125,7 @@
 /* Begin PBXFileReference section */
 		3C00C3762AF11C660092743C /* UserDefaultsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsInteractor.swift; sourceTree = "<group>"; };
 		3C00C3782AF11DFE0092743C /* WhatAreAnonymousReports.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatAreAnonymousReports.swift; sourceTree = "<group>"; };
+		3C0F527C2C6912590081AD83 /* SwiftDataTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDataTest.swift; sourceTree = "<group>"; };
 		3C1452EE2AD6E93A00C8BC80 /* EntriesAnalyticsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntriesAnalyticsViewModel.swift; sourceTree = "<group>"; };
 		3C1452F22AD713CF00C8BC80 /* AnalyticPropertyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticPropertyView.swift; sourceTree = "<group>"; };
 		3C1452F42AD97F4D00C8BC80 /* InitialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialView.swift; sourceTree = "<group>"; };
@@ -353,6 +355,7 @@
 			isa = PBXGroup;
 			children = (
 				3C93A0D32C5E6DC4007007C0 /* DiaryEntry.swift */,
+				3C0F527C2C6912590081AD83 /* SwiftDataTest.swift */,
 				3C93A0D42C5E6DC4007007C0 /* Settings.swift */,
 				3C93A0CF2C5E6DC4007007C0 /* Enums */,
 				3C93A0D52C5E6DC4007007C0 /* ContentBlocks */,
@@ -725,6 +728,7 @@
 				3CF49CEE2AEE40DF00EC59B6 /* DeviceType.swift in Sources */,
 				3C5E45102B0DFAB20021F6B0 /* SentenceMood.swift in Sources */,
 				3C4A5B852AFE8920000B9128 /* ExistsModifier.swift in Sources */,
+				3C0F527D2C6912590081AD83 /* SwiftDataTest.swift in Sources */,
 				3CE29E392AC316C100E20490 /* AppSetupViewModel.swift in Sources */,
 				3C93A0E32C5E6DC4007007C0 /* Settings.swift in Sources */,
 				3CB77C1D2AADBF3D004CE4D8 /* EditExistingDiaryEntryView.swift in Sources */,
