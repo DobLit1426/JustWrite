@@ -34,46 +34,53 @@ import SwiftData
 //    }
 //}
 
-@Model
-final fileprivate class Test {
-    var text: String
-    
-    var contentBlocksOrder: [ContentBlockLinkedIndexedEntity]
-    
-    var textContentBlocks: [TextContentBlock]
-    var imagesContentBlocks: [ImagesContentBlock]
-    var dividerContentBlocks: [DividerContentBlock]
-    
-    var orderedContent: [any ContentBlock] {
-        var allBlocksMixed = [any ContentBlock]()
-        
-        allBlocksMixed.append(contentsOf: textContentBlocks)
-        allBlocksMixed.append(contentsOf: imagesContentBlocks)
-        allBlocksMixed.append(contentsOf: dividerContentBlocks)
-        
-        let result = allBlocksMixed.sorted { contentBlock1, contentBlock2 in
-            if let linkedIndexedEntity1 = contentBlocksOrder.first(where: { $0.id == contentBlock1.id }), let linkedIndexedEntity2 = contentBlocksOrder.first(where: { $0.id == contentBlock2.id }) {
-                return linkedIndexedEntity1.index < linkedIndexedEntity2.index
-            }
-            return false
-        }
-        
-        return result
-    }
-    
-    init(text: String, contentBlocksOrder: [ContentBlockLinkedIndexedEntity], textContentBlocks: [TextContentBlock], imagesContentBlocks: [ImagesContentBlock], dividerContentBlocks: [DividerContentBlock]) {
-        self.text = text
-        self.contentBlocksOrder = contentBlocksOrder
-        self.textContentBlocks = textContentBlocks
-        self.imagesContentBlocks = imagesContentBlocks
-        self.dividerContentBlocks = dividerContentBlocks
-    }
-    
-    init() {
-        self.text = ""
-        self.contentBlocksOrder = []
-        self.imagesContentBlocks = []
-        self.dividerContentBlocks = []
-        self.textContentBlocks = []
-    }
-}
+//@Model
+//final fileprivate class Test {
+//    var text: String
+//    
+//    var contentBlocksOrder: [ContentBlockLinkedIndexedEntity]
+//    
+//    var textContentBlocks: [TextContentBlock]
+//    var imagesContentBlocks: [ImagesContentBlock]
+//    var dividerContentBlocks: [DividerContentBlock]
+//    
+//    var orderedContent: [any ContentBlock] {
+//        var allBlocksMixed = [any ContentBlock]()
+//        
+//        allBlocksMixed.append(contentsOf: textContentBlocks)
+//        allBlocksMixed.append(contentsOf: imagesContentBlocks)
+//        allBlocksMixed.append(contentsOf: dividerContentBlocks)
+//        
+//        
+//        var result = [any ContentBlock]()
+//        
+//        contentBlocksOrder.forEach { indexedEntity in
+//            <#code#>
+//        }
+//        
+////        let result = allBlocksMixed.sorted { contentBlock1, contentBlock2 in
+////            if let indexOfEntity1 = contentBlocksOrder.firstIndex(where: { $0.id == contentBlock1.id }), let indexOfEntity2 = contentBlocksOrder.first(where: { $0.id == contentBlock2.id }) {
+////                return indexOfEntity1 < indexOfEntity2
+////            }
+////            return false
+////        }
+//        
+//        return result
+//    }
+//    
+//    init(text: String, contentBlocksOrder: [ContentBlockLinkedIndexedEntity], textContentBlocks: [TextContentBlock], imagesContentBlocks: [ImagesContentBlock], dividerContentBlocks: [DividerContentBlock]) {
+//        self.text = text
+//        self.contentBlocksOrder = contentBlocksOrder
+//        self.textContentBlocks = textContentBlocks
+//        self.imagesContentBlocks = imagesContentBlocks
+//        self.dividerContentBlocks = dividerContentBlocks
+//    }
+//    
+//    init() {
+//        self.text = ""
+//        self.contentBlocksOrder = []
+//        self.imagesContentBlocks = []
+//        self.dividerContentBlocks = []
+//        self.textContentBlocks = []
+//    }
+//}

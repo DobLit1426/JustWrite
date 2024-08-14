@@ -10,6 +10,7 @@
 		3C00C3772AF11C660092743C /* UserDefaultsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C00C3762AF11C660092743C /* UserDefaultsInteractor.swift */; };
 		3C00C3792AF11DFE0092743C /* WhatAreAnonymousReports.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C00C3782AF11DFE0092743C /* WhatAreAnonymousReports.swift */; };
 		3C0F527D2C6912590081AD83 /* SwiftDataTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0F527C2C6912590081AD83 /* SwiftDataTest.swift */; };
+		3C0F527F2C6BB5080081AD83 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0F527E2C6BB5080081AD83 /* ImageCache.swift */; };
 		3C1452EF2AD6E93A00C8BC80 /* EntriesAnalyticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1452EE2AD6E93A00C8BC80 /* EntriesAnalyticsViewModel.swift */; };
 		3C1452F32AD713CF00C8BC80 /* AnalyticPropertyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1452F22AD713CF00C8BC80 /* AnalyticPropertyView.swift */; };
 		3C1452F52AD97F4D00C8BC80 /* InitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1452F42AD97F4D00C8BC80 /* InitialView.swift */; };
@@ -126,6 +127,7 @@
 		3C00C3762AF11C660092743C /* UserDefaultsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsInteractor.swift; sourceTree = "<group>"; };
 		3C00C3782AF11DFE0092743C /* WhatAreAnonymousReports.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatAreAnonymousReports.swift; sourceTree = "<group>"; };
 		3C0F527C2C6912590081AD83 /* SwiftDataTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDataTest.swift; sourceTree = "<group>"; };
+		3C0F527E2C6BB5080081AD83 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		3C1452EE2AD6E93A00C8BC80 /* EntriesAnalyticsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntriesAnalyticsViewModel.swift; sourceTree = "<group>"; };
 		3C1452F22AD713CF00C8BC80 /* AnalyticPropertyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticPropertyView.swift; sourceTree = "<group>"; };
 		3C1452F42AD97F4D00C8BC80 /* InitialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialView.swift; sourceTree = "<group>"; };
@@ -491,6 +493,7 @@
 				3CE29E342AC3158D00E20490 /* Enum */,
 				3C1452F92AD9A11100C8BC80 /* Documentation.docc */,
 				3C846CF82AB9F85C0086A487 /* DeviceSpecifications.swift */,
+				3C0F527E2C6BB5080081AD83 /* ImageCache.swift */,
 				3C9F66972AEFE2D9007768B7 /* Logging and Reporting */,
 				3CCB1FDB2AE94A3F00184020 /* Views */,
 				3CB77C2D2AAEF4F7004CE4D8 /* Components Styles */,
@@ -783,6 +786,7 @@
 				3C93A0E62C5E6DC4007007C0 /* TextContentBlock.swift in Sources */,
 				3CB77C2F2AAEF57C004CE4D8 /* SecondaryButtonStyle.swift in Sources */,
 				3C5E450B2B0DF9740021F6B0 /* MoodIndicatorsPreview.swift in Sources */,
+				3C0F527F2C6BB5080081AD83 /* ImageCache.swift in Sources */,
 				3C1452FA2AD9A11100C8BC80 /* Documentation.docc in Sources */,
 				3C3CCF942AF6549D0056841A /* ReportErrorView.swift in Sources */,
 				3C1452EF2AD6E93A00C8BC80 /* EntriesAnalyticsViewModel.swift in Sources */,

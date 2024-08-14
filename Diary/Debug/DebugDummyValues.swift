@@ -17,14 +17,15 @@ class DebugDummyValues {
     
     static func diaryEntry(entryHeading: String = "This is a custom entry", customContentText: String? = nil, includeNormalText: Bool = true, includeMarkdownText: Bool = false, includeImages: Bool = true, includeDivider: Bool = true, predefinedMood: PredefinedDiaryEntryMood = .none, entryDate: Date = Date(timeIntervalSince1970: 1722690847), entryId: UUID = UUID()) -> DiaryEntry {
         
-        var entryContent: [ContentBlockWrapper] = []
+        let entry: DiaryEntry = DiaryEntry(heading: entryHeading, date: entryDate, id: entryId)
         
         if includeNormalText {
-            entryContent.append(ContentBlockWrapper.textBlock(TextContentBlock(textSize: .h1, content: "This is some h1 text")))
+            let textBlock = TextContentBlock(textSize: .h3, content: "This is some h1 text")
+            entry.appendNewBlock(textBlock)
         }
         
         if includeMarkdownText {
-            entryContent.append(ContentBlockWrapper.textBlock(TextContentBlock(textSize: .h1, content: """
+            let markdownBlock = TextContentBlock(textSize: .h1, content: """
                 Well, as **you** see, ...
 
                 # Title 1
@@ -36,7 +37,10 @@ class DebugDummyValues {
                 ~Strikethrough text~
                 ~~Strikethrough text 2~~
                 `Monospaced text`
-            """)))
+            """)
+            
+            
+            entry.appendNewBlock(markdownBlock)
         }
         
         if includeImages {
@@ -44,9 +48,12 @@ class DebugDummyValues {
         }
         
         if includeDivider {
-            entryContent.append(ContentBlockWrapper.dividerBlock(DividerContentBlock(content: .thick)))
-            entryContent.append(ContentBlockWrapper.dividerBlock(DividerContentBlock(content: .thin)))
+            entry.appendNewBlocks([
+                DividerContentBlock(content: .thick),
+                DividerContentBlock(content: .thin)
+            ])
         }
+        
         
         let entryMood: Double?
         
@@ -61,12 +68,6 @@ class DebugDummyValues {
             entryMood = nil
         }
         
-        return DiaryEntry(
-            heading: entryHeading,
-            content: entryContent,
-            mood: entryMood,
-            date: entryDate,
-            id: entryId
-        )
+        return entry
     }
 }

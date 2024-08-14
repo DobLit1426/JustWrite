@@ -11,28 +11,22 @@ import os
 
 public final class ContentBlockLinkedIndexedEntity: Identifiable, Codable {
     public let id: UUID
-    var index: Int
     
-    init(id: UUID, index: Int) {
+    init(id: UUID) {
         self.id = id
-        self.index = index
     }
 }
-
-
 
 /// Represents a single diary entry
 @Model
 final class DiaryEntry: Entry, CustomDebugStringConvertible {
+    // MARK: - Logger
     /// Logger instance
-    @Transient private var logger: Logger = Logger(subsystem: ".com.diaryApp", category: "DiaryEntry")
+    @Transient private var logger: AppLogger = AppLogger(category: "DiaryEntry")
     
     // MARK: - Properties
     /// The heading of the diary entry
     var heading: String
-    
-    /// The content (body) of the diary entry
-//    var content: [ContentBlockWrapper]
     
     /// The ID of the diary entry
     @Attribute(.unique) var id: UUID
@@ -44,7 +38,7 @@ final class DiaryEntry: Entry, CustomDebugStringConvertible {
     /// - Important: It's value must be in the range of -1 to 1
     var mood: Double?
     
-    var contentBlocksOrder: [ContentBlockLinkedIndexedEntity]
+    var indexedEntities: [ContentBlockLinkedIndexedEntity]
     
     var textContentBlocks: [TextContentBlock]
     var imagesContentBlocks: [ImagesContentBlock]
@@ -74,11 +68,12 @@ final class DiaryEntry: Entry, CustomDebugStringConvertible {
     /// The ordered content blocks that make up the content of the diary entry
     var content: [any ContentBlock] {
         get {
-            let result = allContentBlocks.sorted { contentBlock1, contentBlock2 in
-                if let linkedIndexedEntity1 = contentBlocksOrder.first(where: { $0.id == contentBlock1.id }), let linkedIndexedEntity2 = contentBlocksOrder.first(where: { $0.id == contentBlock2.id }) {
-                    return linkedIndexedEntity1.index < linkedIndexedEntity2.index
+            let result: [any ContentBlock] = indexedEntities.compactMap { indexedEntity in
+                if let contentBlock = allContentBlocks.first(where: { $0.id == indexedEntity.id }) {
+                    return contentBlock
+                } else {
+                    return nil
                 }
-                return false
             }
             
             return result
@@ -87,7 +82,7 @@ final class DiaryEntry: Entry, CustomDebugStringConvertible {
             textContentBlocks = []
             imagesContentBlocks = []
             dividerContentBlocks = []
-            contentBlocksOrder = []
+            indexedEntities = []
             
             for contentBlock in newValue {
                 appendNewBlock(contentBlock)
@@ -124,9 +119,9 @@ final class DiaryEntry: Entry, CustomDebugStringConvertible {
     ///   - date: The date of the diary entry
     ///   - id: The id of the diary entry
     init(heading: String, content: [any ContentBlock] = [], mood: Double? = nil, date: Date = Date(), id: UUID = UUID()) {
-        logger.info("Starting to initialise DiaryEntry")
+        logger.initBegin()
         
-        self.contentBlocksOrder = []
+        self.indexedEntities = []
         self.textContentBlocks = []
         self.imagesContentBlocks = []
         self.dividerContentBlocks = []
@@ -138,15 +133,15 @@ final class DiaryEntry: Entry, CustomDebugStringConvertible {
         
         self.content = content
         
-        logger.info("Successfully initialised DiaryEntry")
+        logger.initEnd()
     }
     
     
     /// Initialises an empty diary entry with empty heading and content, current date, mood that is set to nil and a random id using UUID()
     init() {
-        logger.info("Starting to initialise empty DiaryEntry")
+        logger.initBegin()
         
-        self.contentBlocksOrder = []
+        self.indexedEntities = []
         self.textContentBlocks = []
         self.imagesContentBlocks = []
         self.dividerContentBlocks = []
@@ -156,11 +151,14 @@ final class DiaryEntry: Entry, CustomDebugStringConvertible {
         self.date = Date()
         self.mood = nil
         
-        logger.info("Successfully initialised empty DiaryEntry")
+        logger.initEnd()
     }
     
     // MARK: - Public functions
-    public func appendNewBlock(_ contentBlock: any ContentBlock) {
+    public func appendNewBlock(_ contentBlock: any ContentBlock, addIndexedEntity: Bool = true) {
+        let functionName = "appendNewBlock"
+        logger.functionBegin(functionName)
+        
         if let textContentBlock = contentBlock as? TextContentBlock {
             textContentBlocks.append(textContentBlock)
         } else if let imagesContentBlock = contentBlock as? ImagesContentBlock {
@@ -168,12 +166,143 @@ final class DiaryEntry: Entry, CustomDebugStringConvertible {
         } else if let dividerContentBlock = contentBlock as? DividerContentBlock {
             dividerContentBlocks.append(dividerContentBlock)
         } else {
-            logger.critical("Couldn't determine the type of the content block")
+            logger.error("Couldn't determine the type of the content block")
+            logger.functionEnd(functionName, successfull: false)
+            return
         }
         
-        let newIndexedEntityIndex: Int = allContentBlocks.count
-        let indexedEntity = ContentBlockLinkedIndexedEntity(id: contentBlock.id, index: newIndexedEntityIndex)
+        if addIndexedEntity {
+            let indexedEntity = ContentBlockLinkedIndexedEntity(id: contentBlock.id)
+            indexedEntities.append(indexedEntity)
+            logger.info("Appended indexed entity with id '\(contentBlock.id)'")
+        }
         
-        contentBlocksOrder.append(indexedEntity)
+        logger.functionEnd(functionName)
+    }
+    
+    public func appendNewBlocks(_ contentBlocks: [any ContentBlock]) {
+        logger.functionBegin("appendNewBlocks")
+        
+        for block in contentBlocks {
+            appendNewBlock(block)
+        }
+        
+        logger.functionEnd("appendNewBlocks")
+    }
+    
+    public func removeBlock(at index: Int, removeLinkedIndexedEntity: Bool = true) {
+        let functionName = "removeBlock(at index: Int, removeLinkedIndexedEntity: Bool = true)"
+        logger.functionBegin(functionName)
+        
+        guard indexedEntities.indices.contains(index) else {
+            logger.critical("Attempt to remove block at index \(index) that is out of range")
+            logger.functionEnd(functionName, successfull: false)
+            return
+        }
+        
+        let blockId = indexedEntities[index].id
+        removeBlock(with: blockId, removeLinkedIndexedEntity: removeLinkedIndexedEntity)
+        
+        logger.functionEnd(functionName)
+    }
+    
+    public func removeBlock(with id: UUID, removeLinkedIndexedEntity: Bool = true) {
+        let functionName = "removeBlock(with id: UUID, removeLinkedIndexedEntity: Bool = true)"
+        logger.functionBegin(functionName)
+        
+        guard indexedEntities.contains(where: { $0.id == id }) else {
+            logger.critical("Attempt to remove block with id \(id) that doesn't exist")
+            logger.functionEnd(functionName, successfull: false)
+            return
+        }
+        
+        var allBlocksSnap = allContentBlocks
+        allBlocksSnap.removeAll { $0.id == id }
+        
+        self.content = allBlocksSnap
+        
+        if removeLinkedIndexedEntity {
+            indexedEntities.removeAll { $0.id == id }
+        }
+        
+        logger.functionEnd(functionName)
+    }
+    
+    public func getBlock(with id: UUID) -> (any ContentBlock)? {
+        let functionName = "getBlock(with id: UUID)"
+        logger.functionBegin(functionName)
+        
+        guard indexedEntities.contains(where: { $0.id == id }) else {
+            logger.critical("The indexed entity with id '\(id)' doesn't exist")
+            logger.functionEnd(functionName, successfull: false)
+            return nil
+        }
+        
+        let block: (any ContentBlock)? = allContentBlocks.first(where: { $0.id == id })
+        
+        logger.functionEnd(functionName)
+        
+        return block
+    }
+    
+    public func getBlock(for indexedEntity: ContentBlockLinkedIndexedEntity) -> (any ContentBlock)? {
+        let functionName = "getBlock(for indexedEntity: ContentBlockLinkedIndexedEntity)"
+        logger.functionBegin(functionName)
+        
+        guard indexedEntities.contains(where: { $0.id == indexedEntity.id }) else {
+            logger.critical("The provided indexed entity with id '\(indexedEntity.id)' doesn't exist")
+            logger.functionEnd(functionName, successfull: false)
+            return nil
+        }
+        
+        guard let contentBlock = allContentBlocks.first(where: { $0.id == indexedEntity.id }) else {
+            logger.critical("The asked content block with id '\(indexedEntity.id)' doesn't exist")
+            logger.functionEnd(functionName, successfull: false)
+            return nil
+        }
+        
+        logger.functionEnd(functionName)
+        return contentBlock
+    }
+    
+//    public func updateBlock(with newBlock: any ContentBlock) {
+//        let functionName = "updateBlock(with newBlock: any ContentBlock)"
+//        logger.functionBegin(functionName)
+//        
+//        let id = newBlock.id
+//        
+//        guard let blockNow = getBlock(with: id) else {
+//            logger.critical("Couldn't find the existing block with the id \(id)")
+//            logger.functionEnd(functionName, successfull: false)
+//            return
+//        }
+//        
+//        if type(of: blockNow) != type(of: newBlock) {
+//            logger.critical("The type of the new block isn't the same as of the current block (with id '\(id)')")
+//        }
+//        
+//        removeBlock(with: id, removeLinkedIndexedEntity: false)
+//        appendNewBlock(newBlock, addIndexedEntity: false)
+//    }
+    
+    public func updateTextBlock(id: UUID, newText: String?, newTextSize: TextSize? = nil) {
+        let functionName = "updateTextBlock(with text: String, textSize: TextSize)"
+        logger.functionBegin(functionName)
+        
+        guard let blockIndex = textContentBlocks.firstIndex(where: { $0.id == id }) else {
+            logger.critical("Couldn't find the block index with id '\(id)'")
+            logger.functionEnd(functionName, successfull: false)
+            return
+        }
+        
+        if let text = newText {
+            textContentBlocks[blockIndex].content = text
+        }
+        
+        if let textSize = newTextSize {
+            textContentBlocks[blockIndex].textSize = textSize
+        }
+        
+        logger.functionEnd(functionName)
     }
 }
