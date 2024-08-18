@@ -175,9 +175,9 @@ final class EntriesAnalyzer: ObservableObject {
         }
     }
     
-    public static func sentimentAnalysis(for entry: DiaryEntry, sentimentPredictor: NLModel?, emotionalityRecognizer: NLModel?) -> Double? {
-        return sentimentAnalysis(for: entry.content, sentimentPredictor: sentimentPredictor, emotionalityRecognizer: emotionalityRecognizer)
-    }
+//    public static func sentimentAnalysis(for entry: DiaryEntry, sentimentPredictor: NLModel?, emotionalityRecognizer: NLModel?) -> Double? {
+//        return sentimentAnalysis(for: entry.content, sentimentPredictor: sentimentPredictor, emotionalityRecognizer: emotionalityRecognizer)
+//    }
     
     public static func sentimentAnalysis(for text: String, sentimentPredictor: NLModel?, emotionalityRecognizer: NLModel?) -> Double? {
         guard let sentimentPredictor else {

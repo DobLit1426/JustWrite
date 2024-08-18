@@ -90,7 +90,7 @@ struct EntryAnalyticsView: View {
                     Spacer()
                 }
                 
-                MoodSpeedometer(value: diaryEntry.formattedMood ?? 0)
+                MoodSpeedometer(value: diaryEntry.mood)
                     .padding()
                 
                 HStack {
@@ -195,7 +195,7 @@ struct SectionIndicator: View {
 
 
 #Preview {
-    let entry: DiaryEntry = DiaryEntry(heading: "My complex day", content: """
+    let entry: DiaryEntry = DebugDummyValues.diaryEntry(entryHeading: "My complex day", customContentText: """
 The day began with a cacophony of sound as the alarm clock rudely disrupted my peaceful slumber. After a few groggy moments, I dragged myself out of bed and embarked on my morning routine. As I stood in front of the mirror, I couldn't help but reflect on the complexities of life.
 
 Breakfast was a concoction of flavors, as I experimented with a new recipe that I had stumbled upon in a cookbook. The intricate blend of spices and the precision required in the preparation process left me feeling both accomplished and eager to tackle the challenges that lay ahead.
@@ -215,6 +215,7 @@ As the workday drew to a close, I attended a yoga class to unwind and de-stress.
 The day ended with a captivating novel that transported me to a world of complex characters and intricate plot twists. I marveled at the author's ability to weave such an intricate narrative, and it reminded me of the power of storytelling to illuminate the complexities of the human experience.
 
 As I lay down to rest, my mind buzzed with the day's events. This diary entry, dear diary, is but a glimpse into the intricate tapestry of my life, filled with challenges, triumphs, and the ever-present beauty of complexity.
-""")
+""", predefinedMood: .none)
+    
     return EntryAnalyticsView(diaryEntry: entry).modelContainer(for: DiaryEntry.self)
 }

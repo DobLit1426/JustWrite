@@ -15,29 +15,60 @@ enum SendReportOption {
 }
 
 /// Logger that must be used to log logs, warnings, errors etc.
-class AppLogger {
+class AppLogger: Equatable {
+    // MARK: - Static constants
     static let userDefaultsSendAnonymousReportsKey: String = "Settings-SendAnonymousReports"
     static let userDefaultsSendAnonymousReportsDefaultValue: Bool = false
     private let userDefaultsSendAnonymousReportsKey = AppLogger.userDefaultsSendAnonymousReportsKey
     
-    let subsystem: String
-    let category: String
+    // MARK: - Public constants
+    public let subsystem: String
+    public let category: String
     
+    // MARK: - Private constants
     private let systemLogger: Logger
     
+    // MARK: - Inits
     init(subsystem: String, category: String) {
         self.subsystem = subsystem
         self.category = category
         self.systemLogger = Logger(subsystem: subsystem, category: category)
     }
     
-    init(category: String) {
-        self.subsystem = ".com.justWrite"
-        self.category = category
-        self.systemLogger = Logger(subsystem: subsystem, category: category)
+    convenience init(category: String) {
+        self.init(subsystem: ".com.justWrite", category: category)
     }
     
-    func error(_ message: String, sendReport: SendReportOption = .automatic) {
+    // MARK: - Public functions
+    public func info(_ message: String) {
+        systemLogger.info("\(message)")
+    }
+    
+    public func functionBegin(_ functionName: String) {
+        systemLogger.info("The function '\(functionName)' is beginning.")
+    }
+    
+    public func functionEnd(_ functionName: String, successfull: Bool = true) {
+        if successfull {
+            systemLogger.info("The function '\(functionName)' ended successfully.")
+        } else {
+            systemLogger.warning("The function '\(functionName)' ended with problems.")
+        }
+    }
+    
+    public func initBegin() {
+        systemLogger.info("The init of the class '\(self.category)' is beginning.")
+    }
+    
+    public func initEnd(successfull: Bool = true) {
+        if successfull {
+            systemLogger.info("The init of the class '\(self.category)' ended successfully")
+        } else {
+            systemLogger.warning("The init of the class '\(self.category)' ended with problems.")
+        }
+    }
+    
+    public func error(_ message: String, sendReport: SendReportOption = .automatic) {
         systemLogger.error("\(message)")
 
         sendReportBasedOn(sendReport: sendReport, sendReportAction: {
@@ -45,11 +76,7 @@ class AppLogger {
         })
     }
     
-    func info(_ message: String) {
-        systemLogger.info("\(message)")
-    }
-    
-    func critical(_ message: String, sendReport: SendReportOption = .automatic) {
+    public func critical(_ message: String, sendReport: SendReportOption = .automatic) {
         systemLogger.critical("\(message)")
         
         sendReportBasedOn(sendReport: sendReport, sendReportAction: {
@@ -57,7 +84,7 @@ class AppLogger {
         })
     }
     
-    func warning(_ message: String, sendReport: SendReportOption = .no) {
+    public func warning(_ message: String, sendReport: SendReportOption = .no) {
         systemLogger.warning("\(message)")
         
         sendReportBasedOn(sendReport: sendReport, sendReportAction: {
@@ -65,7 +92,7 @@ class AppLogger {
         })
     }
     
-    func fatalError(_ message: String, sendReport: SendReportOption = .automatic) {
+    public func fatalError(_ message: String, sendReport: SendReportOption = .automatic) {
         systemLogger.critical("\(message)")
         
         sendReportBasedOn(sendReport: sendReport, sendReportAction: {
@@ -73,7 +100,7 @@ class AppLogger {
         })
     }
     
-    func reportableLog(logType: LogType, title: String, message: String, sendReport: SendReportOption = .automatic) {
+    public func reportableLog(logType: LogType, title: String, message: String, sendReport: SendReportOption = .automatic) {
         switch logType {
         case .warning:
             systemLogger.warning("\(message)")
@@ -88,11 +115,17 @@ class AppLogger {
         })
     }
     
+    // MARK: - Private functions
     private func sendReportBasedOn(sendReport: SendReportOption, sendReportAction: () -> Void) {
         if sendReport == .yes {
             sendReportAction()
         } else if sendReport == .automatic && UserDefaultsInteractor.getSendAnonymousReportsValue() {
             sendReportAction()
         }
+    }
+    
+    // MARK: - Public static functions
+    static func ==(lhs: AppLogger, rhs: AppLogger) -> Bool {
+        (lhs.subsystem == rhs.subsystem) && (lhs.category == rhs.category)
     }
 }

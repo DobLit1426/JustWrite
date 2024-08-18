@@ -113,7 +113,7 @@ struct HomeView: View {
     
     // MARK: - Sentiment recognition functions
     private func performSentimentAnalysis(for entry: DiaryEntry) -> Double? {
-        return EntriesAnalyzer.sentimentAnalysis(for: entry, sentimentPredictor: sentimentPredictor, emotionalityRecognizer: emotionalityRecognizer)
+        return EntriesAnalyzer.sentimentAnalysis(for: entry.allEntryTextInSingleString, sentimentPredictor: sentimentPredictor, emotionalityRecognizer: emotionalityRecognizer)
     }
     
     private func setupModels() {
@@ -128,9 +128,9 @@ struct HomeView: View {
     
     private func predictMoodForEntries() {
         for entry in entries {
-//            if entry.mood == nil {
+            if entry.mood == nil {
                 entry.mood = performSentimentAnalysis(for: entry)
-//            }
+            }
         }
     }
 }

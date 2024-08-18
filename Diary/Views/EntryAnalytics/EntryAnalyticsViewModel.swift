@@ -29,9 +29,9 @@ final class EntryAnalyticsViewModel: ObservableObject {
     }
     
     func update(entry: DiaryEntry, sentimentPredictor: NLModel, emotionalityRecognizer: NLModel) {
-        performSentimentAnalysis(text: entry.content, sentimentPredictor: sentimentPredictor, emotionalityRecogniser: emotionalityRecognizer)
-        numberOfWords = EntriesAnalyzer.countWords(in: entry.content)
-        numberOfSentences = EntriesAnalyzer.extractSentencesFromText(entry.content).count
+//        performSentimentAnalysis(text: entry.content, sentimentPredictor: sentimentPredictor, emotionalityRecogniser: emotionalityRecognizer)
+//        numberOfWords = EntriesAnalyzer.countWords(in: entry.content)
+//        numberOfSentences = EntriesAnalyzer.extractSentencesFromText(entry.content).count
         averageNumberOfWordsInSentence = Double(numberOfWords) / Double(numberOfSentences)
     }
 

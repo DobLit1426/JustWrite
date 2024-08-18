@@ -6,104 +6,184 @@
 //
 
 import SwiftUI
+import UIKit
 
 fileprivate struct LocalizedStrings {
     static let diaryDateDatepickerDescription: String = String(localized: "New Diary Entry - datePicker placeholder", defaultValue: "Date", comment: "This text is used as a DatePicker placeholder where the diary date should be chosen")
     
     // TextField placeholders
     static let headingTextFieldPlaceholder: String = String(localized: "TextField diary entry heading placeholder", defaultValue: "Heading", comment: "This text is used as the placeholder for the TextField for the diary entry heading")
-    static let contentTextFieldPlaceholder: String = String(localized: "TextField diary entry content placeholder", defaultValue: "Content of your diary entry", comment: "This text is used as the placeholder for the TextField for the diary entry content")
-    
-    // Mode picker
-    static let modePickerLabel: String = String(localized: "Edit-View Mode Picker Label", defaultValue: "Mode", comment: "Used as the label for the Edit-View Mode Picker")
-    static let modePickerEdit: String = String(localized: "Edit-View Mode Picker Edit option", defaultValue: "Edit", comment: "Used as the edit option text for the Edit-View Mode Picker")
-    static let modePickerView: String = String(localized: "Edit-View Mode Picker View option", defaultValue: "View", comment: "Used as the view option text for the Edit-View Mode Picker")
 }
 
 /// Used to edit entry using Binding.
 /// - Important: This View provides interface to edit the provided diary entry, however it is **not** specified, where this interface can be used. This means, it can be used as well in a View to create new entry as in View to edit existing diary entries.
 struct EditEntryView: View {
     // MARK: - Logger
-    /// Logger instance
     private let logger: AppLogger = AppLogger(subsystem: ".com.diaryApp", category: "EditEntryView")
     
     // MARK: - @Binding variables
-    /// The diary entry to edit
     @Binding var diaryEntry: DiaryEntry
     
-    // MARK: - @State variables
-    /// S&D in which mode is the view
-    @State var mode: DiaryEntryViewingMode
+    // MARK: - @EnvironmentObject variables
+    @EnvironmentObject var contentBlocksCache: ContentBlocksCache
     
-    // MARK: - @FocusState variables
-    /// S&D whether the content text field is focused
-    @FocusState var contentTextFieldFocused: Bool
-    
-    // MARK: - Computed variables
-    /// Returns the earliest date that can be chosen as the date of the diaryEntry
-    var datePickerStartingDate: Date {
-        let currentDate = Date()
-        let calendar = Calendar.current
-        var dateComponents = DateComponents()
-        dateComponents.year = -100
-        let date100YearsAgo = calendar.date(byAdding: dateComponents, to: currentDate)!
-        return date100YearsAgo
-    }
+    // MARK: - Private constants
+    private let datePickerStartingDate: Date = Calendar.current.date(byAdding: .year, value: -100, to: Date())!
+    private let contentBlockHubPlaceHolderId = "contentBlockHubSpaceTakerForBottomPaddingID"
     
     // MARK: - Body
     var body: some View {
-        VStack {
-            Picker(selection: $mode) {
-                Text(LocalizedStrings.modePickerEdit).tag(DiaryEntryViewingMode.edit)
-                Text(LocalizedStrings.modePickerView).tag(DiaryEntryViewingMode.view)
-            } label: {
-                Text(LocalizedStrings.modePickerLabel)
-            }
-            .pickerStyle(.segmented)
-            .labelsHidden()
-            
-            VStack {
-                if mode == .view {
-                    EntryViewMode(diaryEntry: diaryEntry)
-                } else {
-                    DatePicker(LocalizedStrings.diaryDateDatepickerDescription, selection: $diaryEntry.date, in: datePickerStartingDate...Date.now)
+        ScrollView {
+            ScrollViewReader { scrollValue in
+                Group {
+                    entryDatePicker
+                    headingTextField
                     
-                    Divider()
-                    
-                    TextField(LocalizedStrings.headingTextFieldPlaceholder, text: $diaryEntry.heading, axis: .vertical)
-                        .lineLimit(nil)
-                        .font(.largeTitle)
-                        .onSubmit {
-                            contentTextFieldFocused = true
+                    contentBlocks
+                        .onChange(of: diaryEntry.indexedEntities) { oldValue, newValue in
+                            if newValue.count > oldValue.count, let _ = diaryEntry.indexedEntities.last?.id {
+                                withAnimation(.easeInOut) {
+                                    scrollValue.scrollTo(contentBlockHubPlaceHolderId)
+                                }
+                            }
                         }
                     
-                    TextField(LocalizedStrings.contentTextFieldPlaceholder, text: $diaryEntry.content, axis: .vertical)
-                        .lineLimit(nil)
-                        .font(.body)
-                        .focused($contentTextFieldFocused)
-                        
+                    contentBlockHub
+                        .disabled(true)
+                        .opacity(0)
+                        .id(contentBlockHubPlaceHolderId)
+                }
+                .padding()
+            }
+        }
+        .overlay(contentBlockHubOverlay)
+        .task(priority: .background) {
+            // Automatically cache blocks
+            diaryEntry.indexedEntities.forEach { indexedEntity in
+                let id = indexedEntity.id
+                
+                if !contentBlocksCache.keys.contains(where: { $0 == id }) {
+                    cacheContentBlock(for: indexedEntity)
                 }
             }
         }
-        .animation(.easeInOut, value: mode)
+    }
+    
+    // MARK: - View variables
+    private var contentBlocks: some View {
+        LazyVStack {
+            ForEach(diaryEntry.indexedEntities) { indexedEntity in
+                let id = indexedEntity.id
+                
+                if let contentBlock = contentBlocksCache[id] {
+                    Group {
+                        if let imagesBlock = contentBlock as? ImagesContentBlock {
+                            ImagesContentBlockView(imagesBlock)
+                        } else if let textBlock = contentBlock as? TextContentBlock {
+                            let textBinding = Binding {
+                                return textBlock.content
+                            } set: { newValue in
+                                var newTextBlock = textBlock
+                                newTextBlock.content = newValue
+                                contentBlocksCache[id] = newTextBlock
+                                
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                                    if let block = contentBlocksCache[id], let updatedTextBlock = block as? TextContentBlock, updatedTextBlock.content == newValue {
+                                        diaryEntry.updateTextBlock(id: id, newText: newValue)
+                                    }
+                                }
+                            }
+                            
+                            TextContentBlockView(textSize: textBlock.textSize, text: textBinding)
+                        } else if let dividerBlock = contentBlock as? DividerContentBlock {
+                            DividerContentBlockView(dividerBlock)
+                        } else {
+                            Text(contentBlock.id.uuidString)
+                        }
+                        
+                    }
+                    .contextMenu {
+                        Button(role: .destructive) {
+                            diaryEntry.removeBlock(with: id)
+                            contentBlocksCache.removeValue(forKey: id)
+                        } label: {
+                            Label("Delete", systemImage: "trash")
+                        }
+                    }
+                    .onAppear {
+                        logger.info("Retrieved block with id '\(id)' from cache")
+                    }
+                } else {
+                    Rectangle()
+                        .hidden()
+                        .task(priority: .userInitiated) {
+                            cacheContentBlock(for: indexedEntity)
+                        }
+                }
+            }
+        }
+    }
+    
+    private var contentBlockHubOverlay: some View {
+        VStack {
+            Spacer()
+            contentBlockHub
+        }
+    }
+    
+    private var contentBlockHub: some View {
+        ContentBlockAdderHub { textSize in
+            let textContentBlock = TextContentBlock(textSize: textSize, content: "")
+            diaryEntry.appendNewBlock(textContentBlock)
+        } addImages: { imagesDataArray in
+            logger.info("Got an imagesContentBlock!!!")
+            let imagesBlock = ImagesContentBlock(content: imagesDataArray)
+            diaryEntry.appendNewBlock(imagesBlock)
+        } addDivider: { dividerType in
+            let dividerBlock = DividerContentBlock(content: dividerType)
+            diaryEntry.appendNewBlock(dividerBlock)
+        }
+    }
+    
+    private var entryDatePicker: some View {
+        DatePicker(
+            LocalizedStrings.diaryDateDatepickerDescription,
+            selection: $diaryEntry.date,
+            in: datePickerStartingDate...Date.now
+        )
+    }
+    
+    private var headingTextField: some View {
+        TextField(
+            LocalizedStrings.headingTextFieldPlaceholder,
+            text: $diaryEntry.heading,
+            axis: .vertical
+        )
+        .lineLimit(nil)
+        .font(.largeTitle)
+    }
+    
+    // MARK: - Private functions
+    private func cacheContentBlock(for indexedEntity: ContentBlockLinkedIndexedEntity) {
+        let functionName = "cacheContentBlock(for indexedEntity: ContentBlockLinkedIndexedEntity)"
+        logger.functionBegin(functionName)
+        
+        if let contentBlock = diaryEntry.getBlock(for: indexedEntity) {
+            let id = indexedEntity.id
+            
+            contentBlocksCache[id] = contentBlock
+            
+            logger.info("Cached block with id '\(id)'")
+            logger.functionEnd(functionName)
+        }
+        
+        logger.error("Couldn't get block for indexedEntity \(indexedEntity)")
+        logger.functionEnd(functionName, successfull: false)
     }
 }
 
 #Preview {
-    @State var entry: DiaryEntry = DiaryEntry(heading: "Role of the AI in our modern world", content: """
-Well, as **you** see, ...
-
-# Title 1
-## Title 2
-### Title 3
-**Some bold text**
-*Some cursive text*
-***Bold and cursive text***
-~Strikethrough text~
-~~Strikethrough text 2~~
-`Monospaced text`
-""")
-
-
-    return EditEntryView(diaryEntry: $entry, mode: .edit)
+    @State var entry: DiaryEntry = DebugDummyValues.diaryEntry(entryHeading: "Role of the AI in our modern world")
+    
+    return EditEntryView(diaryEntry: $entry)
 }

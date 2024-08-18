@@ -34,7 +34,7 @@ struct ShareDiaryEntryButton: View {
     }
     
     var shareItem: String {
-        return diaryEntry.description
+        return diaryEntry.debugDescription
     }
     
     func shareDiaryEntry() {
@@ -57,6 +57,6 @@ struct ShareDiaryEntryButton: View {
 
 #Preview {
     NavigationStack {
-        ShareDiaryEntryButton(diaryEntry: DiaryEntry(heading: "heading", content: "Sample content"))
+        ShareDiaryEntryButton(diaryEntry: DebugDummyValues.diaryEntry())
     }
 }

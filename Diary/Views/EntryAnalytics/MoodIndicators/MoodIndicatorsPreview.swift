@@ -18,7 +18,7 @@ fileprivate struct MoodIndicatorsPreview: View {
             Spacer()
             VStack {
                 Spacer()
-                MoodSpeedometer(value: Int(mood.rounded()))
+                MoodSpeedometer(value: mood)
                 Spacer()
                 MoodGauge(mood: 0)
                 Spacer()

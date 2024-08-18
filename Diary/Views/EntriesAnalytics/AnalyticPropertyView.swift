@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct AnalyticProperty: View {
+struct AnalyticPropertyView: View {
     let propertyName: String
     let value: String
     
@@ -21,7 +21,7 @@ struct AnalyticProperty: View {
     
     init(propertyName: String, value: Double) {
         self.propertyName = propertyName
-        self.value = AnalyticProperty.roundToTwoDecimalPlaces(number: value)
+        self.value = AnalyticPropertyView.roundToTwoDecimalPlaces(number: value)
     }
     
     init(propertyName: String, value: Int) {
@@ -43,8 +43,8 @@ struct AnalyticProperty: View {
 
 #Preview {
     List {
-        AnalyticProperty(propertyName: "Number of texts", value: 2921)
-        AnalyticProperty(propertyName: "Number of words", value: 203234)
-        AnalyticProperty(propertyName: "Average mood", value: 0.92111028123)
+        AnalyticPropertyView(propertyName: "Number of texts", value: 2921)
+        AnalyticPropertyView(propertyName: "Number of words", value: 203234)
+        AnalyticPropertyView(propertyName: "Average mood", value: 0.92111028123)
     }
 }

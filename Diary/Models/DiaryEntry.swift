@@ -9,9 +9,16 @@ import Foundation
 import SwiftData
 import os
 
+enum ContentBlockWrapper: String, Codable {
+    case textBlock(TextContentBlock)
+    case imageBlock(ImageContentBlock)
+    case dividerBlock(DividerContentBlock)
+}
+
 /// Represents a single diary entry
 @Model
-final class DiaryEntry: Identifiable {
+final class DiaryEntry: Entry, CustomDebugStringConvertible {
+    
     /// Logger instance
     @Transient private var logger: Logger = Logger(subsystem: ".com.diaryApp", category: "DiaryEntry")
     
@@ -20,7 +27,7 @@ final class DiaryEntry: Identifiable {
     var heading: String
     
     /// The content (body) of the diary entry
-    var content: String
+    var content: [ContentBlockWrapper]
     
     /// The ID of the diary entry
     var id: UUID
@@ -28,7 +35,8 @@ final class DiaryEntry: Identifiable {
     /// The date of the diary entry
     var date: Date
     
-    /// The mood of the diary entry
+    /// The public available mood of the diary entry
+    /// - Important: It's value must be in the range of -1 to 1
     var mood: Double?
     
     // MARK: - Computed properites
@@ -41,18 +49,12 @@ final class DiaryEntry: Identifiable {
         return formattedString ?? String(date.formatted())
     }
     
-    var formattedMood: Int? {
-        if let mood {
-            return Int(round(mood * 10))
-        } else {
-            return nil
-        }
-    }
-    
     /// Textual representation for debugging purposes
     var description: String {
         return "DiaryEntry(heading: \(heading), content: \(content), mood: \(String(describing: mood)), date: \(date), id: \(id)"
     }
+    
+    var debugDescription: String { description }
     
     // MARK: - Inits
     /// Initialises the diary entry object by setting the properties to the provided parameters
@@ -62,7 +64,7 @@ final class DiaryEntry: Identifiable {
     ///   - date: The ID of the diary entry, by default current date
     ///   - id: The date of the diary entry, by default UUID()
     ///   - mood: The mood of the diary entry
-    init(heading: String, content: String, mood: Double? = nil, date: Date = Date(), id: UUID = UUID()) {
+    init(heading: String, content: [ContentBlockWrapper], mood: Double? = nil, date: Date = Date(), id: UUID = UUID()) {
         logger.info("Starting to initialise DiaryEntry")
         
         self.heading = heading
@@ -79,7 +81,7 @@ final class DiaryEntry: Identifiable {
         logger.info("Starting to initialise empty DiaryEntry")
         
         self.heading = ""
-        self.content = ""
+        self.content = []
         self.id = UUID()
         self.date = Date()
         self.mood = 0

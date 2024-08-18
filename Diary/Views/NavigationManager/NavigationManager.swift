@@ -12,7 +12,7 @@ struct NavigationManager: View {
     @State var currentTab: CurrentTab = .homeView
     
     //MARK: - Init
-    /// Initialises NavigationManager. The currentTab is set to it's default value
+    /// Initialises NavigationManager. The currentTab is set to its default value
     init() { }
     
     //MARK: - Localized text

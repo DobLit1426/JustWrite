@@ -20,8 +20,8 @@ struct MoodSpeedometer: View {
     private let tickCount: Int
     private let numberOfTicks: Int
     
-    init(value: Int) {
-        self.value = value
+    init(value: Double?) {
+        self.value = value == nil ? 0 : Int((10 * value!).rounded())
         self.tickCount = (abs(maxValue) + abs(minValue)) / steperSplit
         self.numberOfTicks = tickCount * 2 + 1
     }

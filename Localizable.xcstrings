@@ -285,6 +285,9 @@
         }
       }
     },
+    "Average Mood Data" : {
+
+    },
     "Average mood: " : {
 
     },
@@ -374,6 +377,7 @@
       }
     },
     "Content of your diary entry" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -429,6 +433,12 @@
       }
     },
     "Data type" : {
+
+    },
+    "Date" : {
+
+    },
+    "Delete" : {
 
     },
     "Delete all diary entries" : {
@@ -521,42 +531,6 @@
         }
       }
     },
-    "Edit-View Mode Picker Edit option" : {
-      "comment" : "Used as the edit option text for the Edit-View Mode Picker",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Edit"
-          }
-        }
-      }
-    },
-    "Edit-View Mode Picker Label" : {
-      "comment" : "Used as the label for the Edit-View Mode Picker",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Mode"
-          }
-        }
-      }
-    },
-    "Edit-View Mode Picker View option" : {
-      "comment" : "Used as the view option text for the Edit-View Mode Picker",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "View"
-          }
-        }
-      }
-    },
     "Entry" : {
 
     },
@@ -587,7 +561,20 @@
         }
       }
     },
+    "Graphs" : {
+
+    },
+    "H1" : {
+
+    },
+    "H2" : {
+
+    },
+    "H3" : {
+
+    },
     "Heading" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -731,6 +718,9 @@
       }
     },
     "Name" : {
+
+    },
+    "New Data" : {
 
     },
     "New diary entry" : {
@@ -938,6 +928,9 @@
           }
         }
       }
+    },
+    "Raw Mood Data" : {
+
     },
     "Reason for device password usage" : {
       "comment" : "This string will be shown in the system alert, which will promt the user to unlock the device with device passcode"
@@ -1168,7 +1161,7 @@
     },
     "TextField diary entry content placeholder" : {
       "comment" : "This text is used as the placeholder for the TextField for the diary entry content",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1214,6 +1207,18 @@
         }
       }
     },
+    "TextField TextContentBlockView placeholder" : {
+      "comment" : "This text is used as the placeholder for the TextField for the TextContentBlockView",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Write something here"
+          }
+        }
+      }
+    },
     "Thank you!" : {
 
     },
@@ -1234,6 +1239,12 @@
         }
       }
     },
+    "Thick" : {
+
+    },
+    "Thin" : {
+
+    },
     "To continue you will need to setup your diary" : {
       "comment" : "Title that informs user (after the key features of the diary are shown) that he has to setup his diary",
       "localizations" : {
@@ -1246,6 +1257,7 @@
       }
     },
     "To see analytics write a diary entry" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1254,6 +1266,9 @@
           }
         }
       }
+    },
+    "To see analytics write a few diary entries" : {
+
     },
     "To unlock the JustWrite App with %@ you need to setup %@ in Settings of your device." : {
       "localizations" : {
@@ -1281,6 +1296,9 @@
 
     },
     "Turned off" : {
+
+    },
+    "Unfortunately this block couldn't load" : {
 
     },
     "Unlock with %@" : {

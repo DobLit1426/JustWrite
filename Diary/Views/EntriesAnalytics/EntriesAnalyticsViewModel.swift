@@ -16,6 +16,7 @@ final class EntriesAnalyticsViewModel: ObservableObject {
     @Published var averageNumberOfWordsPerSentence: Double = 0
     @Published var totalNumberOfEntries: Int = 0
     @Published var averageNumberOfDaysBetweenDiaryEntries: Double = 0
+    @Published var dateToAverageMoodOfDate: [(Date, Double)] = []
     
     init() {
         logger.info("EntriesAnalyticsViewModel was initialised")
@@ -39,8 +40,8 @@ final class EntriesAnalyticsViewModel: ObservableObject {
         
         
         for entry in entries {
-            let sentencesCount: Int = extractSentencesFromText(entry.content).count
-            let numberOfWords: Int = countWords(in: entry.content)
+            let sentencesCount: Int = extractSentencesFromText(entry.allEntryTextInSingleString).count
+            let numberOfWords: Int = countWords(in: entry.allEntryTextInSingleString)
             
             totalNumberOfEntries += 1
             totalNumberOfWords += numberOfWords
@@ -53,6 +54,14 @@ final class EntriesAnalyticsViewModel: ObservableObject {
         
         if averageNumberOfWordsPerSentence.isNaN { averageNumberOfWordsPerSentence = 0 }
         if averageNumberOfSentences.isNaN { averageNumberOfSentences = 0 }
+        
+        
+        dateToAverageMoodOfDate = []
+        entries.forEach { entry in
+            if let mood = entry.mood {
+                dateToAverageMoodOfDate.append((entry.date, mood))
+            }
+        }
     }
     
     private func extractSentencesFromText(_ text: String) -> [String] {
@@ -116,7 +125,7 @@ final class EntriesAnalyticsViewModel: ObservableObject {
         }
         
         // Convert the total difference from seconds to days
-        let secondsInADay: Double = 24 * 60 * 60 // 1 day = 24 hours * 60 minutes * 60 seconds
+        let secondsInADay: Double = 86400 // 1 day = 24 hours * 60 minutes * 60 seconds = 86400 seconds
         let totalDifferenceInDays = totalDifferenceInSeconds / secondsInADay
 
         let averageDifference = totalDifferenceInDays / Double(entries.count - 1)

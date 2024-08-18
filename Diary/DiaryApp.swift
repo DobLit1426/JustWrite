@@ -15,11 +15,17 @@ struct DiaryApp: App {
     /// Logger instance
     private let logger = AppLogger(category: "DiaryApp")
     
+    // MARK: - ImagesCacher
+    @StateObject private var imagesCache = ImageCache(totalCostLimit: 0, countLimit: 20) // Around 50 MB
+    @StateObject private var contentBlocksCache = ContentBlocksCache()
+    
     // MARK: - Body
     var body: some Scene {
         WindowGroup {
             FirstView()
         }
         .modelContainer(for: [DiaryEntry.self, Settings.self])
+        .environmentObject(imagesCache)
+        .environmentObject(contentBlocksCache)
     }
 }

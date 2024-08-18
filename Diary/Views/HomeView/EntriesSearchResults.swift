@@ -41,7 +41,7 @@ struct EntriesSearchResults: View {
         .onAppear {
             self.filteredEntries = entries.filter({ entry in
                 let promtTextInHeading: Bool = entry.heading.contains(promt)
-                let promtTextInContent: Bool = entry.content.contains(promt)
+                let promtTextInContent: Bool = entry.allEntryTextInSingleString.contains(promt)
                 
                 let includeEntryInSearchResults: Bool = promtTextInHeading || promtTextInContent
                 return includeEntryInSearchResults

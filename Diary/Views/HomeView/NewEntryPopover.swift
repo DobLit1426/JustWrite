@@ -27,9 +27,8 @@ struct NewEntryPopover: View {
     
     var body: some View {
         NavigationStack {
-            EditEntryView(diaryEntry: $diaryEntry, mode: .edit)
+            EditEntryView(diaryEntry: $diaryEntry)
                 .navigationTitle("New diary entry")
-                .padding()
                 .toolbar {
                     ToolbarItem(placement: .topBarTrailing) {
                         Button {
@@ -77,6 +76,6 @@ struct NewEntryPopover: View {
 
 #Preview {
     NewEntryPopover(onSave: { entryToSave in
-        print(entryToSave.description)
+        print(entryToSave)
     })
 }

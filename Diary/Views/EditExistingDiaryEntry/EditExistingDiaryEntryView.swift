@@ -37,34 +37,37 @@ struct EditExistingDiaryEntryView: View {
     // MARK: - Body
     var body: some View {
         NavigationStack {
-            EditEntryView(diaryEntry: $diaryEntry, mode: .view)
-                .padding()
+            EditEntryView(diaryEntry: $diaryEntry)
                 .navigationTitle("Entry")
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItemGroup(placement: .navigation) {
                         ShareDiaryEntryButton(diaryEntry: diaryEntry)
-
-                        NavigationLink(destination: EntryAnalyticsView(diaryEntry: diaryEntry), label: {
-                            if let formattedMood = diaryEntry.formattedMood {
-                                Spacer()
-                                MoodGauge(mood: formattedMood)
-                                    .scaleEffect(CGSize(width: 0.6, height: 0.6))
-                            } else {
-                                Image(systemName: "chart.bar.fill")
-                            }
-                        })
+                        navigationLinkToMoodInsights
                     }
                 }
             Spacer()
         }
-        .onChange(of: diaryEntry.content, { oldValue, newValue in
+        .onChange(of: diaryEntry.allEntryTextInSingleString, { oldValue, newValue in
             predictMoodForTheEntry()
         })
         .onAppear {
             setupModels()
             predictMoodForTheEntry()
         }
+    }
+    
+    // MARK: - View variables
+    private var navigationLinkToMoodInsights: some View {
+        NavigationLink(destination: EntryAnalyticsView(diaryEntry: diaryEntry), label: {
+            if let mood = diaryEntry.mood {
+                Spacer()
+                MoodGauge(mood: Int(mood.rounded()))
+                    .scaleEffect(CGSize(width: 0.6, height: 0.6))
+            } else {
+                Image(systemName: "chart.bar.fill")
+            }
+        })
     }
     
     // MARK: - Sentiment recognition functions
@@ -79,12 +82,12 @@ struct EditExistingDiaryEntryView: View {
     }
     
     private func predictMoodForTheEntry() {
-        diaryEntry.mood = EntriesAnalyzer.sentimentAnalysis(for: diaryEntry, sentimentPredictor: sentimentPredictor, emotionalityRecognizer: emotionalityRecognizer)
+        diaryEntry.mood = EntriesAnalyzer.sentimentAnalysis(for: diaryEntry.allEntryTextInSingleString, sentimentPredictor: sentimentPredictor, emotionalityRecognizer: emotionalityRecognizer)
     }
 }
 
 #Preview {
-    @State var diaryEntry: DiaryEntry = DiaryEntry(heading: "heading", content: "Sample content")
+    @State var diaryEntry: DiaryEntry = DebugDummyValues.diaryEntry()
     
     return EditExistingDiaryEntryView(diaryEntry: diaryEntry)
 }
