@@ -15,7 +15,7 @@ enum SendReportOption {
 }
 
 /// Logger that must be used to log logs, warnings, errors etc.
-class AppLogger {
+class AppLogger: Equatable {
     // MARK: - Static constants
     static let userDefaultsSendAnonymousReportsKey: String = "Settings-SendAnonymousReports"
     static let userDefaultsSendAnonymousReportsDefaultValue: Bool = false
@@ -122,5 +122,10 @@ class AppLogger {
         } else if sendReport == .automatic && UserDefaultsInteractor.getSendAnonymousReportsValue() {
             sendReportAction()
         }
+    }
+    
+    // MARK: - Public static functions
+    static func ==(lhs: AppLogger, rhs: AppLogger) -> Bool {
+        (lhs.subsystem == rhs.subsystem) && (lhs.category == rhs.category)
     }
 }

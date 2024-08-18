@@ -438,6 +438,9 @@
     "Date" : {
 
     },
+    "Delete" : {
+
+    },
     "Delete all diary entries" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -1158,7 +1161,7 @@
     },
     "TextField diary entry content placeholder" : {
       "comment" : "This text is used as the placeholder for the TextField for the diary entry content",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1200,6 +1203,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Заголовок"
+          }
+        }
+      }
+    },
+    "TextField TextContentBlockView placeholder" : {
+      "comment" : "This text is used as the placeholder for the TextField for the TextContentBlockView",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Write something here"
           }
         }
       }
@@ -1281,6 +1296,9 @@
 
     },
     "Turned off" : {
+
+    },
+    "Unfortunately this block couldn't load" : {
 
     },
     "Unlock with %@" : {

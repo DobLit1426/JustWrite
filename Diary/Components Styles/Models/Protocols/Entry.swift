@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol Entry: Identifiable {
+protocol Entry: Identifiable, Equatable {
     associatedtype HeadingType
     associatedtype ContentType
     associatedtype DateType

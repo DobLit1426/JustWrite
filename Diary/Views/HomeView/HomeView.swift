@@ -87,11 +87,6 @@ struct HomeView: View {
             }
             .sheet(isPresented: $showAddNewEntryPopover) {
                 NewEntryPopover { entryToSave in
-//                    #if DEBUG
-//                    let someDummyEntry: DiaryEntry = DebugDummyValues.diaryEntry(entryHeading: entryToSave.heading, includeNormalText: true, includeMarkdownText: true)
-//                    swiftDataContext.insert(someDummyEntry)
-//                    #endif
-                
                     swiftDataContext.insert(entryToSave)
                 }
             }
@@ -133,9 +128,9 @@ struct HomeView: View {
     
     private func predictMoodForEntries() {
         for entry in entries {
-//            if entry.mood == nil {
+            if entry.mood == nil {
                 entry.mood = performSentimentAnalysis(for: entry)
-//            }
+            }
         }
     }
 }

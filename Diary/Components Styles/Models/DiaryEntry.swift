@@ -9,11 +9,17 @@ import Foundation
 import SwiftData
 import os
 
-public final class ContentBlockLinkedIndexedEntity: Identifiable, Codable {
-    public let id: UUID
+public final class ContentBlockLinkedIndexedEntity: Identifiable, Codable, Equatable {
+    public static func == (lhs: ContentBlockLinkedIndexedEntity, rhs: ContentBlockLinkedIndexedEntity) -> Bool {
+        (lhs.id == rhs.id) && (lhs.type == rhs.type)
+    }
     
-    init(id: UUID) {
+    public let id: UUID
+    public let type: ContentBlockType
+    
+    init(id: UUID, type: ContentBlockType) {
         self.id = id
+        self.type = type
     }
 }
 
@@ -41,7 +47,7 @@ final class DiaryEntry: Entry, CustomDebugStringConvertible {
     var indexedEntities: [ContentBlockLinkedIndexedEntity]
     
     var textContentBlocks: [TextContentBlock]
-    var imagesContentBlocks: [ImagesContentBlock]
+    @Attribute(.externalStorage) var imagesContentBlocks: [ImagesContentBlock]
     var dividerContentBlocks: [DividerContentBlock]
     
     // MARK: - Computed properites
@@ -159,12 +165,17 @@ final class DiaryEntry: Entry, CustomDebugStringConvertible {
         let functionName = "appendNewBlock"
         logger.functionBegin(functionName)
         
+        let contentBlockType: ContentBlockType
+        
         if let textContentBlock = contentBlock as? TextContentBlock {
             textContentBlocks.append(textContentBlock)
+            contentBlockType = .text
         } else if let imagesContentBlock = contentBlock as? ImagesContentBlock {
             imagesContentBlocks.append(imagesContentBlock)
+            contentBlockType = .image
         } else if let dividerContentBlock = contentBlock as? DividerContentBlock {
             dividerContentBlocks.append(dividerContentBlock)
+            contentBlockType = .divider
         } else {
             logger.error("Couldn't determine the type of the content block")
             logger.functionEnd(functionName, successfull: false)
@@ -172,7 +183,7 @@ final class DiaryEntry: Entry, CustomDebugStringConvertible {
         }
         
         if addIndexedEntity {
-            let indexedEntity = ContentBlockLinkedIndexedEntity(id: contentBlock.id)
+            let indexedEntity = ContentBlockLinkedIndexedEntity(id: contentBlock.id, type: contentBlockType)
             indexedEntities.append(indexedEntity)
             logger.info("Appended indexed entity with id '\(contentBlock.id)'")
         }
@@ -210,10 +221,12 @@ final class DiaryEntry: Entry, CustomDebugStringConvertible {
         let functionName = "removeBlock(with id: UUID, removeLinkedIndexedEntity: Bool = true)"
         logger.functionBegin(functionName)
         
-        guard indexedEntities.contains(where: { $0.id == id }) else {
-            logger.critical("Attempt to remove block with id \(id) that doesn't exist")
-            logger.functionEnd(functionName, successfull: false)
-            return
+        if removeLinkedIndexedEntity {
+            guard indexedEntities.contains(where: { $0.id == id }) else {
+                logger.critical("Attempt to remove block with id \(id) that doesn't exist")
+                logger.functionEnd(functionName, successfull: false)
+                return
+            }
         }
         
         var allBlocksSnap = allContentBlocks
@@ -228,34 +241,45 @@ final class DiaryEntry: Entry, CustomDebugStringConvertible {
         logger.functionEnd(functionName)
     }
     
-    public func getBlock(with id: UUID) -> (any ContentBlock)? {
-        let functionName = "getBlock(with id: UUID)"
-        logger.functionBegin(functionName)
-        
-        guard indexedEntities.contains(where: { $0.id == id }) else {
-            logger.critical("The indexed entity with id '\(id)' doesn't exist")
-            logger.functionEnd(functionName, successfull: false)
-            return nil
-        }
-        
-        let block: (any ContentBlock)? = allContentBlocks.first(where: { $0.id == id })
-        
-        logger.functionEnd(functionName)
-        
-        return block
-    }
+//    public func getBlock(with id: UUID) -> (any ContentBlock)? {
+//        let functionName = "getBlock(with id: UUID)"
+//        logger.functionBegin(functionName)
+//        
+////        guard indexedEntities.contains(where: { $0.id == id }) else {
+////            logger.critical("The indexed entity with id '\(id)' doesn't exist")
+////            logger.functionEnd(functionName, successfull: false)
+////            return nil
+////        }
+//        
+//        let block: (any ContentBlock)? = allContentBlocks.first(where: { $0.id == id })
+//        
+//        logger.functionEnd(functionName)
+//        
+//        return block
+//    }
     
     public func getBlock(for indexedEntity: ContentBlockLinkedIndexedEntity) -> (any ContentBlock)? {
         let functionName = "getBlock(for indexedEntity: ContentBlockLinkedIndexedEntity)"
         logger.functionBegin(functionName)
         
-        guard indexedEntities.contains(where: { $0.id == indexedEntity.id }) else {
-            logger.critical("The provided indexed entity with id '\(indexedEntity.id)' doesn't exist")
-            logger.functionEnd(functionName, successfull: false)
-            return nil
+//        guard indexedEntities.contains(where: { $0.id == indexedEntity.id }) else {
+//            logger.critical("The provided indexed entity with id '\(indexedEntity.id)' doesn't exist")
+//            logger.functionEnd(functionName, successfull: false)
+//            return nil
+//        }
+        
+        let contentBlock: (any ContentBlock)?
+        
+        switch indexedEntity.type {
+        case .text:
+            contentBlock = textContentBlocks.first(where: { $0.id == indexedEntity.id })
+        case .image:
+            contentBlock = imagesContentBlocks.first(where: { $0.id == indexedEntity.id })
+        case .divider:
+            contentBlock = dividerContentBlocks.first(where: { $0.id == indexedEntity.id })
         }
         
-        guard let contentBlock = allContentBlocks.first(where: { $0.id == indexedEntity.id }) else {
+        guard let contentBlock = contentBlock else {
             logger.critical("The asked content block with id '\(indexedEntity.id)' doesn't exist")
             logger.functionEnd(functionName, successfull: false)
             return nil
@@ -263,6 +287,10 @@ final class DiaryEntry: Entry, CustomDebugStringConvertible {
         
         logger.functionEnd(functionName)
         return contentBlock
+    }
+    
+    public func blockExists(with id: UUID) -> Bool {
+        return content.contains(where: { $0.id == id })
     }
     
 //    public func updateBlock(with newBlock: any ContentBlock) {

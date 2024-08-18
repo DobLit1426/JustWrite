@@ -8,7 +8,7 @@
 import Foundation
 
 struct DividerContentBlock: ContentBlock {
-    private(set) var type: ContentBlockType = .divider
+//    private(set) var type: ContentBlockType = .divider
     var content: DividerType
     var id: UUID
     

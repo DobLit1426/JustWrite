@@ -38,7 +38,6 @@ struct EditExistingDiaryEntryView: View {
     var body: some View {
         NavigationStack {
             EditEntryView(diaryEntry: $diaryEntry)
-                .padding()
                 .navigationTitle("Entry")
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {

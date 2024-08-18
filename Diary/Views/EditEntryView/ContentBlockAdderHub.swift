@@ -119,65 +119,9 @@ struct ContentBlockAdderHub: View {
     }
     
     // MARK: - Private functions
-//    @MainActor private func imageLoadingComplete() {
-//        let sortedKeys = selectedImagesData.keys.sorted()
-//        
-//        let sortedImages: [Image] = sortedKeys.map({ key in
-//            return selectedImages[key]!
-//        })
-//        
-//        let imagesData = convertImagesToData(images: sortedImages)
-//        
-//        addImages(imagesData)
-//        
-//        unselectChosenAndLoadedImages()
-//    }
-    
     private func unselectChosenAndLoadedImages() {
         selectedImageItems = []
         selectedImagesData = [:]
-    }
-    
-//    @MainActor private func convertImagesToData(images: [Image]) -> [Data] {
-//        var dataArray: [Data] = []
-//        
-//        for image in images {
-////            if let uiImage = image.toUIImage() {
-////                if let data = uiImage.jpegData(compressionQuality: 1.0) {
-////                    dataArray.append(data)
-////                }
-////            }
-//            
-//            if let uiImage = image.snapshot() {
-//                if let data = uiImage.jpegData(compressionQuality: 1.0) {
-//                    dataArray.append(data)
-//                }
-//            }
-//        }
-//        
-//        return dataArray
-//    }
-}
-
-//extension Image {
-//    func toUIImage() -> UIImage? {
-//        let image: Image = self
-//        let size = CGSize(width: 500, height: 500) // Specify the size of the image
-//        let controller = UIHostingController(rootView: image)
-//        let view = controller.view
-//        
-//        let renderer = UIGraphicsImageRenderer(size: size)
-//        return renderer.image { _ in
-//            view?.drawHierarchy(in: CGRect(origin: .zero, size: size), afterScreenUpdates: true)
-//        }
-//    }
-//}
-
-fileprivate extension View {
-    @MainActor func snapshot(scale: CGFloat? = nil) -> UIImage? {
-        let renderer = ImageRenderer(content: self)
-        renderer.scale = scale ?? UIScreen.main.scale
-        return renderer.uiImage
     }
 }
 

@@ -8,10 +8,10 @@
 import Foundation
 import SwiftData
 
-protocol ContentBlock: Codable, Identifiable {
+protocol ContentBlock: Codable, Identifiable, Equatable {
     associatedtype TypeOfTheContentOfTheBlock
     
-    var type: ContentBlockType { get }
+//    var type: ContentBlockType { get }
     var content: TypeOfTheContentOfTheBlock { get set }
     var id: UUID { get set }
 }

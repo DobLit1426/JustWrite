@@ -8,7 +8,7 @@
 import Foundation
 
 struct TextContentBlock: ContentBlock {
-    var type: ContentBlockType { .text(size: textSize) }
+//    var type: ContentBlockType { .text(size: textSize) }
     var content: String
     var id: UUID
     

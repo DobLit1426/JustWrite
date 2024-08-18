@@ -29,7 +29,6 @@ struct NewEntryPopover: View {
         NavigationStack {
             EditEntryView(diaryEntry: $diaryEntry)
                 .navigationTitle("New diary entry")
-                .padding()
                 .toolbar {
                     ToolbarItem(placement: .topBarTrailing) {
                         Button {
