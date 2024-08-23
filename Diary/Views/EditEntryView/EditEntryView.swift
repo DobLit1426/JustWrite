@@ -24,6 +24,10 @@ struct EditEntryView: View {
     // MARK: - @Binding variables
     @Binding var diaryEntry: DiaryEntry
     
+    // MARK: - @State variables
+    @State private var maxHeight: CGFloat?
+    @State private var maxWidth: CGFloat?
+    
     // MARK: - @EnvironmentObject variables
     @EnvironmentObject var contentBlocksCache: ContentBlocksCache
     
@@ -33,27 +37,35 @@ struct EditEntryView: View {
     
     // MARK: - Body
     var body: some View {
-        ScrollView {
-            ScrollViewReader { scrollValue in
-                Group {
-                    entryDatePicker
-                    headingTextField
-                    
-                    contentBlocks
-                        .onChange(of: diaryEntry.indexedEntities) { oldValue, newValue in
-                            if newValue.count > oldValue.count, let _ = diaryEntry.indexedEntities.last?.id {
-                                withAnimation(.easeInOut) {
-                                    scrollValue.scrollTo(contentBlockHubPlaceHolderId)
+        GeometryReader { geometry in
+            ScrollView {
+                ScrollViewReader { scrollValue in
+                    Group {
+                        entryDatePicker
+                        headingTextField
+                        
+                        contentBlocks
+                            .onChange(of: diaryEntry.indexedEntities) { oldValue, newValue in
+                                if newValue.count > oldValue.count, let _ = diaryEntry.indexedEntities.last?.id {
+                                    withAnimation(.easeInOut) {
+                                        scrollValue.scrollTo(contentBlockHubPlaceHolderId)
+                                    }
                                 }
                             }
-                        }
-                    
-                    contentBlockHub
-                        .disabled(true)
-                        .opacity(0)
-                        .id(contentBlockHubPlaceHolderId)
+                        
+                        contentBlockHub
+                            .disabled(true)
+                            .opacity(0)
+                            .id(contentBlockHubPlaceHolderId)
+                    }
+                    .padding()
                 }
-                .padding()
+            }
+            .onChange(of: geometry.size) {
+                updateMaxSizeVariables(with: geometry)
+            }
+            .onAppear {
+                updateMaxSizeVariables(with: geometry)
             }
         }
         .overlay(contentBlockHubOverlay)
@@ -75,10 +87,15 @@ struct EditEntryView: View {
             ForEach(diaryEntry.indexedEntities) { indexedEntity in
                 let id = indexedEntity.id
                 
+                let smallestSideLength = min(maxHeight ?? 0, maxWidth ?? 0)
+                let maxImageSide = smallestSideLength == 0 ? nil : smallestSideLength
+                
                 if let contentBlock = contentBlocksCache[id] {
                     Group {
                         if let imagesBlock = contentBlock as? ImagesContentBlock {
                             ImagesContentBlockView(imagesBlock)
+                                .frame(maxWidth: maxImageSide, maxHeight: maxImageSide)
+                                .scaledToFit()
                         } else if let textBlock = contentBlock as? TextContentBlock {
                             let textBinding = Binding {
                                 return textBlock.content
@@ -98,17 +115,12 @@ struct EditEntryView: View {
                         } else if let dividerBlock = contentBlock as? DividerContentBlock {
                             DividerContentBlockView(dividerBlock)
                         } else {
-                            Text(contentBlock.id.uuidString)
+                            UnidentifiedContentBlockView()
                         }
                         
                     }
                     .contextMenu {
-                        Button(role: .destructive) {
-                            diaryEntry.removeBlock(with: id)
-                            contentBlocksCache.removeValue(forKey: id)
-                        } label: {
-                            Label("Delete", systemImage: "trash")
-                        }
+                        removeButton(forEntryWithId: id)
                     }
                     .onAppear {
                         logger.info("Retrieved block with id '\(id)' from cache")
@@ -163,6 +175,17 @@ struct EditEntryView: View {
         .font(.largeTitle)
     }
     
+    // MARK: - View functions
+    @ViewBuilder private func removeButton(forEntryWithId id: UUID) -> some View {
+        Button(role: .destructive) {
+            diaryEntry.removeBlock(with: id)
+            contentBlocksCache.removeValue(forKey: id)
+        } label: {
+            Label("Delete", systemImage: "trash")
+        }
+    }
+    
+    
     // MARK: - Private functions
     private func cacheContentBlock(for indexedEntity: ContentBlockLinkedIndexedEntity) {
         let functionName = "cacheContentBlock(for indexedEntity: ContentBlockLinkedIndexedEntity)"
@@ -179,6 +202,11 @@ struct EditEntryView: View {
         
         logger.error("Couldn't get block for indexedEntity \(indexedEntity)")
         logger.functionEnd(functionName, successfull: false)
+    }
+    
+    private func updateMaxSizeVariables(with geometry: GeometryProxy) {
+        maxWidth = geometry.size.width * 0.9
+        maxHeight = geometry.size.height * 0.8
     }
 }
 

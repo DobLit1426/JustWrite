@@ -21,11 +21,11 @@ class FirstViewModel: ObservableObject {
     // MARK: - Init
     /// Initialises the viewModel by setting the settings to an empty array
     init() {
-        logger.info("Starting intialising FirstViewModel object...")
+        logger.initBegin()
         
         settings = []
         
-        logger.info("Successfully intialised FirstViewModel object")
+        logger.initEnd()
     }
     
     // MARK: - Public functions

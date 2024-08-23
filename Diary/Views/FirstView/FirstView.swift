@@ -27,7 +27,7 @@ struct FirstView: View {
     
     // MARK: - ViewModel
     /// View model
-    @ObservedObject private var viewModel: FirstViewModel
+    @StateObject private var viewModel: FirstViewModel = FirstViewModel()
     
     // MARK: - State Variables
     /// Stores the enum value of the current view
@@ -43,9 +43,9 @@ struct FirstView: View {
     // MARK: - Init
     /// Initialises the struct by creating viewModel
     init() {
-        logger.info("Initialising FirstView...")
-        viewModel = FirstViewModel()
-        logger.info("Successfully intitalised FirstView")
+        logger.initBegin()
+        
+        logger.initEnd()
     }
     
     // MARK: - Body
@@ -61,12 +61,14 @@ struct FirstView: View {
                     default:
                         EmptyView()
                             .onAppear {
-                                logger.critical("The specified currentView '\(currentView.rawValue)' isn't included in Switch in FirstView")
+                                logger.fatalError("The specified currentView '\(currentView.rawValue)' isn't included in Switch in FirstView")
+                                fatalError() // A fatal error here to draw the attention if some currentView value isn't included in the switch
                             }
                     }
                 }
             }
             .opacity(isUnlocked ? 1 : 0)
+            .disabled(!isUnlocked)
             
             if !isUnlocked { AuthenticationView(isUnlocked: $isUnlocked) }
         }
@@ -85,26 +87,32 @@ struct FirstView: View {
     // MARK: - Private functions
     /// Locks the app
     private func lockTheApp() {
-        logger.info("Starting function to lock the app...")
+        let functionName = "lockTheApp()"
+        logger.functionBegin(functionName)
+        
         isUnlocked = false
         logger.info("Successfully locked the app")
+        
+        logger.functionEnd(functionName)
     }
     
     /// Called on View appear. Checks whether the View appears for the first time and if yes, then calls onFirstAppear
     private func onAppear() {
-        logger.info("FirstView appeared")
-        logger.info("Starting doing functions on the appear of FirstView...")
+        let functionName = "onAppear()"
+        logger.functionBegin(functionName)
         
         if !determiniedInitialView {
             onFirstAppear()
         }
         
         logger.info("Successfully finished doing functions on the appear of FirstView appear")
+        logger.functionEnd(functionName)
     }
     
     /// Function called on the first View appear. Checks setting, updates viewModel, determines and sets the initial View.
     private func onFirstAppear() {
-        logger.info("Starting onFirstAppear function...")
+        let functionName = "onFirstAppear()"
+        logger.functionBegin(functionName)
         
         checkSettings()
         
@@ -130,21 +138,27 @@ struct FirstView: View {
         
         determiniedInitialView = true
         
-        logger.info("Successfully finished onFirstAppear function")
+        logger.functionEnd(functionName)
     }
     
     /// Checks settings objects. If finds multiple, deletes all except the last.
     private func checkSettings() {
-        logger.info("Starting function to check settings...")
+        let functionName = "checkSettings()"
+        logger.functionBegin(functionName)
+        
         if settings.count > 1 {
             logger.critical("Found multiple settings instances. Deleting all them except the last one to continue app functionality...")
+            
             for index in 0..<settings.count - 1 {
                 swiftDataContext.delete(settings[index])
             }
+            
             logger.critical("Deleted all settings instances except the last one. The last settings instance will be the saved.")
-        } else {
-            logger.info("Successfully checked settings. Number of settings: \(settings.count)")
         }
+        
+        
+        logger.info("Checked settings. Number of settings: \(settings.count)")
+        logger.functionEnd(functionName)
     }
 }
 

@@ -51,6 +51,7 @@
 		3C7A5CB72AE2CCE900B0B8A4 /* DestructiveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7A5CB62AE2CCE900B0B8A4 /* DestructiveButton.swift */; };
 		3C7A5CB92AE3A73300B0B8A4 /* LockSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7A5CB82AE3A73300B0B8A4 /* LockSymbol.swift */; };
 		3C846CF92AB9F85C0086A487 /* DeviceSpecifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C846CF82AB9F85C0086A487 /* DeviceSpecifications.swift */; };
+		3C8B0B0E2C788EBC008A0E3F /* SquareFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C8B0B0D2C788EBC008A0E3F /* SquareFrame.swift */; };
 		3C8B563C2AEBF1C0000F70C2 /* EditEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C8B563B2AEBF1C0000F70C2 /* EditEntryView.swift */; };
 		3C93A0C42C5E6391007007C0 /* DebugDummyValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C93A0C32C5E6391007007C0 /* DebugDummyValues.swift */; };
 		3C93A0CB2C5E6C6E007007C0 /* EntriesAnalyticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C93A0CA2C5E6C6E007007C0 /* EntriesAnalyticsView.swift */; };
@@ -174,6 +175,7 @@
 		3C7A5CB62AE2CCE900B0B8A4 /* DestructiveButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestructiveButton.swift; sourceTree = "<group>"; };
 		3C7A5CB82AE3A73300B0B8A4 /* LockSymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockSymbol.swift; sourceTree = "<group>"; };
 		3C846CF82AB9F85C0086A487 /* DeviceSpecifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceSpecifications.swift; sourceTree = "<group>"; };
+		3C8B0B0D2C788EBC008A0E3F /* SquareFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareFrame.swift; sourceTree = "<group>"; };
 		3C8B563B2AEBF1C0000F70C2 /* EditEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEntryView.swift; sourceTree = "<group>"; };
 		3C93A0C32C5E6391007007C0 /* DebugDummyValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugDummyValues.swift; sourceTree = "<group>"; };
 		3C93A0CA2C5E6C6E007007C0 /* EntriesAnalyticsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntriesAnalyticsView.swift; sourceTree = "<group>"; };
@@ -266,7 +268,7 @@
 				3C0ED2302C71ED200030285F /* TextContentBlockView.swift */,
 				3C0ED2392C71F1960030285F /* DividerContentBlockView.swift */,
 				3C0ED2332C71EE900030285F /* UnidentifiedContentBlockView.swift */,
-				3C0ED2372C71EEC60030285F /* ImagesContentBlockView.swift */,
+				3C8B0B0C2C788EAB008A0E3F /* ImagesContentBlockView */,
 			);
 			path = ContentBlockView;
 			sourceTree = "<group>";
@@ -383,12 +385,13 @@
 			path = LogReporter;
 			sourceTree = "<group>";
 		};
-		3C93A0C52C5E694A007007C0 /* Debug */ = {
+		3C8B0B0C2C788EAB008A0E3F /* ImagesContentBlockView */ = {
 			isa = PBXGroup;
 			children = (
-				3C93A0C32C5E6391007007C0 /* DebugDummyValues.swift */,
+				3C0ED2372C71EEC60030285F /* ImagesContentBlockView.swift */,
+				3C8B0B0D2C788EBC008A0E3F /* SquareFrame.swift */,
 			);
-			path = Debug;
+			path = ImagesContentBlockView;
 			sourceTree = "<group>";
 		};
 		3C93A0CE2C5E6DC4007007C0 /* Models */ = {
@@ -526,7 +529,6 @@
 				3CA8AAEA2AD4314A00352AAE /* EntriesSentimentClassifier.mlpackage */,
 				3CB77C212AADDB4E004CE4D8 /* Info.plist */,
 				3CE0975F2AAB16D200BE933B /* DiaryApp.swift */,
-				3C93A0C52C5E694A007007C0 /* Debug */,
 				3CE29E342AC3158D00E20490 /* Enum */,
 				3C1452F92AD9A11100C8BC80 /* Documentation.docc */,
 				3C0ED22E2C71DB1A0030285F /* Utilities */,
@@ -544,6 +546,7 @@
 			isa = PBXGroup;
 			children = (
 				3CE097692AAB16D400BE933B /* Preview Assets.xcassets */,
+				3C93A0C32C5E6391007007C0 /* DebugDummyValues.swift */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -833,6 +836,7 @@
 				3C1452EF2AD6E93A00C8BC80 /* EntriesAnalyticsViewModel.swift in Sources */,
 				3C8B563C2AEBF1C0000F70C2 /* EditEntryView.swift in Sources */,
 				3C5E450E2B0DFA0A0021F6B0 /* Needle.swift in Sources */,
+				3C8B0B0E2C788EBC008A0E3F /* SquareFrame.swift in Sources */,
 				3C1452F52AD97F4D00C8BC80 /* InitialView.swift in Sources */,
 				3CF49CF22AEE6AF300EC59B6 /* EntriesSearchResults.swift in Sources */,
 				3C3CCF8F2AF4EDE90056841A /* LogType.swift in Sources */,

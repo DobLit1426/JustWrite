@@ -37,12 +37,10 @@ struct LazyImage: View, Equatable {
         if let image = image {
             image
                 .resizable()
-                .scaledToFit()
+                .aspectRatio(contentMode: .fill)
                 .clipShape(RoundedRectangle(cornerRadius: 15))
         } else {
-            Rectangle()
-                .scaledToFit()
-                .clipShape(RoundedRectangle(cornerRadius: 15))
+            RoundedRectangle(cornerRadius: 15)
                 .task(priority: .utility) {
                     await loadImage()
                 }

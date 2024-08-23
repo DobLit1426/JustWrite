@@ -103,14 +103,10 @@ final class DiaryEntry: Entry, CustomDebugStringConvertible {
     
     var allEntryTextInSingleString: String {
         var result: String = ""
-        // TODO: Write the allEntryTextInSingleString
-//        for blockWrapper in content {
-//            switch blockWrapper {
-//            case .textBlock(let textContentBlock):
-//                result += textContentBlock.content + "\n"
-//            default: continue
-//            }
-//        }
+        
+        textContentBlocks.forEach { textContentBlock in
+            result += "\n\(textContentBlock.content)"
+        }
         
         return result
     }
